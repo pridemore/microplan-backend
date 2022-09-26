@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- sidebar menu area start -->
+<div class="sidebar-menu" th:fragment="sidebar-menu">
+    <div class="sidebar-header">
+        <div class="logo">
+            <a href="index.html"><img th:src="@{/images/icon/logo.png}" alt="logo"></a>
+        </div>
+    </div>
+    <div class="main-menu">
+        <div class="menu-inner">
+            <nav>
+                <ul class="metismenu" id="menu">
+                    <li>
+                        <a th:href="@{/dashboard}" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>Profile</span></a>
+                        <ul class="collapse">
+                            <li><a th:href="@{/creativeUser/register}">Register User</a></li>
+                            <li><a href="index.html">View Profile</a></li>
+                            <li><a href="index2.html">Edit Profile</a></li>
+                            <li><a href="index3.html">Change Password</a></li>
+                            <li><a href="index3.html">Delete Account</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-files"></i><span>Applications</span></a>
+                        <ul class="collapse">
+                            <li><a href="index.html">View Applications</a></li>
+                            <li><a href="index2.html">Report</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-eye"></i><span>Roles</span></a>
+                        <ul class="collapse">
+                            <li><a th:href="@{/role/create}">Create Role</a></li>
+                            <li><a th:href="@{/role/view}">View Roles</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- sidebar menu area end -->
+</body>
+</html>
