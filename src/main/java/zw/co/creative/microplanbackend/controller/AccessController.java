@@ -15,6 +15,6 @@ public class AccessController {
     @GetMapping({"/loginerror"})
     public String loginError(Model model) {
         model.addAttribute("message", "Invalid Credentials. Either password or email is incorrect.");
-        return "/login";
+        return "pages/access/login";
     }
 }

@@ -34,6 +34,7 @@ public class CreativeUserServiceDetail implements UserDetailsService {
             userDetails = User.withUsername(userAccount.getEmail())
                     .password(userAccount.getPassword())
                     .authorities(userAccount.getAuthorities()).build();
+            log.info("Loaded user UserDetails => {}", userDetails);
             return userDetails;
         }
         else{

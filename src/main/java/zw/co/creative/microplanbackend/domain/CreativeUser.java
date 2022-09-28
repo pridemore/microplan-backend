@@ -45,9 +45,15 @@ public class CreativeUser implements UserDetails {
     private String password;
     private String role;
     private String resetPasswordToken;
-    private Boolean enabled = false;
+
+    private boolean isPasswordExpired;
+
     private boolean isAccountLocked;
+
     private boolean isCredentialsExpired;
+
+    private boolean isEnabled;
+
     @Enumerated(EnumType.STRING)
     private CreationStatus status;
 
@@ -81,11 +87,6 @@ public class CreativeUser implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return enabled;
+        return false;
     }
 }

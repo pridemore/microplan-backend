@@ -35,7 +35,7 @@ public class ApiWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapte
                 .formLogin(form->form
                 .loginPage("/login")
                 .defaultSuccessUrl("/dashboard")
-                .failureUrl("/login?error=true")
+                .failureUrl("/loginerror")
                 );
     }
 

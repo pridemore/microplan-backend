@@ -48,8 +48,8 @@ public class CreativeUserServiceImpl implements CreativeUserService {
                 .role(role.get().getName())
                 .status(CreationStatus.ACTIVE)
                 .isAccountLocked(false)
-                .isCredentialsExpired(false)
-                .enabled(false)
+                .isEnabled(true)
+                .isCredentialsExpired(true)
                 .dateCreated(OffsetDateTime.now())
                 .lastUpdated(OffsetDateTime.now())
                 .build();
