@@ -13,6 +13,7 @@ import zw.co.creative.microplanbackend.service.SSBApplicationService;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -90,5 +91,12 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
         SSBApplication savedSSBApplication = ssbApplicationRepository.save(ssbApplication);
 
         return new CommonResponse().buildSuccessResponse("Success",savedSSBApplication );
+    }
+
+    @Override
+    public CommonResponse findAllSSBApplication(CreationStatus status) {
+        List<SSBApplication> ssbApplicationList = ssbApplicationRepository.findAllByStatus(CreationStatus.ACTIVE);
+        return new CommonResponse().buildSuccessResponse("Success",ssbApplicationList);
+
     }
 }
