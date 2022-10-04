@@ -21,7 +21,7 @@
                     </li>
 
                     <li>
-                        <a href="" aria-expanded="true"><i class="ti-user"></i><span>Profile</span></a>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>Profile</span></a>
                         <ul class="collapse">
                             <li><a th:href="@{/creativeUser/register}">Register User</a></li>
                             <li><a href="index.html">View Profile</a></li>
@@ -32,16 +32,16 @@
                     </li>
 
                     <li>
-                        <a href="" aria-expanded="true"><i class="ti-files"></i><span>Applications</span></a>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-files"></i><span>Applications</span></a>
                         <ul class="collapse">
                             <li><a th:href="@{/application/create}">Create Application</a></li>
-                            <li><a href="index.html">View Applications</a></li>
+                             <li><a th:href="@{/viewApplication}">View Applications</a></li>
                             <li><a href="index2.html">Report</a></li>
                         </ul>
                     </li>
 
                     <li>
-                        <a href="" aria-expanded="true"><i class="ti-eye"></i><span>Roles</span></a>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-eye"></i><span>Roles</span></a>
                         <ul class="collapse">
                             <li><a th:href="@{/role/create}">Create Role</a></li>
                             <li><a th:href="@{/role/view}">View Roles</a></li>

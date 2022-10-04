@@ -13,4 +13,14 @@ public class HomeController {
         return "pages/home/dashboard";
     }
 
+
+    @GetMapping(value = "/viewApplication")
+    public String APPLICATION(){
+        return "pages/applications/view";
+    }
+
+    @GetMapping(value = "/viewApplicationForm")
+    public String viewAPPLICATION(){
+        return "pages/applications/applicationForm";
+    }
 }
