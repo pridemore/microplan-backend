@@ -1,26 +1,15 @@
-package zw.co.creative.microplanbackend.domain;
+package zw.co.creative.microplanbackend.domain.dto;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UpdateTimestamp;
-import zw.co.creative.microplanbackend.enums.CreationStatus;
 
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-
-@Entity
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class SSBApplication {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+@NoArgsConstructor
+public class SSBApplicationDto {
     private String loanPurpose;
     private String employeeNumber;
     private String dateOfApplication;
@@ -34,10 +23,10 @@ public class SSBApplication {
     private String passportNo;
     private String maidenName;
     private String spouseName;
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
     private String residentialAddress;
     private String applicantResidentialStatus;
+
     //Employee Details
     private String nameOfEmployer;
     private String physicalAddressOfEmployer;
@@ -94,14 +83,4 @@ public class SSBApplication {
     private String authorizedByName;
     private String authorizedBySignature;
     private String authorizedDate;
-
-    @Enumerated(EnumType.STRING)
-    private CreationStatus status;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    private OffsetDateTime dateCreated;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    @UpdateTimestamp
-    protected OffsetDateTime lastUpdated;
 }
