@@ -21,12 +21,12 @@
                 <div class="card mt-5">
                     <div class="card-body">
                         <h2>Loan Application Form</h2>
-                        <form class="needs-validation" novalidate="">
+                        <form  th:action="@{/application/add}" method="post" >
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="employeeNumber">Employee Number</label>
                                     <input type="text" class="form-control" id="employeeNumber"
-                                           placeholder="Employee Number" required="">
+                                           placeholder="Employee Number" name="employeeNumber" required="">
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
@@ -34,14 +34,14 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="applicationDate">Application Date</label>
                                     <input type="text" class="form-control" id="applicationDate"
-                                           placeholder="Application Date" required="">
+                                           placeholder="Application Date" name="applicationDate" required="">
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="loanPurpose">Loan Purpose</label>
-                                    <input type="text" class="form-control" id="loanPurpose" placeholder="Loan Purpose"
+                                    <input type="text" class="form-control" id="loanPurpose" name="loanPurpose" placeholder="Loan Purpose"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -54,7 +54,7 @@
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="toNominatedFcaBank">Bank</label>
-                                    <input type="text" class="form-control" id="toNominatedFcaBank" placeholder="Bank"
+                                    <input type="text" class="form-control" id="toNominatedFcaBank" name="toNominatedFcaBank" placeholder="Bank"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -63,7 +63,7 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="toNominatedFcaAccountName">Account Name</label>
                                     <input type="text" class="form-control" id="toNominatedFcaAccountName"
-                                           placeholder="Account Name" required="">
+                                           placeholder="Account Name" name="toNominatedFcaAccountName" required="">
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
@@ -71,7 +71,7 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="toNominatedFcaBranch">Branch</label>
                                     <input type="text" class="form-control" id="toNominatedFcaBranch"
-                                           placeholder="Branch" required="">
+                                           placeholder="Branch" name="toNominatedFcaBranch" required="">
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
@@ -79,7 +79,7 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="toNominatedFcaAccountNumber">Account Number</label>
                                     <input type="text" class="form-control" id="toNominatedFcaAccountNumber"
-                                           placeholder="Account Number" required="">
+                                           placeholder="Account Number" name="toNominatedFcaAccountNumber" required="">
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
@@ -92,7 +92,7 @@
                                 <div class="col-md-4 mb-3">
                                     <label for="toNominatedFBCBankBranch">Branch</label>
                                     <input type="text" class="form-control" id="toNominatedFBCBankBranch"
-                                           placeholder="Branch" required="">
+                                           placeholder="Branch" name="toNominatedFBCBankBranch" required="">
                                     <div class="valid-feedback">
                                         Looks good!
                                     </div>
@@ -104,7 +104,7 @@
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="firstName">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" placeholder="First Name"
+                                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="middleName">Middle Name</label>
-                                    <input type="text" class="form-control" id="middleName" placeholder="Middle Name"
+                                    <input type="text" class="form-control" id="middleName" name="middleName" placeholder="Middle Name"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="surname">Surname</label>
-                                    <input type="text" class="form-control" id="surname" placeholder="Surname"
+                                    <input type="text" class="form-control" id="surname" name="surname" placeholder="Surname"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="maidenName">Full Maiden Names(For Married Women)</label>
-                                    <input type="text" class="form-control" id="maidenName" placeholder="Maiden Name"
+                                    <input type="text" class="form-control" id="maidenName" name="maidenName" placeholder="Maiden Name"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="spouseName">Full Name of Spouse(For Married applicants)</label>
-                                    <input type="text" class="form-control" id="spouseName" placeholder="Spouse Name"
+                                    <input type="text" class="form-control" id="spouseName" name="spouseName" placeholder="Spouse Name"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -164,7 +164,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="dateOfBirth">Date of Birth</label>
-                                    <input type="text" class="form-control" id="dateOfBirth" placeholder="Date of Birth"
+                                    <input type="text" class="form-control" id="dateOfBirth" name="dateOfBirth" placeholder="Date of Birth"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -172,7 +172,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="nationalId">National Id No</label>
-                                    <input type="text" class="form-control" id="nationalId" placeholder="National Id"
+                                    <input type="text" class="form-control" id="nationalId" name="nationalId" placeholder="National Id"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -180,7 +180,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="passportNo">Passport No</label>
-                                    <input type="text" class="form-control" id="passportNo"
+                                    <input type="text" class="form-control" id="passportNo" name="passportNo"
                                            placeholder="Passport Number" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -188,7 +188,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="residentialAddress">Residential Address</label>
-                                    <input type="text" class="form-control" id="residentialAddress"
+                                    <input type="text" class="form-control" id="residentialAddress" name="residentialAddress"
                                            placeholder="Address" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -231,7 +231,7 @@
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="nameOfEmployer">Name Of Employer</label>
-                                    <input type="text" class="form-control" id="nameOfEmployer"
+                                    <input type="text" class="form-control" id="nameOfEmployer" name="nameOfEmployer"
                                            placeholder="Name Of Employer" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -239,7 +239,7 @@
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="physicalAddressOfEmployer">Physical Address of Employer</label>
-                                    <input type="text" class="form-control" id="physicalAddressOfEmployer"
+                                    <input type="text" class="form-control" id="physicalAddressOfEmployer" name="physicalAddressOfEmployer"
                                            placeholder="Physical Address of Employer" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -252,7 +252,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="businessNumber">Business Number</label>
-                                    <input type="text" class="form-control" id="businessNumber"
+                                    <input type="text" class="form-control" id="businessNumber" name="businessNumber"
                                            placeholder="Business Number" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -260,7 +260,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="cellNumber">Cell</label>
-                                    <input type="text" class="form-control" id="cellNumber" placeholder="Cell Number"
+                                    <input type="text" class="form-control" id="cellNumber" name="cellNumber" placeholder="Cell Number"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -268,7 +268,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="homeNumber">Home Number</label>
-                                    <input type="text" class="form-control" id="homeNumber" placeholder="Home Number"
+                                    <input type="text" class="form-control" id="homeNumber" name="homeNumber" placeholder="Home Number"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -276,7 +276,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="faxNumber">Fax Number</label>
-                                    <input type="text" class="form-control" id="faxNumber" placeholder="Fax Number"
+                                    <input type="text" class="form-control" id="faxNumber" name="faxNumber" placeholder="Fax Number"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -286,7 +286,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="employedDate">Since when Employed:</label>
-                                    <input type="text" class="form-control" id="employedDate"
+                                    <input type="text" class="form-control" id="employedDate" name="employedDate"
                                            placeholder="Employment Date" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -294,7 +294,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="emailAddress">Email Address:</label>
-                                    <input type="email" class="form-control" id="emailAddress" placeholder="Email"
+                                    <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Email"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -302,7 +302,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="profession">Profession eg (Mining, health etc)</label>
-                                    <input type="text" class="form-control" id="profession" placeholder="Profession"
+                                    <input type="text" class="form-control" id="profession" name="profession" placeholder="Profession"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -310,7 +310,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="positionHeld">Position Held eg (Doctor, engineer etc)</label>
-                                    <input type="text" class="form-control" id="positionHeld"
+                                    <input type="text" class="form-control" id="positionHeld" name="positionHeld"
                                            placeholder="Position Held" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -318,7 +318,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="monthlySalary">Gross Monthly Salary/ income</label>
-                                    <input type="text" class="form-control" id="monthlySalary"
+                                    <input type="text" class="form-control" id="monthlySalary" name="monthlySalary"
                                            placeholder="Gross Monthly Salary" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -326,7 +326,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="netSalary">Net Salary/ income</label>
-                                    <input type="text" class="form-control" id="netSalary" placeholder="Net Salary"
+                                    <input type="text" class="form-control" id="netSalary" name="netSalary" placeholder="Net Salary"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -334,7 +334,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nameOfSpouseEmployer">Name of Spouses employer </label>
-                                    <input type="text" class="form-control" id="nameOfSpouseEmployer"
+                                    <input type="text" class="form-control" id="nameOfSpouseEmployer" name="nameOfSpouseEmployer"
                                            placeholder="Name of Spouses employer" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -342,7 +342,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="addressOfSpouseEmployer">Address of Spouses employer </label>
-                                    <input type="text" class="form-control" id="addressOfSpouseEmployer"
+                                    <input type="text" class="form-control" id="addressOfSpouseEmployer" name="addressOfSpouseEmployer"
                                            placeholder="Address of Spouses employer" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -350,7 +350,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="spousesNetSalary">Spouses net salary(as is on payslip) </label>
-                                    <input type="text" class="form-control" id="spousesNetSalary"
+                                    <input type="text" class="form-control" id="spousesNetSalary" name="spousesNetSalary"
                                            placeholder="Spouses net salary" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -359,7 +359,7 @@
                                 <div class="col-md-3 mb-3">
                                     <label for="otherSourcesOfIncome">Other regular sources of income(Specify the
                                         source)</label>
-                                    <input type="text" class="form-control" id="otherSourcesOfIncome"
+                                    <input type="text" class="form-control" id="otherSourcesOfIncome" name="otherSourcesOfIncome"
                                            placeholder="Other Sources Of Income" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -367,7 +367,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="otherSourcesOfIncomeFrequency">Frequency of income</label>
-                                    <input type="text" class="form-control" id="otherSourcesOfIncomeFrequency"
+                                    <input type="text" class="form-control" id="otherSourcesOfIncomeFrequency" name="otherSourcesOfIncomeFrequency"
                                            placeholder="Other Sources Of Income Frequency" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -375,7 +375,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="amountOfOtherSourcesIncome">Amount of Other income</label>
-                                    <input type="text" class="form-control" id="amountOfOtherSourcesIncome"
+                                    <input type="text" class="form-control" id="amountOfOtherSourcesIncome" name="amountOfOtherSourcesIncome"
                                            placeholder="Amount" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -389,7 +389,7 @@
                                 <div class="col-md-3 mb-3">
                                     <label for="creditFacilityAmountRequired">Credit Facility Amount
                                         Required(USD$)</label>
-                                    <input type="text" class="form-control" id="creditFacilityAmountRequired"
+                                    <input type="text" class="form-control" id="creditFacilityAmountRequired" name="creditFacilityAmountRequired"
                                            placeholder="Amount Required" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -397,7 +397,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="repaymentPeriodRequired">Repayment period required</label>
-                                    <input type="text" class="form-control" id="repaymentPeriodRequired"
+                                    <input type="text" class="form-control" id="repaymentPeriodRequired" name="repaymentPeriodRequired"
                                            placeholder="Repayment period required" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -405,7 +405,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="shortTermUsdLoan">Short term USD Loan</label>
-                                    <input type="text" class="form-control" id="shortTermUsdLoan"
+                                    <input type="text" class="form-control" id="shortTermUsdLoan" name="shortTermUsdLoan"
                                            placeholder="Short term USD Loan" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -418,7 +418,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin1Name">First Next Of Kin Name</label>
-                                    <input type="text" class="form-control" id="nextOfKin1Name" placeholder="Name"
+                                    <input type="text" class="form-control" id="nextOfKin1Name" name="nextOfKin1Name" placeholder="Name"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -426,7 +426,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin1Surname">First Next Of Kin Surname</label>
-                                    <input type="text" class="form-control" id="nextOfKin1Surname"
+                                    <input type="text" class="form-control" id="nextOfKin1Surname" name="nextOfKin1Surname"
                                            placeholder="Surname" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -434,7 +434,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin1Relationship">First Next Of Kin Relationship</label>
-                                    <input type="text" class="form-control" id="nextOfKin1Relationship"
+                                    <input type="text" class="form-control" id="nextOfKin1Relationship" name="nextOfKin1Relationship"
                                            placeholder="Relationship" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -442,7 +442,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin1Employer">First Next Of Kin Employer</label>
-                                    <input type="text" class="form-control" id="nextOfKin1Employer"
+                                    <input type="text" class="form-control" id="nextOfKin1Employer" name="nextOfKin1Employer"
                                            placeholder="Employer" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -450,7 +450,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin1EmployerAddress">First Next Of Kin Employer Address</label>
-                                    <input type="text" class="form-control" id="nextOfKin1EmployerAddress"
+                                    <input type="text" class="form-control" id="nextOfKin1EmployerAddress" name="nextOfKin1EmployerAddress"
                                            placeholder="Address" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -459,7 +459,7 @@
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin1ResidentialAddress">First Next Of Kin Residential
                                         Address</label>
-                                    <input type="text" class="form-control" id="nextOfKin1ResidentialAddress"
+                                    <input type="text" class="form-control" id="nextOfKin1ResidentialAddress" name="nextOfKin1ResidentialAddress"
                                            placeholder="Residential Address" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -467,7 +467,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin1phoneNumber">First Next Of Kin Phone Number</label>
-                                    <input type="text" class="form-control" id="nextOfKin1phoneNumber"
+                                    <input type="text" class="form-control" id="nextOfKin1phoneNumber" name="nextOfKin1phoneNumber"
                                            placeholder="Phone Number" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -477,7 +477,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin2Name">Second Next Of Kin Name</label>
-                                    <input type="text" class="form-control" id="nextOfKin2Name" placeholder="Name"
+                                    <input type="text" class="form-control" id="nextOfKin2Name" name="nextOfKin2Name" placeholder="Name"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -485,7 +485,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin2Surname">Second Next Of Kin Surname</label>
-                                    <input type="text" class="form-control" id="nextOfKin2Surname"
+                                    <input type="text" class="form-control" id="nextOfKin2Surname" name="nextOfKin2Surname"
                                            placeholder="Surname" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -493,7 +493,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin2Relationship">Second Next Of Kin Relationship</label>
-                                    <input type="text" class="form-control" id="nextOfKin2Relationship"
+                                    <input type="text" class="form-control" id="nextOfKin2Relationship" name="nextOfKin2Relationship"
                                            placeholder="Relationship" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -501,7 +501,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin2Employer">Second Next Of Kin Employer</label>
-                                    <input type="text" class="form-control" id="nextOfKin2Employer"
+                                    <input type="text" class="form-control" id="nextOfKin2Employer" name="nextOfKin2Employer"
                                            placeholder="Employer" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -509,7 +509,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin2EmployerAddress">Second Next Of Kin Employer Address</label>
-                                    <input type="text" class="form-control" id="nextOfKin2EmployerAddress"
+                                    <input type="text" class="form-control" id="nextOfKin2EmployerAddress" name="nextOfKin2EmployerAddress"
                                            placeholder="Address" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -518,7 +518,7 @@
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin2ResidentialAddress">Second Next Of Kin Residential
                                         Address</label>
-                                    <input type="text" class="form-control" id="nextOfKin2ResidentialAddress"
+                                    <input type="text" class="form-control" id="nextOfKin2ResidentialAddress" name="nextOfKin2ResidentialAddress"
                                            placeholder="Residential Address" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -526,7 +526,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nextOfKin2phoneNumber">Second Next Of Kin Phone Number</label>
-                                    <input type="text" class="form-control" id="nextOfKin2phoneNumber"
+                                    <input type="text" class="form-control" id="nextOfKin2phoneNumber" name="nextOfKin2phoneNumber"
                                            placeholder="Phone Number" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -539,7 +539,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="customersSignature">Customers Signature</label>
-                                    <input type="text" class="form-control" id="customersSignature"
+                                    <input type="text" class="form-control" id="customersSignature" name="customersSignature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -547,7 +547,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="customerSignatureDate">Date</label>
-                                    <input type="text" class="form-control" id="customerSignatureDate"
+                                    <input type="text" class="form-control" id="customerSignatureDate" name="customerSignatureDate"
                                            placeholder="Date" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -555,7 +555,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="witnessSignature">Witness Signature</label>
-                                    <input type="text" class="form-control" id="witnessSignature"
+                                    <input type="text" class="form-control" id="witnessSignature" name="witnessSignature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -563,7 +563,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="witnessSignatureDate">Date</label>
-                                    <input type="text" class="form-control" id="witnessSignatureDate"
+                                    <input type="text" class="form-control" id="witnessSignatureDate" name="witnessSignatureDate"
                                            placeholder="Date" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -576,7 +576,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="signedAtLocation">Signed at location</label>
-                                    <input type="text" class="form-control" id="signedAtLocation"
+                                    <input type="text" class="form-control" id="signedAtLocation" name="signedAtLocation"
                                            placeholder="Location" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -584,7 +584,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="dateOfSigning">Date</label>
-                                    <input type="text" class="form-control" id="dateOfSigning" placeholder="Date"
+                                    <input type="text" class="form-control" id="dateOfSigning" name="dateOfSigning" placeholder="Date"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -592,7 +592,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="applicantSignature">Customer Signature</label>
-                                    <input type="text" class="form-control" id="applicantSignature"
+                                    <input type="text" class="form-control" id="applicantSignature" name="applicantSignature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -605,7 +605,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="witness1Name">First Witness Name</label>
-                                    <input type="text" class="form-control" id="witness1Name" placeholder="Name"
+                                    <input type="text" class="form-control" id="witness1Name" name="witness1Name" placeholder="Name"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -613,7 +613,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="witness1Signature">First Witness Signature</label>
-                                    <input type="text" class="form-control" id="witness1Signature"
+                                    <input type="text" class="form-control" id="witness1Signature" name="witness1Signature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -623,7 +623,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="witness2Name">Second Witness Name</label>
-                                    <input type="text" class="form-control" id="witness2Name" placeholder="Name"
+                                    <input type="text" class="form-control" id="witness2Name" name="witness2Name" placeholder="Name"
                                            required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -631,7 +631,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="witness2Signature">Second Witness Signature</label>
-                                    <input type="text" class="form-control" id="witness2Signature"
+                                    <input type="text" class="form-control" id="witness2Signature" name="witness2Signature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -644,7 +644,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="UndersignedDebtor">Undersigned (the debtor)</label>
-                                    <input type="text" class="form-control" id="UndersignedDebtor"
+                                    <input type="text" class="form-control" id="UndersignedDebtor" name="UndersignedDebtor"
                                            placeholder="Debtor Name" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -652,7 +652,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="acknowledgementAddress">Acknowledgement Address</label>
-                                    <input type="text" class="form-control" id="acknowledgementAddress"
+                                    <input type="text" class="form-control" id="acknowledgementAddress" name="acknowledgementAddress"
                                            placeholder="Address" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -660,7 +660,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="amountToBeDebited">Amount To be Debited</label>
-                                    <input type="text" class="form-control" id="amountToBeDebited"
+                                    <input type="text" class="form-control" id="amountToBeDebited" name="amountToBeDebited"
                                            placeholder="Address" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -669,7 +669,7 @@
                                 <div class="col-md-3 mb-3">
                                     <label for="acknoledgementSignedAtLocation">Acknoledgement Signed At
                                         Location</label>
-                                    <input type="text" class="form-control" id="acknoledgementSignedAtLocation"
+                                    <input type="text" class="form-control" id="acknoledgementSignedAtLocation" name="acknoledgementSignedAtLocation"
                                            placeholder="Location" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -677,7 +677,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="firstAcknowledgementWitnessSignature">First Witness Signature</label>
-                                    <input type="text" class="form-control" id="firstAcknowledgementWitnessSignature"
+                                    <input type="text" class="form-control" id="firstAcknowledgementWitnessSignature" name="firstAcknowledgementWitnessSignature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -685,7 +685,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="secondAcknowledgementWitnessSignature">Second Witness Signature</label>
-                                    <input type="text" class="form-control" id="SecondAcknowledgementWitnessSignature"
+                                    <input type="text" class="form-control" id="SecondAcknowledgementWitnessSignature" name="SecondAcknowledgementWitnessSignature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -693,7 +693,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="clientAcknowledgementWitnessSignature">client Signature</label>
-                                    <input type="text" class="form-control" id="clientAcknowledgementWitnessSignature"
+                                    <input type="text" class="form-control" id="clientAcknowledgementWitnessSignature" name="clientAcknowledgementWitnessSignature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -706,7 +706,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="applicantName">Customer/Applicant name</label>
-                                    <input type="text" class="form-control" id="applicantName"
+                                    <input type="text" class="form-control" id="applicantName" name="applicantName"
                                            placeholder="Name" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -714,7 +714,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                 <label for="applicantSurname">Customer/Applicant Surname</label>
-                                <input type="text" class="form-control" id="applicantSurname"
+                                <input type="text" class="form-control" id="applicantSurname" name="applicantSurname"
                                        placeholder="Surname" required="">
                                 <div class="valid-feedback">
                                     Looks good!
@@ -722,7 +722,7 @@
                             </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="applicantStatus">Application Status</label>
-                                    <input type="text" class="form-control" id="applicantStatus"
+                                    <input type="text" class="form-control" id="applicantStatus" name="applicantStatus"
                                            placeholder="Status" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -730,7 +730,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="employeeNumberOnDeductions">Employee Number</label>
-                                    <input type="text" class="form-control" id="employeeNumberOnDeductions"
+                                    <input type="text" class="form-control" id="employeeNumberOnDeductions" name="employeeNumberOnDeductions"
                                            placeholder="Employee Number" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -738,7 +738,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="checkDigital">Check digital/letter</label>
-                                    <input type="text" class="form-control" id="checkDigital"
+                                    <input type="text" class="form-control" id="checkDigital" name="checkDigital"
                                            placeholder="Check Digital" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -746,7 +746,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="payeeCode">Payee Code</label>
-                                    <input type="text" class="form-control" id="payeeCode"
+                                    <input type="text" class="form-control" id="payeeCode" name="payeeCode"
                                            placeholder="Payee Code" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -754,7 +754,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="monthlyRate">Monthly rate(In USD)</label>
-                                    <input type="text" class="form-control" id="monthlyRate"
+                                    <input type="text" class="form-control" id="monthlyRate" name="monthlyRate"
                                            placeholder="Monthly Rate" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -762,7 +762,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="fromDate">From Date</label>
-                                    <input type="text" class="form-control" id="fromDate"
+                                    <input type="text" class="form-control" id="fromDate" name="fromDate"
                                            placeholder="Date" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -770,7 +770,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="toDate">To Date</label>
-                                    <input type="text" class="form-control" id="toDate"
+                                    <input type="text" class="form-control" id="toDate" name="toDate"
                                            placeholder="Date" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -778,7 +778,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="refNumber">Ref no(loan account number</label>
-                                    <input type="text" class="form-control" id="refNumber"
+                                    <input type="text" class="form-control" id="refNumber" name="refNumber"
                                            placeholder="Reference Number" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -786,7 +786,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="nationalIdNo">National id number</label>
-                                    <input type="text" class="form-control" id="nationalIdNo"
+                                    <input type="text" class="form-control" id="nationalIdNo" name="nationalIdNo"
                                            placeholder="National Id" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -799,7 +799,7 @@
                             <div class="form-row">
                                 <div class="col-md-3 mb-3">
                                     <label for="declarationApplicantSignature">Applicant Signature</label>
-                                    <input type="text" class="form-control" id="declarationApplicantSignature"
+                                    <input type="text" class="form-control" id="declarationApplicantSignature" name="declarationApplicantSignature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -807,7 +807,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="declarationDate">Date</label>
-                                    <input type="text" class="form-control" id="declarationDate"
+                                    <input type="text" class="form-control" id="declarationDate" name="declarationDate"
                                            placeholder="Date" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -815,7 +815,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="authorizedByName">Authorized/approved by</label>
-                                    <input type="text" class="form-control" id="authorizedByName"
+                                    <input type="text" class="form-control" id="authorizedByName" name="authorizedByName"
                                            placeholder="Name" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -823,7 +823,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="authorizedBySignature">Approver signature</label>
-                                    <input type="text" class="form-control" id="authorizedBySignature"
+                                    <input type="text" class="form-control" id="authorizedBySignature" name="authorizedBySignature"
                                            placeholder="Signature" required="">
                                     <div class="valid-feedback">
                                         Looks good!
@@ -831,7 +831,7 @@
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <label for="authorizedDate">Date</label>
-                                    <input type="text" class="form-control" id="authorizedDate"
+                                    <input type="text" class="form-control" id="authorizedDate" name="authorizedDate"
                                            placeholder="Date" required="">
                                     <div class="valid-feedback">
                                         Looks good!
