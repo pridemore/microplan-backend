@@ -16,12 +16,15 @@
         </div>
         <div class="main-content-inner">
 
-            <!-- Server side start -->
-            <div class="col-12">
-                <div class="card mt-5">
-                    <div class="card-body">
+            <div class="row justify-content-center">
+                <!--                <div class="col-lg-6 col-ml-12">-->
+                <!--                    <div class="row">-->
+                <!-- Textual inputs start -->
+                <div >
+                    <div class="card">
+                        <div class="card-body">
                         <h2>Loan Application Form</h2>
-                        <form class="needs-validation" novalidate="">
+                        <form class="form-horizontal form-label-left" novalidate>
                             <div class="form-row">
                                 <div class="col-md-4 mb-3">
                                     <label for="employeeNumber">Employee Number</label>
@@ -841,16 +844,21 @@
 
                             <button class="btn btn-primary" type="submit">Submit form</button>
                         </form>
+
+                        </div>
                     </div>
                 </div>
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
-            <!-- Server side end -->
 
         </div>
 
     </div>
     <!-- main content area end -->
     <div th:replace="fragments/footer ::footer">
+    </div>
+    <div th:replace="fragments/scripts ::scripts">
     </div>
 </div>
 </body>

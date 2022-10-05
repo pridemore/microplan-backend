@@ -2,6 +2,7 @@ package zw.co.creative.microplanbackend.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,14 +21,23 @@ import java.util.Objects;
 @RequestMapping("/application")
 @Slf4j
 public class SSBApplicationController {
+
+
+    @Autowired
+    private AuthenticatedEmployee authenticatedEmployee;
+
     private final RestTemplate restTemplate;
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String registerCreativeUser(Model model) {
+    public String registerCreativeUser(Model model)
+    {
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
+
         return "pages/applications/create";
     }
 
     @RequestMapping("/add")
     public String addRole(@Validated SSBApplicationDto ssbApplicationDto, Model model) {
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
 
         if (Objects.nonNull(ssbApplicationDto)) {
             String url = "http://localhost:8020/api/role/create";

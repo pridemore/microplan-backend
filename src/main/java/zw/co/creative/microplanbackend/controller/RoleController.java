@@ -58,13 +58,14 @@ public class RoleController {
     }*/
 
 
-
+    @Autowired
+    private AuthenticatedEmployee authenticatedEmployee;
 
 
     @RequestMapping({"/add"})
     public String addEmployee(Model model) {
         model.addAttribute("role", new Role());
-
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "/pages/roles/create";
     }
 
@@ -75,9 +76,12 @@ public class RoleController {
         if (role1.isPresent()) {
             model.addAttribute("message", "Role Already exist");
             model.addAttribute("role",new Role());
+            model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
+
             return "/pages/roles/create";
         } else {
             this.roleService.createRoles(role);
+
             return "redirect:/roles/view";
         }
     }
@@ -86,6 +90,8 @@ public class RoleController {
     public String editEmployee(Model model, @RequestParam(value = "id",required = false) String name) {
         Optional<Role> role = this.roleService.findRoleByName(name);
         model.addAttribute("role", this.roleService.findRoleById(((Role)role.get()).getId()));
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
+
         return "/pages/roles/edit";
     }
 
@@ -98,6 +104,8 @@ public class RoleController {
     @RequestMapping({"/view"})
     public String findAll(Model model) {
         model.addAttribute("RoleList", this.roleService.getAllRole());
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
+
         return "/pages/roles/view";
     }
 
