@@ -11,7 +11,7 @@ import zw.co.creative.microplanbackend.service.RoleService;
 @AllArgsConstructor
 public class RoleRestController {
 
-    private final RoleService roleService;
+    /*private final RoleService roleService;
 
     @PostMapping("/create")
     public CommonResponse createRole(@RequestBody RoleDto roleDto) {
@@ -24,5 +24,5 @@ public class RoleRestController {
     public CommonResponse getAllRoles() {
         CommonResponse rolesByStatus = roleService.getRolesByCreationStatus();
         return rolesByStatus;
-    }
+    }*/
 }
