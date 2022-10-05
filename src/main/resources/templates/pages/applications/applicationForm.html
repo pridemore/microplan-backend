@@ -313,7 +313,7 @@
 
         </li>
         <ul>
-        <li>The capital portion of the loan plus interest shall be paid in  ….…… equal installments of usd $............................... commencing  ..……...…/…………..…/20...................
+        <li>The capital portion of the loan plus interest shall be paid in <b><span th:text="${SSBApplication.getRepaymentPeriodRequired()}"></span></b> equal installments of usd<b> <span th:text="${SSBApplication.getCreditFacilityAmountRequired()}"></span></b> commencing <b> <span th:text="${SSBApplication.getAuthorizedDate()}"></span></b>
     </li>
         <li>Monthly loan repayments will be effected by way of automatic debits to the operating account into which loan proceeds are initially credited and the borrower shall ensure that the account is adequately funded to meet loan repayments. In the event that the account is not funded the account will overdraw and the overdraft will immediately attract interest at Microplan Financial Service’s prevailing penalty rate of interest. The penalty rate is currently 15% per month.
         </li>
@@ -321,7 +321,7 @@
         </li></ul>>
         <li>In accordance with normal banking practice the amount advanced shall become immediately due and repayable on demand being made by Microplan Financial Services and Microplan Financial Services shall not be obliged to give any notice in making demand.
         </li>
-        <li>Unless previously withdrawn by Microplan Financial Services, this facility will expire on …………/……………/…….…. when all outstanding amounts shall become immediately due and payable to Microplan Financial Services.
+        <li>Unless previously withdrawn by Microplan Financial Services, this facility will expire on <b><span th:text="${SSBApplication.getDateOfApplication()}"></span></b> when all outstanding amounts shall become immediately due and payable to Microplan Financial Services.
         </li>
         <li>Microplan Financial Services shall have the right to appropriate the Borrower’s payments to such of the Borrower’s debts as it considers fit and in the absence of any such appropriation by Microplan Financial Services to the contrary, Borrower’s payments shall be appropriated first to interest due and any balance remaining shall be appropriated to capital.
         </li>
@@ -359,7 +359,9 @@
 <br/>
     The Lender retains to itself the right to request the borrower to provide any other form of security deemed acceptable to Microplan Financial Services.
         </li>
-    <li>DEFAULT If the Borrower  fails to make payment by due date of any amount due in terms of the facilities, or make default in the performance of any undertaking, term or condition of these facilities, or if the Borrower acts in any way which, in the reasonable opinion of the lender , may have a material adverse effect on the Borrower’s ability to perform its obligations under these facilities, then in any such event, the full amount of the facilities outstanding, and all charges accrued thereon, together with default interest as defined in Clause 10.1 below shall immediately become due and payable.
+    <li>DEFAULT
+        <br/>
+        If the Borrower  fails to make payment by due date of any amount due in terms of the facilities, or make default in the performance of any undertaking, term or condition of these facilities, or if the Borrower acts in any way which, in the reasonable opinion of the lender , may have a material adverse effect on the Borrower’s ability to perform its obligations under these facilities, then in any such event, the full amount of the facilities outstanding, and all charges accrued thereon, together with default interest as defined in Clause 10.1 below shall immediately become due and payable.
 
     <ul>
         <li>Default interest shall mean 25% per month and shall be paid by the Borrower from the date of failure up to the date of actual repayment of the facility. However, Microplan Financial Services reserves the right to give notice at any time and thereafter to charge such other default interest rate as it may require, and if thereafter the Borrower continues to use the facility, by not repaying it in full immediately, the Borrower shall be deemed to have agreed to such other rate.
@@ -370,15 +372,16 @@
             <br/><br/><br/>
             I agree to be bound by the Terms and Conditions set out above.
             <br/><br/><br/>
-            Signed at <b><span th:text="${SSBApplication.getSignedAtLocation()}"></span> </b>this <span th:text="${SSBApplication.getDateCreated().getDayOfWeek()}"></span> day of <span th:text="${SSBApplication.getDateCreated().getYear()}"></span>
+            Signed at <b><span th:text="${SSBApplication.getSignedAtLocation()}"></span> </b> this <span th:text="${SSBApplication.getDateCreated().getDayOfMonth()}"></span> day of <span th:text="${SSBApplication.getDateCreated().getMonth()}"></span> <span th:text="${SSBApplication.getDateCreated().getYear()}"></span>
             <br/><br/><br/>
-            Applicant’s/Borrower’s signature	           : <span th:text="${SSBApplication.getApplicantSignature()}"></span>
+            Applicant’s/Borrower’s signature : <span style="margin-left: 10%" th:text="${SSBApplication.getApplicantSignature()}"></span>
             <br/><br/><br/>
 
             As witnesses
-            1.	:Name________________________________Signature : <span th:text="${SSBApplication.getWitness1Signature()}"></span>
-            2.	:Name <span ><b></b></span>Signature : <span th:text="${SSBApplication.getWitness2Signature()}"></span>
-        </div>
+    <br/>
+            1.	Name:<span style=" margin-left: 10%;"></span>  <span style="margin-left: 30%">Signature : <span th:text="${SSBApplication.getWitness1Signature()}"></span></span>
+    <b/><br/>2.	Name:<span style=" margin-left: 10%;"></span>   <span ></span>   <span style="margin-left: 30%">Signature : <span th:text="${SSBApplication.getWitness2Signature()}"></span></span>
+</div>
 
 
 
@@ -392,7 +395,7 @@
         <td style="width: 15%;">Signature verified</td>
         <td style="width: 15%;"></td>
         <td style="width: 15%;">Loan purpose </td>
-        <td style="width: 15%;"></td>
+        <td style="width: 15%;" th:text="${SSBApplication.getLoanPurpose()}"></td>
         <td style="width: 20%;">Pay slip or proof of income</td>
         <td style="width: 20%;"></td>
     </tr>
@@ -453,9 +456,9 @@
 
     <table style="width: 100%;">  <tr>
         <td style="width: 25%;">NAME</td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getFirstName()}"></td>
         <td style="width: 25%;">SURNAME </td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getSurname()}"></td>
 
     </tr> </table>
     <br/><br/>
@@ -487,9 +490,11 @@
 
 </div>
 
-    <br/> <br/><br/>
-<h4 style="clear: both;"><b>TICK WHICH EVER IS APPLICABLE</b></h4>
+
+<div style="clear: both; !important;"> </div>
     <br/> <br/>
+<h4 style="clear: both;"><b>TICK WHICH EVER IS APPLICABLE</b></h4>
+    <br/>
     <table style="width: 60%;">
        <tr> <th style="width: 50%;">Employee Code Number</th>
         <th style="width:10%;">Check digit/letter</th></tr>
@@ -536,7 +541,7 @@
     <h4><b><u>FROM DATE</u></b></h4>
     <table style="width:40%;">
         <tr >
-            <td STYLE="HEIGHT: 30px;" ></td>
+            <td STYLE="HEIGHT: 30px;"  th:text="${SSBApplication.getAuthorizedDate()}"></td>
 
         </tr>
     </table>
@@ -545,8 +550,8 @@
 
     </div>
     <div style="width: 40%; float: left;">
-    <h4><b><u>TO DATE</u></b></h4>
-    <table style="width:40%;">
+    <h4><b><u>TO DATE  </u></b></h4>
+    <table style="width:40%;" >
         <tr >
             <td STYLE="HEIGHT: 30px;"></td>
 
