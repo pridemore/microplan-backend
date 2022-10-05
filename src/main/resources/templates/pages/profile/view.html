@@ -1,10 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="fragments/header :: header">
 </head>
 <body>
-List Profile Users
+<!--<div th:replace="fragments/preloader ::preloader">-->
+<!--</div>-->
+<div class="page-container">
+    <div th:replace="fragments/sidebar :: sidebar-menu"></div>
+    <div class="main-content">
+
+        <div th:replace="fragments/header_area ::header-area">
+        </div>
+        <div th:replace="fragments/title_area ::title-area">
+        </div>
+        <div class="main-content-inner">
+
+            <div class="row">
+
+                <!-- Primary table start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">ALL USERS</h4>
+                            <div class="data-tables datatable-primary">
+                                <table id="dataTable2" class="text-center" style="width: 100% !important;">
+                                    <thead class="text-capitalize">
+                                    <tr>
+                                        <th>FIRST NAME#>
+                                        <th>SURNAME</th>
+                                        <th>EMAIL</th>
+                                        <th>ROLE</th>
+                                        <th>VIEW</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="user:${creativeUsers}">
+                                        <td th:text="${user.firstName}"></td>
+                                        <td th:text="${user.lastName}"></td>
+                                        <td th:text="${user.email}"></td>
+                                        <td th:text="${user.role}"></td>
+                                        <td> <a  href="" class="btn-outline-primary">VIEW USER</a></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Primary table end -->
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <!-- main content area end -->
+    <div th:replace="fragments/footer ::footer">
+    </div>
+    <div th:replace="fragments/scripts ::scripts">
+    </div>
+</div>
 </body>
 </html>
