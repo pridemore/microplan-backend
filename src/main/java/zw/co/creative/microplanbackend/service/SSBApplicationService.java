@@ -8,4 +8,5 @@ public interface SSBApplicationService {
 
     CommonResponse createSSBApplication(SSBApplicationDto ssbApplicationDto);
     CommonResponse findAllSSBApplication(CreationStatus status);
+
 }

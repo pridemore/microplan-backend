@@ -4,6 +4,15 @@
 <head>
 
 </head>
+
+<style>
+
+    table, th, td {
+        border:1px solid black;
+
+    }
+
+</style>
 <body>
 
 
@@ -14,11 +23,9 @@
 
     <center><img style=" height: auto;" src="/images/icon/micro.png"></center>
 
-    <a onClick="window.print()"><img style="float: right; width: 30px; height: auto; margin-right: 100px;"
+    <a onClick="window.print()"><img style="float: right; width: 30px; height: auto; margin-right: 30px;"
                                      src="/images/icon/print.png"></a>
-    <a style="color:white;">...</a>
-    <a onClick="window.print()"><img style="float: right; width: 30px; height: auto;"
-                                     src="/images/icon/download.png"></a>
+
 
     <br/> <br/> <br/>
 
@@ -49,37 +56,37 @@
 
     <table style="width: 100%;"> <tr >
             <td style="width: 25%">EMPLOYEE CODE NUMBER:</td>
-            <td style="width: 25%"></td>
+            <td style="width: 25%" th:text="${SSBApplication.getEmployeeNumber()}"></td>
             <td style="width: 25%">DATE:</td>
-            <td style="width: 25%"></td>
+            <td style="width: 25%  " th:text="${SSBApplication.getDateOfApplication()}" ></td>
       </tr>
 
     </table>
 
     <table style="width: 100%;">  <tr>
             <td style="width: 20%;">Loan Proceeds to be credited to nominated FCA account<br/> Account Number:</td>
-            <td style="width: 20%;"></td>
+            <td style="width: 20%;" th:text="${SSBApplication.getDateOfApplication()}" ></td>
             <td style="width: 20%;">Bank Account Number</td>
-            <td style="width: 20%;"></td>
+            <td style="width: 20%;" th:text="${SSBApplication.getAccountNumber()}" ></td>
             <td style="width: 10%";>Branch</td>
-            <td style="width: 10%";></td>
+            <td style="width: 10%"; th:text="${SSBApplication.getBranch()}" ></td>
 
       </tr>
     </table>
     <table style="width: 100%;">  <tr>
         <td style="width: 10%;">FIRST NAME </td>
-        <td style="width: 20%;"></td>
-        <td style="width: 10%;">MIDDLE NAME <BR/><i>(if any)</i></td>
-        <td style="width: 20%;"></td>
-        <td style="width: 10%;">SURNAME</td>
-        <td style="width: 20%;"></td>
-        <td style="width: 10%;">MR</td>
+        <td style="width: 20%;" th:text="${SSBApplication.getFirstName()}" ></td>
+        <td style="width: 10%;" >MIDDLE NAME <BR/><i>(if any)</i></td>
+        <td style="width: 20%;" th:text="${SSBApplication.getMiddleName()}" ></td>
+        <td style="width: 10%;"  >SURNAME</td>
+        <td style="width: 20%;" th:text="${SSBApplication.getSurname()}"></td>
+        <td style="width: 10%;" th:text="${SSBApplication.getApplicantTitle()}" ></td>
     </tr></table>
     <table style="width: 100%;">  <tr>
-        <td style="width: 25%;">FULL MAIDEN NAME <br/> <i>(for married Woman)</i></td>
-        <td style="width: 25%;"></td>
-        <td style="width: 25%;">Full NAME OF SPOUSE <br/> <i>(for married Applicants)</i></td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" >FULL MAIDEN NAME <br/> <i>(for married Woman)</i></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getMaidenName()}" ></td>
+        <td style="width: 25%;" >Full NAME OF SPOUSE <br/> <i>(for married Applicants)</i></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getSpouseName()}" ></td>
 
 
     </tr>
@@ -87,11 +94,11 @@
 
     <table style="width: 100%;">  <tr>
         <td style="width: 15%;">DATE OF BIRTH </td>
-        <td style="width: 15%;"></td>
+        <td style="width: 15%;" th:text="${SSBApplication.getDateOfBirth()}"></td>
         <td style="width: 15%;">NATIONAL ID</td>
-        <td style="width: 15%;"></td>
+        <td style="width: 15%;" th:text="${SSBApplication.getNationalId()}"></td>
         <td style="width: 15%;">PASSPORT NUMBER</td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getPassportNo()}"></td>
 
     </tr>
 
@@ -100,15 +107,15 @@
 
     <table style="width: 100%;">  <tr>
         <td style="width: 20%;">RESIDENTIAL ADDRESS </td>
-        <td style="width: 60%;"></td>
+        <td style="width: 60%;" th:text="${SSBApplication.getResidentialAddress()}"></td>
 
-        <td style="width: 20%;">RENTED</td>
+        <td style="width: 20%;" th:text="${SSBApplication.getApplicantResidentialStatus()}"></td>
     </tr>
 
     </table>
     <table style="width: 100%;">  <tr>
-        <td style="width: 30%;">NAME AND PHYSICAL ADDRESS OF EMPLOYER </td>
-        <td style="width: 70%;"></td>
+        <td style="width: 30%;">NAME  OF EMPLOYER </td>
+        <td style="width: 70%;" th:text="${SSBApplication.getNameOfEmployer()}"></td>
 
     </tr>
 
@@ -116,28 +123,28 @@
     <table style="width: 100%;">  <tr>
         <td style="width: 20%;">TELEPHONE NUMBERS </td>
         <td style="width: 10%;">CELL</td>
-        <td style="width: 10%;"></td>
+        <td style="width: 10%;" th:text="${SSBApplication.getCellNumber()}"></td>
         <td style="width: 10%;">HOME</td>
-        <td style="width: 10%;"></td>
+        <td style="width: 10%;" th:text="${SSBApplication.getHomeNumber()}"></td>
         <td style="width: 10%;">BUSINESS</td>
-        <td style="width: 10%;"></td>
+        <td style="width: 10%;" ></td>
         <td style="width: 10%;">FAX</td>
-        <td style="width: 10%;"></td>
+        <td style="width: 10%;" th:text="${SSBApplication.getFaxNumber()}"></td>
     </tr>
 
     </table>
 
     <table style="width: 100%;">  <tr>
-        <td style="width: 30%;">NAME AND PHYSICAL ADDRESS OF EMPLOYER </td>
-        <td style="width: 70%;"></td>
+        <td style="width: 30%;">PHYSICAL ADDRESS OF EMPLOYER </td>
+        <td style="width: 70%;" th:text="${SSBApplication.getPhysicalAddressOfEmployer()}"></td>
 
     </tr>
     </table>
     <table style="width: 100%;">  <tr>
-        <td style="width: 25%;">SINCE WHEN EMPLOYED </td>
+        <td style="width: 25%;" th:text="${SSBApplication.getEmployedDate()}">SINCE WHEN EMPLOYED </td>
         <td style="width: 25%;"></td>
         <td style="width: 25%;">EMAIL ADDRESS</td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getEmailAddress()}"></td>
 
     </tr>
 
@@ -146,9 +153,9 @@
     </table>
     <table style="width: 100%;">  <tr>
         <td style="width: 25%;">PROFFESSION <i>eg (mining, health etc)</i></td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getProfession()}"></td>
         <td style="width: 25%;">POSITION HELD eg<br/> (doctor, engineer etc)</td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getPositionHeld()}"></td>
 
     </tr>
 
@@ -156,17 +163,19 @@
 
     <table style="width: 100%;">  <tr>
         <td style="width: 25%;">GROSS MONTHLY SALARY/ INCOME</i></td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getMonthlySalary()}"></td>
         <td style="width: 25%;">NET MONTLY SALARY/ INCOME</td>
-        <td style="width: 25%;"></td>
+        <td style="width: 25%;" th:text="${SSBApplication.getNetSalary()}"></td>
 
     </tr></table>
 
         <table style="width: 100%;">  <tr>
-            <td style="width: 25%;">NAME AND ADDRESS OD SPOUSES <br/> <I>employer</i></td>
-            <td style="width: 25%;"></td>
-            <td style="width: 25%;">SPOUSE NET SALARY (br/) <i>(Attach Payslip)</i></td>
-            <td style="width: 25%;"></td>
+            <td style="width: 10%;">NAME OF SPOUSES <br/> <I>employer</i></td>
+            <td style="width: 20%;" th:text="${SSBApplication.getSpouseName()}"></td>
+            <td style="width: 10%;">ADDRESS OF SPOUSE </td>
+            <td style="width: 20%;" th:text="${SSBApplication.getAddressOfSpouseEmployer()}"></td>
+            <td style="width: 20%;" >SPOUSE NET SALARY (br/) <i>(Attach Payslip)</i></td>
+            <td style="width: 20%;" th:text="${SSBApplication.getSpousesNetSalary()}"></td>
 
         </tr>
 
@@ -175,11 +184,11 @@
 
         <table style="width: 100%;">  <tr>
             <td style="width: 25%;">OTHER REGULAR SOURCE OF INCOME <br/><i>(specify the source of income)</i></td>
-            <td style="width: 25%;"></td>
+            <td style="width: 25%;" th:text="${SSBApplication.getOtherSourcesOfIncome()}"></td>
             <td style="width: 10%;">FREQUENCY OF INCOME</td>
-            <td style="width: 15%;"></td>
+            <td style="width: 15%;" th:text="${SSBApplication.getOtherSourcesOfIncomeFrequency()}"></td>
             <td style="width: 10%;">AMOUNT</td>
-            <td style="width: 15%;"></td>
+            <td style="width: 15%;" th:text="${SSBApplication.getAmountOfOtherSourcesIncome()}"></td>
 
         </tr>
 
@@ -190,7 +199,7 @@
 
         <table style="width: 100%;">  <tr>
             <td style="width: 25%;">CREDIT FACILITY AMOUNT REQUIRED <br/><i>(in USD $)</i></td>
-            <td style="width: 25%;"></td>
+            <td style="width: 25%;" th:text="${SSBApplication.getCreditFacilityAmountRequired()}"></td>
             <td style="width: 25%;">FACILITY TYPE</td>
             <td style="width: 25%;">SHORT TERM USD LOANS</td>
         </tr>
@@ -198,7 +207,7 @@
         </table>
         <table style="width: 100%;">  <tr>
             <td style="width: 40%;">REPAYMENT PERIOD REQUIRED</i></td>
-            <td style="width: 60%;"></td>
+            <td style="width: 60%;" th:text="${SSBApplication.getRepaymentPeriodRequired()}"></td>
 
         </tr>
 
@@ -275,87 +284,109 @@
 
     <br/><br/>
 
-<div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: medium;">
+<div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: large;">
    <center><h3><b><u></u> DECLARATION BY CUSTOMER</u> </b></h3></center>
 <br/>
     I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
     <br/> <br/> <br/>
     Yours faithfully
     <br/> <br/> <br/>
-    Customers Signature
-    <br/> <br/> <br/>
-
-    _________________________________	       Date  :	22/09/22
+    Customers Signature :<u><span th:text="${SSBApplication.getApplicantSignature()}" style="margin-left: 5%"> </span></u> <span style=" float:right; margin-right: 40%;"> Date  :	<span th:text="${SSBApplication.getDateOfApplication()}"></span></span>
     <br/><br/> <br/>
 
 
-    Witness	__________________________	        Date :  22/09/2022
+    Witness	:<u><span th:text="${SSBApplication.getWitness1Signature()}"  style="margin-left: 10%"></span></u>  <span style=" float:right; margin-right: 40%;" >Date :<span th:text="${SSBApplication.getDateOfApplication()}"> </span></span>
 
     <br/><br/> <br/>
     N.B. Microplan Financial Services P/L reserves the right to repudiate any application without giving reasons.
-    <br/> <br/> <br/>
-    <div>
 
 
-        <div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: medium;">
+        <br/> <br/> <br/>
+    <ol type="1">
+
+
+
             <h3>TERMS AND CONDITIONS:</h3>
-            1.	Upon approval, Microplan Financial Services (the lender) shall create a loan in the borrower’s name and credit the loan proceeds to the applicant’s (the borrower’s) nominated FCA account.
-            <br/>2.	An interest rate of 12%   per month will be levied on the outstanding loan balance/ loan amount.
-            <br/>2.1	The capital portion of the loan plus interest shall be paid in  ….…… equal installments of usd $............................... commencing  ..……...…/…………..…/20...................
-            <br/>2.2	Monthly loan repayments will be effected by way of automatic debits to the operating account into which loan proceeds are initially credited and the borrower shall ensure that the account is adequately funded to meet loan repayments. In the event that the account is not funded the account will overdraw and the overdraft will immediately attract interest at Microplan Financial Service’s prevailing penalty rate of interest. The penalty rate is currently 15% per month.
-            <br/>2.3	At all material times, this loan shall be paid back in United States Dollars through the Lender’s Nostro Account.
-            <br/>3.	In accordance with normal banking practice the amount advanced shall become immediately due and repayable on demand being made by Microplan Financial Services and Microplan Financial Services shall not be obliged to give any notice in making demand.
-            <br/>4.	Unless previously withdrawn by Microplan Financial Services, this facility will expire on …………/……………/…….…. when all outstanding amounts shall become immediately due and payable to Microplan Financial Services.
-            <br/>5.	Microplan Financial Services shall have the right to appropriate the Borrower’s payments to such of the Borrower’s debts as it considers fit and in the absence of any such appropriation by Microplan Financial Services to the contrary, Borrower’s payments shall be appropriated first to interest due and any balance remaining shall be appropriated to capital.
-            <br/>6.	The Lender reserves the right to give notice in writing to the Borrower at any time and thereafter to charge such other rate of interest as it might require and if thereafter the Borrower continues to use the facilities and does not repay them in full immediately, the Borrower will be deemed to have agreed to such rate. Such notice may be given on the customer's Lender statement and/or be advertised in the local press and/or be displayed in any of the Lender's branches and the customer hereby accepts that these methods of giving notice are valid and reasonable.
-            <br/>7.	UNDERTAKINGS
-            <br/>Until the facilities are terminated or whilst any amount or commitment remains outstanding, the Borrower undertakes to Microplan Financial Services to :-
-            <br/>7.1 Provide Microplan Financial Services with such information concerning any change in employment status, residential address and any other affairs of the Borrower as Microplan Financial Services may reasonably require;
-            <br/>7.2 Comply at all times with all laws as may be amended from time to time and agrees that the facilities shall be governed and construed in accordance with Zimbabwean Law, in the jurisdiction of which the Borrower resides or carries on business and in the event of any legal proceedings in connection with this matter, the Borrower agrees to be liable for all legal costs on the legal practitioner and client scale and other charges, including collection commission in terms of the Law Society By-laws, which may be incurred by Microplan Financial Services  in connection therewith; and.
-            <br/>7.3 Provide any documents requested by Microplan Financial Services according to the type of account (s) requested.
-            <br/>7.4 Be liable for any overdraft or debt which Microplan Financial Services may permit on this account for unprovided loan installments or other service fees and understand that a penalty charge or the penalty rate of interest as determined by the lender from time to time shall apply on any unauthorized overdrafts or overdue amounts.
-            <br/>7.5 Ensure that their salary is paid directly or sales proceeds are deposited into the account held with FBC Bank.
-            <br/>7.6 Consents to MicroPlan Financial Services P/L undertaking credit registry searches as part of their credit assessment process.
-            <br/>7.7 Ensure the above statements in support of this application are true and correct and in the event of any information proving to be inaccurate/ false, the loan application will be declined or, in the event Microplan Financial Services had approved and disbursed the loan, any amounts outstanding shall immediately become due and payable on demand by Microplan Financial Services.
-            <br/>7.8 To utilise the loan proceeds for this loan as per loan purpose applied and approved by the lender. Any variation on the loan purpose should be approved by the Lender prior to utilisation of the funds. In the event that the loan proceeds are utilised on unauthorised purpose, any amounts outstanding shall immediately become due and payable on demand by Microplan Financial Services P/L
-            <br/>7.9 Chooses as a domicillium citandi et executandi on the following address;
-            <br/>_______________________________________________________________________________________________________
-            <br/>8.	The Borrower agrees that the Lender may, without notice and at its sole discretion, consolidate any outstanding principal in the loan account and interest on the loan with any unpaid installments and charges with any other accounts which the borrower may maintain with the Lender or FBC Bank  and set-off or transfer any money standing to the credit of the borrower’s other accounts in full settlement or towards the satisfaction of the borrower’s indebtedness to Microplan Financial Services in respect of the loan.
-            <br/>9.	For avoidance of doubt this loan is denominated in United States Dollars (USD) and not any other currency and accordingly any payment under or payment of any part of this facility shall be made in United States Dollars (USD) only, notwithstanding the currency which is legal tender in Zimbabwe
-            <br/>10.	In the event that the stop order/ deduction is not effected or delayed for whatever reason, the borrower agrees that the Lender may, without notice and at its sole discretion, restructure the loan in line with the amount of deduction being effected by the employer.
-            <br/>11.	SECURITY:
-            <br/>The Lender retains to itself the right to request the borrower to provide any other form of security deemed acceptable to Microplan Financial Services.
-            <br/>12.	DEFAULT If the Borrower  fails to make payment by due date of any amount due in terms of the facilities, or make default in the performance of any undertaking, term or condition of these facilities, or if the Borrower acts in any way which, in the reasonable opinion of the lender , may have a material adverse effect on the Borrower’s ability to perform its obligations under these facilities, then in any such event, the full amount of the facilities outstanding, and all charges accrued thereon, together with default interest as defined in Clause 10.1 below shall immediately become due and payable.
-            <br/>12.1	Default interest shall mean 25% per month and shall be paid by the Borrower from the date of failure up to the date of actual repayment of the facility. However, Microplan Financial Services reserves the right to give notice at any time and thereafter to charge such other default interest rate as it may require, and if thereafter the Borrower continues to use the facility, by not repaying it in full immediately, the Borrower shall be deemed to have agreed to such other rate.
-            <br/>12.2	All interest payable in terms of the loan facility will be calculated on the balance outstanding each day, at close of business, and the interest outstanding at the end of each month shall be added to the capital and interest thereafter charged on that increased capital. Capital and Interest shall be collected from your FBC Bank FCA account or by stop order as and when due.
+           <li>	Upon approval, Microplan Financial Services (the lender) shall create a loan in the borrower’s name and credit the loan proceeds to the applicant’s (the borrower’s) nominated FCA account.
+           </li>
+        <li>	An interest rate of 12%   per month will be levied on the outstanding loan balance/ loan amount.
+
+        </li>
+        <ul>
+        <li>The capital portion of the loan plus interest shall be paid in  ….…… equal installments of usd $............................... commencing  ..……...…/…………..…/20...................
+    </li>
+        <li>Monthly loan repayments will be effected by way of automatic debits to the operating account into which loan proceeds are initially credited and the borrower shall ensure that the account is adequately funded to meet loan repayments. In the event that the account is not funded the account will overdraw and the overdraft will immediately attract interest at Microplan Financial Service’s prevailing penalty rate of interest. The penalty rate is currently 15% per month.
+        </li>
+        <li>At all material times, this loan shall be paid back in United States Dollars through the Lender’s Nostro Account.
+        </li></ul>>
+        <li>In accordance with normal banking practice the amount advanced shall become immediately due and repayable on demand being made by Microplan Financial Services and Microplan Financial Services shall not be obliged to give any notice in making demand.
+        </li>
+        <li>Unless previously withdrawn by Microplan Financial Services, this facility will expire on …………/……………/…….…. when all outstanding amounts shall become immediately due and payable to Microplan Financial Services.
+        </li>
+        <li>Microplan Financial Services shall have the right to appropriate the Borrower’s payments to such of the Borrower’s debts as it considers fit and in the absence of any such appropriation by Microplan Financial Services to the contrary, Borrower’s payments shall be appropriated first to interest due and any balance remaining shall be appropriated to capital.
+        </li>
+        <li>The Lender reserves the right to give notice in writing to the Borrower at any time and thereafter to charge such other rate of interest as it might require and if thereafter the Borrower continues to use the facilities and does not repay them in full immediately, the Borrower will be deemed to have agreed to such rate. Such notice may be given on the customer's Lender statement and/or be advertised in the local press and/or be displayed in any of the Lender's branches and the customer hereby accepts that these methods of giving notice are valid and reasonable.
+        </li>
+        <li>UNDERTAKINGS</li>
+        <ul>
+        <li>Until the facilities are terminated or whilst any amount or commitment remains outstanding, the Borrower undertakes to Microplan Financial Services to :-
+    </li>
+        <li>Provide Microplan Financial Services with such information concerning any change in employment status, residential address and any other affairs of the Borrower as Microplan Financial Services may reasonably require;
+        </li>
+        <li>Comply at all times with all laws as may be amended from time to time and agrees that the facilities shall be governed and construed in accordance with Zimbabwean Law, in the jurisdiction of which the Borrower resides or carries on business and in the event of any legal proceedings in connection with this matter, the Borrower agrees to be liable for all legal costs on the legal practitioner and client scale and other charges, including collection commission in terms of the Law Society By-laws, which may be incurred by Microplan Financial Services  in connection therewith; and.
+        </li>
+        <li>Provide any documents requested by Microplan Financial Services according to the type of account (s) requested.
+        </li>
+        <li>Be liable for any overdraft or debt which Microplan Financial Services may permit on this account for unprovided loan installments or other service fees and understand that a penalty charge or the penalty rate of interest as determined by the lender from time to time shall apply on any unauthorized overdrafts or overdue amounts.
+        </li>
+        <li>Ensure that their salary is paid directly or sales proceeds are deposited into the account held with FBC Bank.
+        </li>
+        <li>Consents to MicroPlan Financial Services P/L undertaking credit registry searches as part of their credit assessment process.
+        </li>
+        <li>Ensure the above statements in support of this application are true and correct and in the event of any information proving to be inaccurate/ false, the loan application will be declined or, in the event Microplan Financial Services had approved and disbursed the loan, any amounts outstanding shall immediately become due and payable on demand by Microplan Financial Services.
+        </li>
+        <li>To utilise the loan proceeds for this loan as per loan purpose applied and approved by the lender. Any variation on the loan purpose should be approved by the Lender prior to utilisation of the funds. In the event that the loan proceeds are utilised on unauthorised purpose, any amounts outstanding shall immediately become due and payable on demand by Microplan Financial Services P/L
+        </li>
+        <li>Chooses as a domicillium citandi et executandi on the following address;
+        </li></ul>
+        <li>The Borrower agrees that the Lender may, without notice and at its sole discretion, consolidate any outstanding principal in the loan account and interest on the loan with any unpaid installments and charges with any other accounts which the borrower may maintain with the Lender or FBC Bank  and set-off or transfer any money standing to the credit of the borrower’s other accounts in full settlement or towards the satisfaction of the borrower’s indebtedness to Microplan Financial Services in respect of the loan.
+        </li>
+    <li>For avoidance of doubt this loan is denominated in United States Dollars (USD) and not any other currency and accordingly any payment under or payment of any part of this facility shall be made in United States Dollars (USD) only, notwithstanding the currency which is legal tender in Zimbabwe
+    </li>
+        <li>In the event that the stop order/ deduction is not effected or delayed for whatever reason, the borrower agrees that the Lender may, without notice and at its sole discretion, restructure the loan in line with the amount of deduction being effected by the employer.
+        </li>
+        <li>SECURITY:
+<br/>
+    The Lender retains to itself the right to request the borrower to provide any other form of security deemed acceptable to Microplan Financial Services.
+        </li>
+    <li>DEFAULT If the Borrower  fails to make payment by due date of any amount due in terms of the facilities, or make default in the performance of any undertaking, term or condition of these facilities, or if the Borrower acts in any way which, in the reasonable opinion of the lender , may have a material adverse effect on the Borrower’s ability to perform its obligations under these facilities, then in any such event, the full amount of the facilities outstanding, and all charges accrued thereon, together with default interest as defined in Clause 10.1 below shall immediately become due and payable.
+
+    <ul>
+        <li>Default interest shall mean 25% per month and shall be paid by the Borrower from the date of failure up to the date of actual repayment of the facility. However, Microplan Financial Services reserves the right to give notice at any time and thereafter to charge such other default interest rate as it may require, and if thereafter the Borrower continues to use the facility, by not repaying it in full immediately, the Borrower shall be deemed to have agreed to such other rate.
+</li>
+    <li>All interest payable in terms of the loan facility will be calculated on the balance outstanding each day, at close of business, and the interest outstanding at the end of each month shall be added to the capital and interest thereafter charged on that increased capital. Capital and Interest shall be collected from your FBC Bank FCA account or by stop order as and when due.
+    </li></ul>
+        </ol>
             <br/><br/><br/>
             I agree to be bound by the Terms and Conditions set out above.
             <br/><br/><br/>
-            Signed at ______________________this _______________________ day of ___________________ 20___
+            Signed at <b><span th:text="${SSBApplication.getSignedAtLocation()}"></span> </b>this <span th:text="${SSBApplication.getDateCreated().getDayOfWeek()}"></span> day of <span th:text="${SSBApplication.getDateCreated().getYear()}"></span>
             <br/><br/><br/>
-            Applicant’s/Borrower’s signature	           :__________________________________
+            Applicant’s/Borrower’s signature	           : <span th:text="${SSBApplication.getApplicantSignature()}"></span>
             <br/><br/><br/>
 
-            As witnesses                                                              	1.	:Name________________________________Signature________________________________
-            <br/><br/>2.	:Name________________________________Signature________________________________
-                </div>
+            As witnesses
+            1.	:Name________________________________Signature : <span th:text="${SSBApplication.getWitness1Signature()}"></span>
+            2.	:Name <span ><b></b></span>Signature : <span th:text="${SSBApplication.getWitness2Signature()}"></span>
+        </div>
 
-<br/><br/><br/>
+
+
+    <br/><br/><br/>
+
 
         <h3>MICROPLAN FINANCIAL SERVICES USE ONLY</h3>
 
-
-    <style>
-
-        table, th, td {
-            border:1px solid black;
-
-        }
-
-    </style>
-
-
-</div>
 
     <table style="width: 100%;">  <tr>
         <td style="width: 15%;">Signature verified</td>
@@ -453,10 +484,109 @@
         </tr>
 
     </table>
+
+</div>
+
+    <br/> <br/><br/>
+<h4 style="clear: both;"><b>TICK WHICH EVER IS APPLICABLE</b></h4>
+    <br/> <br/>
+    <table style="width: 60%;">
+       <tr> <th style="width: 50%;">Employee Code Number</th>
+        <th style="width:10%;">Check digit/letter</th></tr>
+        <tr>
+            <td style="height: 50px;"  th:text="${SSBApplication.getEmployeeNumber()}"></td>
+            <td style="height: 50px;" > &#10004;</td>
+
+        </tr>
+
+
+    </table>
+
+    <br/>
+    <br/>
+
+
+
+    <div style="width:100%">
+        <div style="float: left; width:40%;" >
+    <h4><b><u>PAYEE CODE</u></b></h4>
+<table  style="width:40%;">
+    <tr >
+        <td>84008</td>
+
+    </tr>
+</table>
+
+        </div>
+        <div style="float: left; width: 40%;">
+    <h4><b><u>MONTHLY RATE (USD)</u></b></h4>
+    <table style="width:40%;">
+        <tr>
+            <td STYLE="HEIGHT: 30px;" ></td>
+
+        </tr>
+    </table>
+
+    </div>
+    </div>
+<div style="clear: both; width: 100%">
+    <br/>
+    <BR/>
+    <div style="width: 40%; float: left">
+    <h4><b><u>FROM DATE</u></b></h4>
+    <table style="width:40%;">
+        <tr >
+            <td STYLE="HEIGHT: 30px;" ></td>
+
+        </tr>
+    </table>
+
+
+
+    </div>
+    <div style="width: 40%; float: left;">
+    <h4><b><u>TO DATE</u></b></h4>
+    <table style="width:40%;">
+        <tr >
+            <td STYLE="HEIGHT: 30px;"></td>
+
+        </tr>
+    </table>
+
+    </div>
 </div>
 
 
+
+
+<div style="width: 100%; clear: both;">
+
+    <br/>
+    <BR/>
+
+    <div style="width: 40%; float: left;">
+    <h4><b><u>Ref no : Loan account number</u></b></h4>
+    <table style="width:40%;" >
+        <tr >
+            <td STYLE="HEIGHT: 30px;" th:text="${SSBApplication.getAccountNumber()}"></td>
+
+        </tr>
+    </table>
+
+    </div>
+    <div style="width: 40%; float: left;">
+    <h4><b><u>ID Number</u></b></h4>
+    <table style="width:40%;">
+        <tr>
+            <td STYLE="HEIGHT: 30px;" th:text="${SSBApplication.getNationalId()}"></td>
+
+        </tr>
+    </table>
+    </div>
 </div>
 </div>
+</div>
+
+
 </body>
 </html>

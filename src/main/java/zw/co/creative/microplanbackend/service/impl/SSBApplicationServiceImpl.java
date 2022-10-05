@@ -99,4 +99,14 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
         return new CommonResponse().buildSuccessResponse("Success",ssbApplicationList);
 
     }
+
+    public SSBApplication findAllSSBApplicatiById(long id){
+
+        return ssbApplicationRepository.findById( id);
+    }
+
+    public List<SSBApplication> findAll(){
+        return  ssbApplicationRepository.findAll();
+    }
+
 }

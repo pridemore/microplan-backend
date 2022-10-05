@@ -38,7 +38,9 @@ public class SSBApplication {
     private LocalDate dateOfBirth;
     private String residentialAddress;
     private String applicantResidentialStatus;
+
     //Employee Details
+
     private String nameOfEmployer;
     private String physicalAddressOfEmployer;
     private String cellNumber;
@@ -89,6 +91,12 @@ public class SSBApplication {
     private String refNumber;
     private String payeeCode;
     private String checkDigital;
+
+    //Bank Details
+
+    private String accountNumber;
+    private String branch;
+
 
     //Decleration By Applicant
     private String authorizedByName;

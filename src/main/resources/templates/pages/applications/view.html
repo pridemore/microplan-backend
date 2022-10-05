@@ -37,19 +37,19 @@
                                             <tr>
                                                 <th>ID#>
                                                 <th>APPLICANT NAME</th>
-                                                <th>NAME OF AGENT</th>
+                                                <th>LOAN PURPOSE</th>
                                                 <th>DATE SOLD</th>
                                                 <th>VIEW</th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>9909</td>
-                                                <td>Belinda Kafankale</td>
-                                                <td>Econet</td>
-                                                <td>3-09-2020</td>
-                                               <td> <a th:href="@{/viewApplicationForm}" class="btn-dark">VIEW APPLICATION</a></td>
+                                            <tr th:each="appli:${applications}">
+                                                <td th:text="${appli.id}"></td>
+                                                <td th:text="${appli.firstName}+${space}+${appli.surname}"></td>
+                                                <td th:text="${appli.loanPurpose}"></td>
+                                                <td th:text="${appli.dateCreated}"></td>
+                                               <td> <a  th:href="@{/viewApplicationForm(id=${appli.id})}" class="btn-outline-primary">VIEW APPLICATION</a></td>
                                             </tr>
 
                                         </tbody>
