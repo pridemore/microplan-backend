@@ -9,4 +9,5 @@ import java.util.List;
 public interface SSBApplicationRepository extends JpaRepository<SSBApplication,Long> {
 
     List<SSBApplication> findAllByStatus(CreationStatus status);
+    SSBApplication findById(long id);
 }
