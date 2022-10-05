@@ -2,6 +2,7 @@ package zw.co.creative.microplanbackend.controller;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -22,15 +23,23 @@ import java.util.Objects;
 @RequestMapping("/creativeUser")
 @Slf4j
 public class CreativeUserController {
+
+    @Autowired
+    private AuthenticatedEmployee authenticatedEmployee;
+
     private final RestTemplate restTemplate;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerCreativeUser(Model model) {
+    public String registerCreativeUser(Model model)
+    {
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/access/register";
     }
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
-    public String viewCreativeUsers(Model model) {
+    public String viewCreativeUsers(Model model)
+    {
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/access/register";
     }
 
@@ -45,8 +54,10 @@ public class CreativeUserController {
             HttpEntity entity = new HttpEntity(headers);
             ResponseEntity<Object> exchange = restTemplate.postForEntity(resultURL,creativeUserDto,Object.class);
             log.info("Response from creating User------ : {}", exchange);
+            model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
             return "pages/profile/view";
         }else{
+            model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
             return "pages/access/register";
         }
     }

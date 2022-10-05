@@ -16,11 +16,14 @@ public class HomeController {
     @Autowired
     private SSBApplicationServiceImpl ssbApplicationService;
 
+    @Autowired
+    private AuthenticatedEmployee authenticatedEmployee;
 
     private SSBApplication ssbApplication;
 
     @GetMapping(value = "/dashboard")
-    public String home(){
+    public String home(Model model){
+         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/home/dashboard";
     }
 
@@ -31,6 +34,7 @@ public class HomeController {
 
         model.addAttribute("applications",applications);
         model.addAttribute("space", " ");
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/applications/view";
     }
 
@@ -38,7 +42,7 @@ public class HomeController {
     public String viewAPPLICATION(@RequestParam(value = "id",required = false) long id, Model model){
         SSBApplication ssbApplication=ssbApplicationService.findAllSSBApplicatiById(id);
         model.addAttribute("SSBApplication", ssbApplication);
-
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/applications/applicationForm";
     }
 }
