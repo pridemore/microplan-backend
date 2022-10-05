@@ -14,12 +14,15 @@ import javax.persistence.*;
 import java.time.OffsetDateTime;
 
 @Entity
+@Table(
+        name = "role"
+)
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+//@Builder
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Role {
-    @Id
+   /* @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
@@ -32,6 +35,15 @@ public class Role {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @UpdateTimestamp
     protected OffsetDateTime lastUpdated;
+*/
 
-
+    @Id
+    @GeneratedValue(
+            strategy = GenerationType.AUTO
+    )
+    private Long id;
+    private String name;
+    private String status;
+    public Role() {
+    }
 }
