@@ -59,6 +59,10 @@ public class CreativeUserServiceImpl implements CreativeUserService {
         return new CommonResponse().buildSuccessResponse("Success",savedUser);
     }
 
+    public CreativeUser findByEmail(String email){
+        return creativeUserRepository.findCreativeUserByEmail( email);
+    }
+
     @Override
     public CommonResponse getAllUsers() {
         return null;
