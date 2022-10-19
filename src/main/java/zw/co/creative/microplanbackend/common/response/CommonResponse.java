@@ -1,6 +1,6 @@
 package zw.co.creative.microplanbackend.common.response;
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 
