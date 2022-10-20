@@ -42,4 +42,11 @@ public class SSBApplicationsRestController {
         return createdLoanApplication;
     }
 
+
+    @GetMapping("/getAllLoans/{agent_id}")
+    public CommonResponse getAllLoanApplicationsApplications(@PathVariable("agent_id") String agent_id) {
+        return ssbApplicationService.findAllLoanApplications(agent_id);
+
+    }
+
 }

@@ -11,5 +11,6 @@ public interface SSBApplicationService {
     CommonResponse createSSBApplication(SSBApplicationDto ssbApplicationDto);
     CommonResponse findAllSSBApplication(CreationStatus status);
     CommonResponse createLoanApplication(Map<String,Object> params);
+    CommonResponse findAllLoanApplications(String agent_id);
 
 }

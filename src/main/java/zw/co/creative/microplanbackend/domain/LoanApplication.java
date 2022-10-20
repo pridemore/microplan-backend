@@ -23,9 +23,9 @@ public class LoanApplication {
     )
     private long id;
     private String uniqueRef;
-    private String application_title;
-    private long agent_id = 7;
-    private String isSubmitted = "false";
+    private String applicationTitle;
+    private long agentId;
+    private String isSubmitted;
     private String dateAndTime;
 
     //Loan Details
