@@ -44,32 +44,32 @@
     </table>
 
 <table  style="width: 100%;">
-
+<b>
         <tr>
             <td style="width: 33%"><b>TO: MANAGER</b></td>
             <td style="width: 33%"><b>MICROFINANCE</b></td>
             <td style="width: 33%"><b>BRANCH</b></td>
-        </tr>
+        </tr></b>
 
 </table>
 
 
     <table style="width: 100%;"> <tr >
-            <td style="width: 25%">EMPLOYEE CODE NUMBER:</td>
+        <b> <td style="width: 25%">EMPLOYEE CODE NUMBER:</td></b>
             <td style="width: 25%" th:text="${SSBApplication.getEmployeeNumber()}"></td>
-            <td style="width: 25%">DATE:</td>
+        <b> <td style="width: 25%">DATE:</td></b>
             <td style="width: 25%  " th:text="${SSBApplication.getDateOfApplication()}" ></td>
       </tr>
 
     </table>
 
     <table style="width: 100%;">  <tr>
-            <td style="width: 20%;">Loan Proceeds to be credited to nominated FCA account<br/> Account Number:</td>
+        <b> <td style="width: 20%;">Loan Proceeds to be credited to nominated FCA account<br/> Account Number:</td></b>
             <td style="width: 20%;" th:text="${SSBApplication.getDateOfApplication()}" ></td>
-            <td style="width: 20%;">Bank Account Number</td>
+        <b> <td style="width: 20%;">Bank Account Number</td></b>
             <td style="width: 20%;" th:text="${SSBApplication.getAccountNumber()}" ></td>
             <td style="width: 10%";>Branch</td>
-            <td style="width: 10%"; th:text="${SSBApplication.getBranch()}" ></td>
+        <b> <td style="width: 10%"; th:text="${SSBApplication.getBranch()}" ></td></b>
 
       </tr>
     </table>
