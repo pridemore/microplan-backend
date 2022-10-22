@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+<!--<div th:replace="fragments/preloader ::preloader">-->
+<!--</div>-->
+<div class="page-container">
+    <div th:replace="fragments/sidebar :: sidebar-menu"></div>
+    <div class="main-content">
+
+        <div th:replace="fragments/header_area ::header-area">
+        </div>
+        <div th:replace="fragments/title_area ::title-area">
+        </div>
+        <div class="main-content-inner">
+
+            <div class="row">
+
+                <!-- Primary table start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Data Table Primary</h4>
+                            <div class="data-tables datatable-primary">
+
+
+                                <table id="dataTable2" class="text-left" style="width: 100% !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Price</th>
+                                        <th>Date Created</th>
+                                        <th>Status</th>
+                                        <th class="d-flex justify-content-center">Action</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr th:each="product:${ProductList}">
+                                        <td th:text="${product.name}"></td>
+                                        <td th:text="${product.price}"></td>
+                                        <td th:text="${product.dateCreated}"></td>
+                                        <td th:text="${product.status}"></td>
+                                        <td>
+
+                                            <ul class="d-flex justify-content-center">
+                                                <!--                                                <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-eye"></i></a></li>-->
+                                                <li class="mr-3"><a th:href="@{/products/view/{id}(id=${product.id})}"
+                                                                    class="text-secondary"><i
+                                                        class="fa fa-edit"></i></a></li>
+                                                <li><a th:href="@{/products/delete/{id}(id=${product.id})}"
+                                                       class="text-danger"><i class="ti-trash"></i></a></li>
+                                            </ul>
+                                        </td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Primary table end -->
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- main content area end -->
+    <div th:replace="fragments/footer ::footer">
+    </div>
+    <div th:replace="fragments/scripts ::scripts">
+    </div>
+</div>
+</body>

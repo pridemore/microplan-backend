@@ -32,14 +32,16 @@
                             <div class="card-body">
                                 <h4 class="header-title">ALL APPLICATIONS</h4>
                                 <div class="data-tables datatable-primary">
-                                    <table id="dataTable2" class="text-center" style="width: 100% !important;">
+                                    <table id="dataTable2" class="text-left" style="width: 100% !important;">
                                         <thead class="text-capitalize">
                                             <tr>
-                                                <th>ID#>
-                                                <th>APPLICANT NAME</th>
-                                                <th>LOAN PURPOSE</th>
-                                                <th>DATE SOLD</th>
-                                                <th>VIEW</th>
+                                                <th>Id#>
+                                                <th>Applicant Name</th>
+                                                <th>EC Number</th>
+                                                <th>Loan Purpose</th>
+                                                <th>Agent</th>
+                                                <th>Date Applied</th>
+                                                <th class="d-flex justify-content-center">Action</th>
 
                                             </tr>
                                         </thead>
@@ -47,9 +49,17 @@
                                             <tr th:each="appli:${applications}">
                                                 <td th:text="${appli.id}"></td>
                                                 <td th:text="${appli.firstName}+${space}+${appli.surname}"></td>
+                                                <td th:text="${appli.employeeNumber}"></td>
                                                 <td th:text="${appli.loanPurpose}"></td>
+                                                <td th:text="${appli.authorizedByName}"></td>
                                                 <td th:text="${appli.dateCreated}"></td>
-                                               <td> <a  th:href="@{/viewApplicationForm(id=${appli.id})}" class="btn-outline-primary">VIEW APPLICATION</a></td>
+                                               <td>
+                                                   <ul class="d-flex justify-content-center">
+                                                       <li class="mr-3"><a th:href="@{/viewApplicationForm(id=${appli.id})}" class="text-secondary"><i class="fa fa-eye"></i></a></li>
+                                                       <li class="mr-3"><a href="#" class="text-secondary"><i class="fa fa-edit"></i></a></li>
+                                                       <li><a href="#" class="text-danger"><i class="ti-trash"></i></a></li>
+                                                   </ul>
+<!--                                                   <a  th:href="@{/viewApplicationForm(id=${appli.id})}" class="btn-outline-primary"><i class="icon flaticon-eye"></i></a></td>-->
                                             </tr>
 
                                         </tbody>

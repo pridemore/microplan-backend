@@ -1,10 +1,212 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="fragments/header :: header">
 </head>
 <body>
+<!--<div th:replace="fragments/preloader ::preloader">-->
+<!--</div>-->
+<div class="page-container">
+    <div th:replace="fragments/sidebar :: sidebar-menu"></div>
+    <div class="main-content">
 
+        <div th:replace="fragments/header_area ::header-area">
+        </div>
+        <div th:replace="fragments/title_area ::title-area">
+        </div>
+        <div class="main-content-inner">
+
+
+            <div class="row justify-content-center">
+                <!--                <div class="col-lg-6 col-ml-12">-->
+                <!--                    <div class="row">-->
+                <!-- Textual inputs start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">User</h4>
+                            <form >
+
+                                <div class="row">
+                                    <label for="firstName" class="col-4 col-form-label">First Name:</label>
+                                    <div class="col-8"  id="firstName">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${creativeUser.getFirstName()}"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row my-2">
+                                    <label for="lastName" class="col-4 col-form-label">Last Name</label>
+                                    <div class="col-8"  id="lastName">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${creativeUser.getLastName()}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="email" class="col-4 col-form-label">Email</label>
+                                    <div class="col-8"  id="email">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${creativeUser.getEmail()}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="cellNumber" class="col-4 col-form-label">Cell Number</label>
+                                    <div class="col-8"  id="cellNumber">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${creativeUser.getCellNumber()}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label  for="gender" class="col-4 col-form-label">Gender</label>
+                                    <div class="col-8"  id="gender">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${creativeUser.getGender()}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="dateOfBirth" class="col-4 col-form-label">Date Of Birth</label>
+                                    <div class="col-8"  id="dateOfBirth">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${creativeUser.getDate_of_birth()}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="houseAddress" class="col-4 col-form-label">Home Address</label>
+                                    <div class="col-8"  id="houseAddress">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${creativeUser.getHouseAddress()}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="role" class="col-4 col-form-label">Role</label>
+                                    <div class="col-8"  id="role">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${creativeUser.getRole()}"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+
+                                        <button id="send" type="button" data-toggle="modal" data-target="#editCreativeUserModal" class="btn btn-primary mt-4 pr-4 pl-4">Edit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+
+            <!-- end here-->
+
+
+
+            <!-- Edit modal toggle start-->
+            <div class="modal fade" id="editCreativeUserModal" tabindex="-1"
+                 role="dialog" aria-labelledby="editCreativeUserModalLabel" aria-hidden="true">
+                <div class="row justify-content-center">
+                                    <div class="col-lg-6 col-ml-12">
+                                        <div class="row">
+                                            <!-- Textual inputs start -->
+                                            <div class="col-6 mt-5">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h4 class="header-title">Edit User</h4>
+                                                        <form method="post" th:object="${creativeUser}" th:action="@{/creativeUser/edit/{id} (id=${creativeUser.getId()})}">
+                                                            <div class="form-group">
+                                                                <label for="firstName" class="col-form-label">First Name:</label>
+                                                                <input class="form-control" type="text" placeholder="First Name" id="updateFirstName"
+                                                                       name="firstName" th:field="*{firstName}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="lastName" class="col-form-label">Last Name</label>
+                                                                <input class="form-control" type="text" placeholder="Last Name" id="updateLastName"
+                                                                       name="lastName" th:field="*{lastName}">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="email" class="col-form-label">Email</label>
+                                                                <input class="form-control" type="email" placeholder="email" name="email" id="updateEmail" th:field="*{email}">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="cellNumber" class="col-form-label">Cell Number</label>
+                                                                <input class="form-control" type="tel" placeholder="Cell Number" name="cellNumber" id="updateCellNumber" th:field="*{cellNumber}">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-form-label">Select Gender</label>
+                                                                <select class="form-control" name="gender" >
+                                                                    <option>Select Gender</option>
+                                                                    <option value="Male">Male</option>
+                                                                    <option value="Female">Female</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="dateOfBirth" class="col-form-label">Date</label>
+                                                                <input class="form-control" type="date" placeholder="yyyy-MM-dd"
+                                                                       onfocus="(this.type='date')" id="updateDateOfBirth" name="date_of_birth" th:field="*{date_of_birth}">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="houseAddress" class="col-form-label">Home Address</label>
+                                                                <input class="form-control" type="text" placeholder="Home Address" id="updateHouseAddress"
+                                                                       name="houseAddress" th:field="*{houseAddress}">
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label class="col-form-label">Select Role</label>
+                                                                <select class="form-control" name="role" th:field="*{role}">
+                                                                    <option  value="" selected disabled>Select Role</option>
+                                                                    <option th:each="role: ${roleList}"
+                                                                            th:text="${role.getName()}"
+                                                                            th:value="${role.getId()}">
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="col-md-6 col-md-offset-3">
+                                                                    <button id="save" type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save</button>
+                                                                    <button id="cancel" type="button" class="btn btn-secondary mt-4 pr-4 pl-4" data-dismiss="modal">Cancel</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--                    </div>-->
+                                            <!--                </div>-->
+                                        </div>
+
+                    <!-- end here-->
+                </div>
+                </div>
+            </div>
+                <!-- Toggle edit end -->
+
+
+
+
+
+
+        </div>
+
+    </div>
+    <!-- main content area end -->
+    <div th:replace="fragments/footer ::footer">
+    </div>
+    <div th:replace="fragments/scripts ::scripts">
+    </div>
+</div>
 </body>
-</html>

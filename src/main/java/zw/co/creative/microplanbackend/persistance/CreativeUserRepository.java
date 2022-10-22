@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface CreativeUserRepository extends JpaRepository<CreativeUser,Long> {
     CreativeUser findCreativeUserByEmail(String email);
     Optional<CreativeUser> findCreativeUserByEmailAndStatus(String email, CreationStatus status);
+    Optional<CreativeUser>findByIdAndStatus(Long id,CreationStatus status);
 }

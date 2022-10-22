@@ -13,7 +13,7 @@ public interface RoleRepository extends JpaRepository<Role,Long> {
   /*  Optional<Role>findRoleByName(String name);
     List<Role> findRolesByStatus(CreationStatus status);
     */
-  Optional<Role>findRoleByIdAndStatus(Long id,CreationStatus status);
+  Optional<Role>findRoleByIdAndStatus(Long id,String status);
     List<Role> findAllByStatus(String status);
 
     Optional<Role> findByName(String name);

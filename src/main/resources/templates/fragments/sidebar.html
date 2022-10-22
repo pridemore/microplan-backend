@@ -24,19 +24,37 @@
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-user"></i><span>Profile</span></a>
                         <ul class="collapse">
                             <li><a th:href="@{/creativeUser/register}">Register User</a></li>
-                            <li><a href="index.html">View Profile</a></li>
-                            <li><a href="index2.html">Edit Profile</a></li>
+                            <li><a th:href="@{/creativeUser/viewAll}">View Profile</a></li>
+<!--                            <li><a href="index2.html">Edit Profile</a></li>-->
                             <li><a href="index3.html">Change Password</a></li>
-                            <li><a href="index3.html">Disable Account</a></li>
+<!--                            <li><a href="index3.html">Disable Account</a></li>-->
                         </ul>
                     </li>
 
                     <li>
                         <a href="javascript:void(0)" aria-expanded="true"><i class="ti-files"></i><span>Applications</span></a>
                         <ul class="collapse">
-                            <li><a th:href="@{/application/create}">Create Application</a></li>
+<!--                            <li><a th:href="@{/application/create}">Create Application</a></li>-->
                              <li><a th:href="@{/viewApplication}">View Applications</a></li>
-                            <li><a href="index2.html">Report</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-files"></i><span>Analytics</span></a>
+                        <ul class="collapse">
+                            <li><a href="#">View Daily Sales</a></li>
+                            <li><a href="#">Cumulative Monthly Sales</a></li>
+                            <li><a href="#">Ministries Soled</a></li>
+                            <li><a href="#">Areas Sold</a></li>
+                            <li><a href="#">Sales Rep Statistics</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-eye"></i><span>Products</span></a>
+                        <ul class="collapse">
+                            <li><a th:href="@{/products/create}">Create</a></li>
+                            <li><a th:href="@{/products/view}">View All</a></li>
                         </ul>
                     </li>
 
@@ -46,6 +64,10 @@
                             <li><a th:href="@{/roles/add}">Create Role</a></li>
                             <li><a th:href="@{/roles/view}">View Roles</a></li>
                         </ul>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/dashboard}" aria-expanded="true"><i class="ti-alert"></i><span>Logout</span></a>
                     </li>
 
                 </ul>

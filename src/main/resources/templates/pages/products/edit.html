@@ -1,0 +1,162 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+<!--<div th:replace="fragments/preloader ::preloader">-->
+<!--</div>-->
+<div class="page-container">
+    <div th:replace="fragments/sidebar :: sidebar-menu"></div>
+    <div class="main-content">
+
+        <div th:replace="fragments/header_area ::header-area">
+        </div>
+        <div th:replace="fragments/title_area ::title-area">
+        </div>
+        <div class="main-content-inner">
+
+
+            <div class="row justify-content-center">
+                <!--                <div class="col-lg-6 col-ml-12">-->
+                <!--                    <div class="row">-->
+                <!-- Textual inputs start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Product</h4>
+                            <form >
+
+                                <div class="row">
+                                    <label for="firstName" class="col-4 col-form-label">Product Name:</label>
+                                    <div class="col-8"  id="firstName">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${product.getProductName()}"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row my-2">
+                                    <label for="lastName" class="col-4 col-form-label">Price</label>
+                                    <div class="col-8"  id="lastName">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${product.getPrice()}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <label for="email" class="col-4 col-form-label">Status</label>
+                                    <div class="col-8"  id="email">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${product.getStatus()}"></span>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <label for="dateOfBirth" class="col-4 col-form-label">Date Created</label>
+                                    <div class="col-8"  id="dateOfBirth">
+                                                    <span class="form-control-plaintext font-weight-bolder"
+                                                          th:text="${product.getDateCreated()}"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+
+                                        <button id="send" type="button" data-toggle="modal" data-target="#editProductModal" class="btn btn-primary mt-4 pr-4 pl-4">Edit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+
+            <!-- end here-->
+
+
+
+            <!-- Edit modal toggle start-->
+            <div class="modal fade" id="editProductModal" tabindex="-1"
+                 role="dialog" aria-labelledby="editCreativeUserModalLabel" aria-hidden="true">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-ml-12">
+                        <div class="row">
+                            <!-- Textual inputs start -->
+                            <div class="col-6 mt-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Edit Product</h4>
+                                        <form method="post" th:object="${product}" th:action="@{/products/edit/{id} (id=${product.getId()})}">
+                                            <div class="form-group">
+                                                <label for="firstName" class="col-form-label">Product Name:</label>
+                                                <input class="form-control" type="text" placeholder="First Name" id="updateFirstName"
+                                                       name="firstName" th:field="*{productName}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="lastName" class="col-form-label">Price</label>
+                                                <input class="form-control" type="text" placeholder="Last Name" id="updateLastName"
+                                                       name="lastName" th:field="*{price}">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label class="col-form-label">Select status</label>
+                                                <select class="form-control" name="role" th:field="*{status}">
+                                                    <option  value="" selected disabled>Select Role</option>
+                                                    <option th:each="status: ${statuses}"
+                                                            th:text="${status}"
+                                                            th:value="${status}">
+                                                    </option>
+                                                </select>
+                                            </div>
+<!--                                            <div class="form-group">-->
+<!--                                                <div class="col-md-6 col-md-offset-3">-->
+<!--                                                    <button id="save" type="submit" class="btn btn-primary mt-4 pr-4 pl-4">Save</button>-->
+<!--                                                    <button id="cancel" type="button" class="btn btn-secondary mt-4 pr-4 pl-4" data-dismiss="modal">Close</button>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--                    </div>-->
+                            <!--                </div>-->
+                        </div>
+
+                        <!-- end here-->
+                    </div>
+                </div>
+            </div>
+            <!-- Toggle edit end -->
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+        </div>
+
+    </div>
+    <!-- main content area end -->
+    <div th:replace="fragments/footer ::footer">
+    </div>
+    <div th:replace="fragments/scripts ::scripts">
+    </div>
+</div>
+</body>
