@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import zw.co.creative.microplanbackend.domain.Role;
 import zw.co.creative.microplanbackend.domain.dto.RoleDto;
+import zw.co.creative.microplanbackend.enums.CreationStatus;
 import zw.co.creative.microplanbackend.service.impl.RoleServiceImpl;
 
 import java.net.URI;
@@ -91,12 +92,13 @@ public class RoleController {
         Optional<Role> role = this.roleService.findRoleByName(name);
         model.addAttribute("role", this.roleService.findRoleById(((Role)role.get()).getId()));
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
-
+        model.addAttribute("statuses", CreationStatus.values());
         return "/pages/roles/edit";
     }
 
     @RequestMapping({"/update"})
     public String updateEmployee(@ModelAttribute("role") @Validated Role role, @RequestParam(value = "id",required = false) long id) {
+
         this.roleService.updateRole(id, role);
         return "redirect:/roles/view";
     }

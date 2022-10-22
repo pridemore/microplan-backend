@@ -49,6 +49,7 @@ public class ProductServiceImpl implements ProductService {
         List<Product> allByStatus = productRepository.findAllByStatus(CreationStatus.ACTIVE);
         for (Product product : allByStatus) {
             ProductResponse productResponse = ProductResponse.builder()
+                    .id(product.getId())
                     .name(product.getProductName())
                     .price(product.getPrice())
                     .dateCreated(product.getDateCreated())

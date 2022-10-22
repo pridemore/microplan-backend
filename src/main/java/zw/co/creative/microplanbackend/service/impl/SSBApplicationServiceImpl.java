@@ -174,7 +174,7 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
                         //Employment Details
                         .profession(loanApplication.getProfession())
                         .nameOfEmployer(loanApplication.getNameOfEmployer())
-                        .otherNameOfEmployer(loanApplication.getOtherNameOfEmployer())
+                        //.otherNameOfEmployer(loanApplication.getOtherNameOfEmployer())
                         .employerAddress(loanApplication.getEmployerAddress())
                         .positionHeld(loanApplication.getPositionHeld())
                         .employeeNumber(loanApplication.getEmployeeNumber())
@@ -185,12 +185,12 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
                         .employersPhoneNumber(loanApplication.getEmployersPhoneNumber())
                         //Bank details
                         .bankName(loanApplication.getBankName())
-                        .otherBankName(loanApplication.getOtherBankName())
+                        //.otherBankName(loanApplication.getOtherBankName())
                         .branchName(loanApplication.getBranchName())
                         .accountName(loanApplication.getAccountName())
                         .accountNo(loanApplication.getAccountNo())
                         .accountType(loanApplication.getAccountType())
-                        .otherAccountType(loanApplication.getOtherAccountType())
+                        //.otherAccountType(loanApplication.getOtherAccountType())
                         .witnessFullName(loanApplication.getWitnessFullName())
                         .witnessFullName2(loanApplication.getWitnessFullName2())
                         .status(loanApplication.getStatus().name())
@@ -205,14 +205,31 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
     }
 
     private LoanApplication toLoanApplicationObject(Map<String, Object> map) {
+        String selectedBankName=map.getOrDefault("bankName", "").toString();
+        String selectedAccountType=map.getOrDefault("accountType", "").toString();
+        String selectedOtherNameOfEmployer=map.getOrDefault("nameOfEmployer","").toString();
         if (map == null) {
             return null;
         }
+
+        if(map.get("otherBankName").toString()!=null||!map.get("otherBankName").toString().equals("")){
+            selectedBankName=map.get("otherBankName").toString();
+        }
+
+        if(map.get("otherAccountType").toString()!=null||!map.get("otherAccountType").toString().equals("")){
+            selectedAccountType=map.get("otherAccountType").toString();
+        }
+
+        if(map.get("otherNameOfEmployer").toString()!=null||!map.get("otherNameOfEmployer").toString().equals("")){
+            selectedOtherNameOfEmployer=map.get("otherNameOfEmployer").toString();
+        }
+
+
         LoanApplication loanApplication = LoanApplication.builder()
                 .uniqueRef(map.getOrDefault("uniqueRef", "").toString())
                 .applicationTitle(map.getOrDefault("application_title", "").toString())
                 .agentId(Long.valueOf(map.getOrDefault("agent_id", 0).toString()))
-                .isSubmitted(map.getOrDefault("isSubmitted", "").toString())
+                .isSubmitted("true")
                 .dateAndTime(map.getOrDefault("dateAndTime", "").toString())
 
                 //Loan Details
@@ -252,8 +269,7 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
 
                 //Employment Details
                 .profession(map.getOrDefault("profession", "").toString())
-                .nameOfEmployer(map.getOrDefault("nameOfEmployer", "").toString())
-                .otherNameOfEmployer(map.getOrDefault("otherNameOfEmployer", "").toString())
+                .nameOfEmployer(selectedOtherNameOfEmployer)
                 .employerAddress(map.getOrDefault("employerPhysicalAddress", "").toString())
                 .positionHeld(map.getOrDefault("positionHeld", "").toString())
                 .employeeNumber(map.getOrDefault("employeeNumber", "").toString())
@@ -266,13 +282,11 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
                 //.districtAndPayrollCode(map.getOrDefault("districtAndPayrollCode","").toString())
 
                 //Bank details
-                .bankName(map.getOrDefault("bankName", "").toString())
-                .otherBankName(map.getOrDefault("otherBankName", "").toString())
+                .bankName(selectedBankName)
                 .branchName(map.getOrDefault("branchName", "").toString())
                 .accountName(map.getOrDefault("accountName", "").toString())
                 .accountNo(map.getOrDefault("accountNo", "").toString())
-                .accountType(map.getOrDefault("accountType", "").toString())
-                .otherAccountType(map.getOrDefault("otherAccountType", "").toString())
+                .accountType(selectedAccountType)
 
                 //Documents
                 //.nationalIdUpload(map.getOrDefault("nationalIdUpload","").toString())
@@ -309,38 +323,38 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
 
                 //Next of Kin 1 Details
                 //.nxtOfKin1TitleGroup(map.getOrDefault("nxtOfKin1TitleGroup","").toString())
-                //.nxtOfKin1FirstName(map.getOrDefault("nxtOfKin1FirstName","").toString())
-                //.nxtOfKin1Surname(map.getOrDefault("nxtOfKin1Surname","").toString())
-                //.nxtOfKin1ResidentialAddress(map.getOrDefault("nxtOfKin1ResidentialAddress","").toString())
-                //.nxtOfKin1PhoneNumber(map.getOrDefault("nxtOfKin1PhoneNumber","").toString())
-                //.nxtOfKin1Relation(map.getOrDefault("nxtOfKin1Relation","").toString())
+                .nxtOfKin1FirstName(map.getOrDefault("nxtOfKin1FirstName","").toString())
+                .nxtOfKin1Surname(map.getOrDefault("nxtOfKin1Surname","").toString())
+                .nxtOfKin1Address(map.getOrDefault("nxtOfKin1ResidentialAddress","").toString())
+                .nxtOfKin1Phone(map.getOrDefault("nxtOfKin1PhoneNumber","").toString())
+                .nxtOfKin1Relation(map.getOrDefault("nxtOfKin1Relation","").toString())
                 //.nxtOfKin1NameOfEmployer(map.getOrDefault("nxtOfKin1NameOfEmployer","").toString())
                 //.nxtOfKin1EmployerAddress(map.getOrDefault("nxtOfKin1EmployerAddress","").toString())
 
                 //Next of Kin 2 Details
                 //.nxtOfKin2TitleGroup(map.getOrDefault("nxtOfKin2TitleGroup","").toString())
-                //.nxtOfKin2FirstName(map.getOrDefault("nxtOfKin2FirstName","").toString())
-                //.nxtOfKin2Surname(map.getOrDefault("nxtOfKin2Surname","").toString())
-                //.nxtOfKin2ResidentialAddress(map.getOrDefault("nxtOfKin2ResidentialAddress","").toString())
-                //.nxtOfKin2PhoneNumber(map.getOrDefault("nxtOfKin2PhoneNumber","").toString())
-                //.nxtOfKin2Relation(map.getOrDefault("nxtOfKin2Relation","").toString())
+                .nxtOfKin2FirstName(map.getOrDefault("nxtOfKin2FirstName","").toString())
+                .nxtOfKin2Surname(map.getOrDefault("nxtOfKin2Surname","").toString())
+                .nxtOfKin2Address(map.getOrDefault("nxtOfKin2ResidentialAddress","").toString())
+                .nxtOfKin2Phone(map.getOrDefault("nxtOfKin2PhoneNumber","").toString())
+                .nxtOfKin2Relation(map.getOrDefault("nxtOfKin2Relation","").toString())
                 //.nxtOfKin2NameOfEmployer(map.getOrDefault("nxtOfKin2NameOfEmployer","").toString())
                 //.nxtOfKin2EmployerAddress(map.getOrDefault("nxtOfKin2EmployerAddress","").toString())
 
                 //Declaration
                 //.borrowerFullName(map.getOrDefault("borrowerFullName","").toString())
-                //.placeOfSignature(map.getOrDefault("placeOfSignature","").toString())
+                .placeOfSignature(map.getOrDefault("placeOfSignature","").toString())
                 //.borrowerSignature(map.getOrDefault("borrowerSignature","").toString())
                 //.borrowerSignatureBase64(map.getOrDefault("borrowerSignatureBase64","").toString())
                 //.dateSignBorrower(map.getOrDefault("dateSignBorrower","").toString())
 
-                //.witnessFullName(map.getOrDefault("witnessFullName","").toString())
+                .witnessFullName(map.getOrDefault("witnessFullName","").toString())
                 //.witnessSignature(map.getOrDefault("witnessSignature","").toString())
                 //.witnessSignatureBase64(map.getOrDefault("witnessSignatureBase64","").toString())
                 //.dateSignWitness(map.getOrDefault("dateSignWitness","").toString())
                 //.witnessPlaceOfSignature(map.getOrDefault("witnessPlaceOfSignature","").toString())
 
-                //.witnessFullName2(map.getOrDefault("witnessFullName2","").toString())
+                .witnessFullName2(map.getOrDefault("witnessFullName2","").toString())
                 //.witnessSignature2(map.getOrDefault("witnessSignature2","").toString())
                 //.witness2SignatureBase64(map.getOrDefault("witness2SignatureBase64","").toString())
                 //.dateSignWitness2(map.getOrDefault("dateSignWitness2","").toString())
@@ -348,7 +362,7 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
 
                 //Office Use Details
                 .authorisedBy(map.getOrDefault("authorisedBy", "").toString())
-                .authoriserSignature(map.getOrDefault("authoriserSignature", "").toString())
+//                .authoriserSignature(map.getOrDefault("authoriserSignature", "").toString())
                 //.authorizerSignatureBase64(map.getOrDefault("authorizerSignatureBase64","").toString())
                 //.officeStamp(map.getOrDefault("officeStamp","").toString())
                 //.officeStampBase64(map.getOrDefault("officeStampBase64","").toString())

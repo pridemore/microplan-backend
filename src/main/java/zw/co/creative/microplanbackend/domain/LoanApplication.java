@@ -25,7 +25,7 @@ public class LoanApplication {
     private String uniqueRef;
     private String applicationTitle;
     private long agentId;
-    private String isSubmitted;
+    private String isSubmitted="true";
     private String dateAndTime;
 
     //Loan Details
@@ -66,7 +66,7 @@ public class LoanApplication {
     //Employment Details
     private String profession;
     private String nameOfEmployer;
-    private String otherNameOfEmployer;
+    //private String otherNameOfEmployer;
     private String employerAddress;
     private String positionHeld;
     private String employeeNumber;
@@ -80,12 +80,12 @@ public class LoanApplication {
 
     //Bank details
     private String bankName;
-    private String otherBankName;
+    //private String otherBankName;
     private String branchName;
     private String accountName;
     private String accountNo;
     private String accountType;
-    private String otherAccountType;
+    //private String otherAccountType;
 
     //Next of Kin 1 Details
 //    @Column(name = "kin1_title")
@@ -128,8 +128,8 @@ public class LoanApplication {
 //    private String borrowerFullName;
     @Column(name = "signature_place")
     private String placeOfSignature;
-    @Column(name = "borrower_signature")
-    private String borrowerSignature;
+//    @Column(name = "borrower_signature")
+//    private String borrowerSignature;
     //    @Column(name = "borrower_signature64")
 //    private String borrowerSignatureBase64;
 //    @Column(name = "date_sign_borrower")
@@ -137,8 +137,8 @@ public class LoanApplication {
     //
     @Column(name = "witness1_name")
     private String witnessFullName;
-    @Column(name = "witness1_signature")
-    private String witnessSignature;
+//    @Column(name = "witness1_signature")
+//    private String witnessSignature;
     //    @Column(name = "witness1_signature64")
 //    private String witnessSignatureBase64;
 //    @Column(name = "witness1_date_sign")
@@ -148,8 +148,8 @@ public class LoanApplication {
     //
     @Column(name = "witness2_name")
     private String witnessFullName2;
-    @Column(name = "witness2_signature")
-    private String witnessSignature2;
+//    @Column(name = "witness2_signature")
+//    private String witnessSignature2;
 //    @Column(name = "witness2_signature64")
 //    private String witness2SignatureBase64;
 //    @Column(name = "witness2_date_sign")

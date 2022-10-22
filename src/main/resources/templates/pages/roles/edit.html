@@ -23,33 +23,40 @@
                 <div class="col-6 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Edit New Role</h4>
-                            <form  method="post" th:object="${role}"  th:action="@{/roles/update(id=${role.id})}" class="form-horizontal form-label-left" novalidate>
+                            <h4 class="header-title">Role</h4>
+                            <form method="post" th:object="${role}" th:action="@{/roles/update(id=${role.id})}"
+                                  class="form-horizontal form-label-left" novalidate>
 
 
                                 </p>
-                                <center> <h4 style="color: red" th:text="${message}"></h4></center>
+                                <center><h4 style="color: red" th:text="${message}"></h4></center>
                                 <span class="section"><h3><center> Update Role Details</center></h3></span>
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span
+                                            class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="name" name="name"  th:field="*{name}" th:value="${role.name}" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="name" name="name" th:field="*{name}"
+                                               th:value="${role.name}" required="required"
+                                               class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
 
                                 <div class="item form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Status <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Status <span
+                                            class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select  class="form-control col-md-7 col-xs-12" name="status" id="status" th:value="${role.status}" th:field="*{status}">
-                                            <option value="Active">Active</option>
-                                            <option value="Inctave">Inactive</option>
+                                        <select class="form-control col-md-7 col-xs-12" name="status" id="status"
+                                                th:value="${role.status}" th:field="*{status}">
+                                            <option value="" selected disabled>Select Status</option>
+                                            <option th:each="status : ${statuses}"
+                                                    th:text="${status}"
+                                                    th:value="${status}"></option>
 
                                         </select>
                                     </div>
                                 </div>
-
 
 
                                 <div class="ln_solid"></div>
