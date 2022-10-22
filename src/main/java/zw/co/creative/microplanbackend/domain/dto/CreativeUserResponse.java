@@ -24,9 +24,8 @@ public class CreativeUserResponse {
     private LocalDate date_of_birth;
     private String houseAddress;
     private String ipAddress;
+    private String status;
     private String role;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private OffsetDateTime dateCreated;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     protected OffsetDateTime lastUpdated;
 }

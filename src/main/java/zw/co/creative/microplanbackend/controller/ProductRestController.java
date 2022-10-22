@@ -22,10 +22,22 @@ public class ProductRestController {
         return product;
     }
 
+    @PostMapping("/update/{id}")
+    public CommonResponse updateProduct(@PathVariable("id") Long id,@RequestBody ProductDto productDto) {
+        CommonResponse product = productService.updateProduct(id,productDto);
+        return product;
+    }
+
     @GetMapping(value = "/getAll",produces = MediaType.APPLICATION_JSON_VALUE)
     public CommonResponse getAllProducts() {
         CommonResponse allProducts = productService.getAllProducts();
         return allProducts;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public CommonResponse deleteProduct(@PathVariable("id") Long id) {
+        CommonResponse product = productService.deleteProduct(id);
+        return product;
     }
 
 }

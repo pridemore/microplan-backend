@@ -15,8 +15,12 @@ import zw.co.creative.microplanbackend.persistance.CreativeUserRepository;
 import zw.co.creative.microplanbackend.persistance.RoleRepository;
 import zw.co.creative.microplanbackend.service.CreativeUserService;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,7 +35,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
     public CommonResponse createUser(CreativeUserDto creativeUserDto) {
         log.info("CreativeUserDto--------- : {}", creativeUserDto);
         Optional<Role> role = roleRepository.findRoleByIdAndStatus(Long.valueOf
-                (creativeUserDto.getRole()), CreationStatus.ACTIVE);
+                (creativeUserDto.getRole()), CreationStatus.ACTIVE.name());
         if (!role.isPresent())
             return new CommonResponse().buildErrorResponse("No such role found");
 
@@ -67,7 +71,30 @@ public class CreativeUserServiceImpl implements CreativeUserService {
 
     @Override
     public CommonResponse getAllUsers() {
-        return null;
+        List<CreativeUser> allUsers = creativeUserRepository.findAll();
+        List<CreativeUserResponse> listResponse=new ArrayList<>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        for (CreativeUser user:allUsers
+             ) {
+            CreativeUserResponse response = CreativeUserResponse.builder()
+                    .id(user.getId())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .email(user.getEmail())
+                    .refNumber(user.getRefNumber())
+                    .cellNumber(user.getCellNumber())
+                    .gender(user.getGender())
+                    .date_of_birth(user.getDate_of_birth())
+                    .houseAddress(user.getHouseAddress())
+                    .ipAddress(user.getIpAddress())
+                    .role(user.getRole())
+                    .status(user.getStatus().name())
+                    .dateCreated(user.getDateCreated())
+                    .lastUpdated(user.getLastUpdated())
+                    .build();
+            listResponse.add(response);
+        }
+        return new CommonResponse().buildSuccessResponse("Success",listResponse);
     }
 
     @Override
@@ -82,7 +109,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
                 return new CommonResponse().buildErrorResponse("Login failed, Contact Admin");
             }
 
-            if(!user.get().getRole().equalsIgnoreCase("Agent"))
+            if (!user.get().getRole().equalsIgnoreCase("Agent"))
                 return new CommonResponse().buildErrorResponse("Permission Denied.Contact Admin");
 
             final String storedPassword = user.get().getPassword();
@@ -104,7 +131,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
             if (bCryptPasswordEncoder.matches(loginDto.getPassword(), storedPassword)) {
 
 
-                return new CommonResponse().buildSuccessResponse("Successful",response);
+                return new CommonResponse().buildSuccessResponse("Successful", response);
             } else {
 
                 return new CommonResponse().buildErrorResponse("Invalid Login Credentials. Please try again.");
@@ -112,5 +139,41 @@ public class CreativeUserServiceImpl implements CreativeUserService {
         } else {
             return new CommonResponse().buildErrorResponse("Invalid Login Credentials. Please try again.");
         }
+    }
+
+    @Override
+    public CommonResponse updateUser(Long id, CreativeUserDto creativeUserDto) {
+        Optional<CreativeUser> foundUser = creativeUserRepository.findByIdAndStatus(id, CreationStatus.ACTIVE);
+        if (!foundUser.isPresent()) {
+            return new CommonResponse().buildErrorResponse("User not found.");
+        }
+        Optional<Role> role = roleRepository.findRoleByIdAndStatus(Long.valueOf
+                (creativeUserDto.getRole()), CreationStatus.ACTIVE.name());
+        if (!role.isPresent()) {
+            return new CommonResponse().buildErrorResponse("No such role found");
+        }
+        foundUser.get().setFirstName(creativeUserDto.getFirstName());
+        foundUser.get().setLastName(creativeUserDto.getLastName());
+        foundUser.get().setEmail(creativeUserDto.getEmail());
+        foundUser.get().setCellNumber(creativeUserDto.getCellNumber());
+        foundUser.get().setGender(creativeUserDto.getGender());
+        foundUser.get().setDate_of_birth(LocalDate.parse(creativeUserDto.getDate_of_birth()));
+        foundUser.get().setHouseAddress(creativeUserDto.getHouseAddress());
+        foundUser.get().setRole(role.get().getName());
+        CreativeUser updatedUser = creativeUserRepository.save(foundUser.get());
+        return new CommonResponse().buildSuccessResponse("Success",updatedUser);
+    }
+
+    @Override
+    public CommonResponse deleteUser(Long id) {
+        Optional<CreativeUser> foundUser = creativeUserRepository.findByIdAndStatus(id, CreationStatus.ACTIVE);
+        if (!foundUser.isPresent()) {
+            return new CommonResponse().buildErrorResponse("User not found.");
+        }
+
+        foundUser.get().setStatus(CreationStatus.DELETED);
+        CreativeUser deletedUser = creativeUserRepository.save(foundUser.get());
+        return new CommonResponse().buildSuccessResponse("User deleted Successfully.",deletedUser);
+
     }
 }

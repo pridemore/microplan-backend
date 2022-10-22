@@ -14,4 +14,8 @@ public interface CreativeUserService {
     CommonResponse getAllUsers();
 
     CommonResponse userLogin(LoginDto loginDto);
+
+    CommonResponse updateUser(Long id, CreativeUserDto creativeUserDto);
+
+    CommonResponse deleteUser(Long id);
 }

@@ -7,4 +7,7 @@ public interface ProductService {
     CommonResponse createProduct(ProductDto productDto);
     CommonResponse getAllProducts();
 
+    CommonResponse updateProduct(Long id, ProductDto productDto);
+
+    CommonResponse deleteProduct(Long id);
 }

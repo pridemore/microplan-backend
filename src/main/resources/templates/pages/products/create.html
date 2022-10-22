@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+<!--<div th:replace="fragments/preloader ::preloader">-->
+<!--</div>-->
+<div class="page-container">
+    <div th:replace="fragments/sidebar :: sidebar-menu"></div>
+    <div class="main-content">
+
+        <div th:replace="fragments/header_area ::header-area">
+        </div>
+        <div th:replace="fragments/title_area ::title-area">
+        </div>
+        <div class="main-content-inner">
+
+
+            <div class="row justify-content-center">
+                <!--                <div class="col-lg-6 col-ml-12">-->
+                <!--                    <div class="row">-->
+                <!-- Textual inputs start -->
+                <div class="col-6 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Add New Product</h4>
+                            <form  method="post" th:action="@{/products/add}"  class="form-horizontal form-label-left" novalidate>
+
+
+                                </p>
+                                <center> <h4 style="color: red" text=""></h4></center>
+                                <span class="section"><h3><center>CREATE PRODUCT</center></h3></span>
+
+                                <div class="form-group">
+                                    <label for="productName" class="col-form-label">Product Name</label>
+                                    <input class="form-control" type="text" placeholder="Product Name" id="productName"
+                                           name="productName" field="">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="price" class="col-form-label">Price</label>
+                                    <input class="form-control" type="number" placeholder="Price" id="price"
+                                           name="price" field="">
+                                </div>
+
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-md-offset-3">
+
+                                        <button id="send" type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+    <!-- main content area end -->
+    <div th:replace="fragments/footer ::footer">
+    </div>
+    <div th:replace="fragments/scripts ::scripts">
+    </div>
+</div>
+</body>
+</html>

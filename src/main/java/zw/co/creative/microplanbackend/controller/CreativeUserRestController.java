@@ -1,17 +1,7 @@
 package zw.co.creative.microplanbackend.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import zw.co.creative.microplanbackend.common.response.CommonResponse;
 import zw.co.creative.microplanbackend.domain.dto.CreativeUserDto;
 import zw.co.creative.microplanbackend.domain.dto.LoginDto;
@@ -38,5 +28,17 @@ public class CreativeUserRestController {
 
         return loginResponse;
 
+    }
+
+    @PostMapping("/update/{id}")
+    public CommonResponse updateUser(@PathVariable("id")Long id ,@RequestBody CreativeUserDto creativeUserDto){
+        CommonResponse updateUserResponse= creativeUserService.updateUser(id,creativeUserDto);
+        return updateUserResponse;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public CommonResponse deleteUser(@PathVariable("id")Long id){
+        CommonResponse deleteUserResponse= creativeUserService.deleteUser(id);
+        return deleteUserResponse;
     }
 }

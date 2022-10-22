@@ -103,7 +103,7 @@ public class RoleController {
 
     @RequestMapping({"/view"})
     public String findAll(Model model) {
-        model.addAttribute("RoleList", this.roleService.getAllRole());
+        model.addAttribute("roleList", this.roleService.getAllRole());
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
 
         return "/pages/roles/view";
