@@ -21,7 +21,7 @@ public class DocumentUpload {
             strategy = GenerationType.IDENTITY
     )
     private long id;
-    public String loan_uniqueRef;
+    public String loanUniqueRef;
 
     public String documentNationalId;
     public String nationalIdUpload;

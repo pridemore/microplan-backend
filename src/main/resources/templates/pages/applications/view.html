@@ -48,10 +48,10 @@
                                         <tbody>
                                             <tr th:each="appli:${applications}">
                                                 <td th:text="${appli.id}"></td>
-                                                <td th:text="${appli.firstName}+${space}+${appli.surname}"></td>
+                                                <td th:text="${appli.firstName}+${space}+${appli.lastName}"></td>
                                                 <td th:text="${appli.employeeNumber}"></td>
                                                 <td th:text="${appli.loanPurpose}"></td>
-                                                <td th:text="${appli.authorizedByName}"></td>
+                                                <td th:text="${appli.authorisedBy}"></td>
                                                 <td th:text="${appli.dateCreated}"></td>
                                                <td>
                                                    <ul class="d-flex justify-content-center">

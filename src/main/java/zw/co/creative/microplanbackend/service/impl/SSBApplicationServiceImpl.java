@@ -380,7 +380,11 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
         }
 
         DocumentUpload documentUpload = DocumentUpload.builder()
-                .loan_uniqueRef(map.getOrDefault("uniqueRef", "").toString())
+                .loanUniqueRef(map.getOrDefault("uniqueRef", "").toString())
+                .borrowerSignature(map.getOrDefault("borrowerSignature","").toString())
+                .witnessSignature(map.getOrDefault("witnessSignature","").toString())
+                .witnessSignature2(map.getOrDefault("witnessSignature2","").toString())
+
                 .nationalIdUpload(map.getOrDefault("nationalIdUpload", "").toString())
                 .documentNationalId(map.getOrDefault("documentNationalId", "").toString())
                 //.documentNationalIdBase64(map.getOrDefault("documentNationalIdBase64","").toString())

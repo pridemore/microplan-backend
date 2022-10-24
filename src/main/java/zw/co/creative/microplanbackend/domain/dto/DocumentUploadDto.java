@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DocumentUploadDto {
-    public String loan_uniqueRef;
+    public String loanUniqueRef;
 
     public String documentNationalId;
     public String nationalIdUpload;
