@@ -18,4 +18,10 @@ public interface CreativeUserService {
     CommonResponse updateUser(Long id, CreativeUserDto creativeUserDto);
 
     CommonResponse deleteUser(Long id);
+
+    CommonResponse updateUserResetPasswordToken(String token, String email);
+
+    CreativeUser getByResetPasswordToken(String token);
+
+    CommonResponse resetPassword(CreativeUser creativeUser, String newPassword);
 }

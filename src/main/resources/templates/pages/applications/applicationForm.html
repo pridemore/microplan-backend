@@ -339,14 +339,14 @@
             <ul>
                 <li>The capital portion of the loan plus interest shall be paid in <b><span
                         th:text="${SSBApplication.getLoanPeriod()}"></span></b> equal installments of usd $<b> <span
-                        th:text="${SSBApplication.getPrice()}"></span></b> commencing <b> <span
-                        th:text="${SSBApplication.getDateAndTime()}"></span></b>
+                        th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></span></b> commencing <b> <span
+                        th:text="${SSBApplication.getLoanFromDate()}"></span></b>
                 </li>
                 <li>Monthly loan repayments will be effected by way of automatic debits to the operating account into
                     which loan proceeds are initially credited and the borrower shall ensure that the account is
                     adequately funded to meet loan repayments. In the event that the account is not funded the account
                     will overdraw and the overdraft will immediately attract interest at Microplan Financial Service’s
-                    prevailing penalty rate of interest. The penalty rate is currently 15% per month.
+                    prevailing penalty rate of interest. The penalty rate is currently 25% per month.
                 </li>
                 <li>At all material times, this loan shall be paid back in United States Dollars through the Lender’s
                     Nostro Account.
@@ -358,7 +358,7 @@
                 not be obliged to give any notice in making demand.
             </li>
             <li>Unless previously withdrawn by Microplan Financial Services, this facility will expire on <b><span
-                    th:text="${SSBApplication.getDateAndTime()}"></span></b> when all outstanding amounts shall become
+                    th:text="${SSBApplication.getLoanToDate()}"></span></b> when all outstanding amounts shall become
                 immediately due and payable to Microplan Financial Services.
             </li>
             <li>Microplan Financial Services shall have the right to appropriate the Borrower’s payments to such of the
