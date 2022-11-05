@@ -361,7 +361,7 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
                 //.witnessPlaceOfSignature2(map.getOrDefault("witnessPlaceOfSignature2","").toString())
 
                 //Office Use Details
-                .authorisedBy(map.getOrDefault("authorisedBy", "").toString())
+                //.authorisedBy(map.getOrDefault("authorisedBy", "").toString())
 //                .authoriserSignature(map.getOrDefault("authoriserSignature", "").toString())
                 //.authorizerSignatureBase64(map.getOrDefault("authorizerSignatureBase64","").toString())
                 //.officeStamp(map.getOrDefault("officeStamp","").toString())

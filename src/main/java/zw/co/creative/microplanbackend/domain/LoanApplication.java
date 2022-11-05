@@ -157,11 +157,18 @@ public class LoanApplication {
 //    @Column(name = "witness2_signature_place")
 //    private String witnessPlaceOfSignature2;
 
+    //Static Details
+    private String penaltyRate;
+    private String defaultInterest;
+    private String creditBankName;
+    private String creditBranchName;
+    private String creditAccountNumber;
+
     //Office Use Details
-    @Column(name = "approved_by")
-    private String authorisedBy;
-    @Column(name = "authoriser_signature")
-    private String authoriserSignature;
+//    @Column(name = "approved_by")
+//    private String authorisedBy;
+//    @Column(name = "authoriser_signature")
+//    private String authoriserSignature;
     //@Column(name = "authoriser_signature64")
     // private String authorizerSignatureBase64;
 //    @Column(name = "office_stamp")

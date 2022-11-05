@@ -1,6 +1,5 @@
 package zw.co.creative.microplanbackend.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,15 +16,13 @@ import java.time.OffsetDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Configs {
+public class LoanCreditConfigs {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String interestRate;
-    private String monthlyRate;
-    private String principalDebit;
-    private String penaltyRate;
-    private String defaultInterest;
+    private String bankName;
+    private String branchName;
+    private String accountNumber;
 
     @Enumerated(EnumType.STRING)
     private CreationStatus status;
