@@ -70,6 +70,12 @@ public class LoanCreditConfigsServiceImpl implements LoanCreditConfigsService {
     }
 
     @Override
+    public LoanCreditConfigs getFirstLoanCreditConfigs() {
+        LoanCreditConfigs firstByStatus = loanCreditConfigsRepository.findFirstByStatus(CreationStatus.ACTIVE);
+        return firstByStatus;
+    }
+
+    @Override
     public CommonResponse deleteConfigs(Long id) {
         return null;
     }

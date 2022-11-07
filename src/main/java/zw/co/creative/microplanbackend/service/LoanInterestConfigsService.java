@@ -10,4 +10,5 @@ public interface LoanInterestConfigsService {
     CommonResponse updateLoanInterestConfigs(Long id,LoanInterestConfigsDto loanInterestConfigsDto);
     CommonResponse getLoanInterestConfigs();
     CommonResponse deleteLoanInterestConfigs(Long id);
+    LoanInterestConfigs getFirstLoanInterestConfigs();
 }

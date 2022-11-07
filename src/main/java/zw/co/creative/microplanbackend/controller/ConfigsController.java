@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import zw.co.creative.microplanbackend.common.response.CommonResponse;
 import zw.co.creative.microplanbackend.domain.LoanCreditConfigs;
-import zw.co.creative.microplanbackend.domain.Role;
-import zw.co.creative.microplanbackend.domain.dto.CreativeUserDto;
 import zw.co.creative.microplanbackend.domain.dto.LoanCreditConfigsDto;
 import zw.co.creative.microplanbackend.domain.dto.LoanInterestConfigsDto;
 import zw.co.creative.microplanbackend.service.LoanCreditConfigsService;
@@ -38,7 +36,8 @@ public class ConfigsController {
 
     @RequestMapping({"/add/credit"})
     public String addCreditConfig(Model model) {
-        model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
+        model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() +
+                " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "/pages/configurations/create_credit_configs";
     }
 
@@ -48,10 +47,12 @@ public class ConfigsController {
         if (Objects.nonNull(loanCreditConfigsDto)) {
             loanCreditConfigsService.createLoanCreditConfigs(loanCreditConfigsDto);
 
-            model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
+            model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName()
+                    + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
             return "/pages/configurations/create_credit_configs";
         } else {
-            model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
+            model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName()
+                    + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
             return "/pages/configurations/create_credit_configs";
         }
     }
@@ -59,7 +60,8 @@ public class ConfigsController {
     @GetMapping("/view/credit")
     public String viewCreditConfigs(Model model){
         model.addAttribute("creditConfigs", loanCreditConfigsService.getLoanCreditConfigs().getResult());
-        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "
+                + ""+authenticatedEmployee.getAuthenticatedUser().getLastName());
 
         return "/pages/configurations/view_credit_configs";
     }
@@ -71,7 +73,8 @@ public class ConfigsController {
     }
 
     @PostMapping("/edit/credit/{id}")
-    public String editCreditConfigs(Model model, @PathVariable("id") Long id, @Validated LoanCreditConfigsDto loanCreditConfigsDto, Errors errors){
+    public String editCreditConfigs(Model model, @PathVariable("id") Long id, @Validated LoanCreditConfigsDto
+            loanCreditConfigsDto, Errors errors){
 
         log.info("Update LoanCreditConfigsDto-----------: {}", loanCreditConfigsDto);
         if(errors.hasErrors()){
@@ -88,7 +91,8 @@ public class ConfigsController {
 
     @RequestMapping({"/add/interest"})
     public String addInterestConfig(Model model) {
-        model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
+        model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() +
+                " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "/pages/configurations/create_interest_configs";
     }
 
@@ -98,10 +102,12 @@ public class ConfigsController {
         if (Objects.nonNull(loanInterestConfigsDto)) {
             loanInterestConfigsService.createLoanInterestConfigs(loanInterestConfigsDto);
 
-            model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
+            model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName()
+                    + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
             return "/pages/configurations/create_interest_configs";
         } else {
-            model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
+            model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName()
+                    + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
             return "/pages/configurations/create_interest_configs";
         }
     }
@@ -109,13 +115,15 @@ public class ConfigsController {
     @GetMapping("/view/interest")
     public String viewInterestConfigs(Model model){
         model.addAttribute("interestConfigs", loanInterestConfigsService.getLoanInterestConfigs().getResult());
-        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
+        model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+
+                " "+authenticatedEmployee.getAuthenticatedUser().getLastName());
 
         return "/pages/configurations/view_interest_configs";
     }
 
     @PostMapping("/edit/interest/{id}")
-    public String editInterestConfigs(Model model, @PathVariable("id") Long id, @Validated LoanInterestConfigsDto interestConfigsDto, Errors errors){
+    public String editInterestConfigs(Model model, @PathVariable("id") Long id, @Validated LoanInterestConfigsDto
+            interestConfigsDto, Errors errors){
 
         log.info("Update LoanInterestConfigsDto-----------: {}", interestConfigsDto);
         if(errors.hasErrors()){

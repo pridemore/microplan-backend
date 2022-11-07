@@ -12,4 +12,5 @@ public interface LoanCreditConfigsService {
     CommonResponse getLoanCreditConfigs();
     LoanCreditConfigs findLoanCreditConfigById(Long id);
     CommonResponse deleteConfigs(Long id);
+    LoanCreditConfigs getFirstLoanCreditConfigs();
 }

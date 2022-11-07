@@ -62,6 +62,12 @@ public class LoanInterestConfigsServiceImpl implements LoanInterestConfigsServic
     }
 
     @Override
+    public LoanInterestConfigs getFirstLoanInterestConfigs() {
+        LoanInterestConfigs firstByStatus = loanInterestConfigsRepository.findFirstByStatus(CreationStatus.ACTIVE);
+        return firstByStatus;
+    }
+
+    @Override
     public CommonResponse deleteLoanInterestConfigs(Long id) {
         return null;
     }

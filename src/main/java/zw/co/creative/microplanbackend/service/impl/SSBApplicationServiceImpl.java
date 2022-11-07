@@ -5,15 +5,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import zw.co.creative.microplanbackend.common.response.CommonResponse;
 import zw.co.creative.microplanbackend.common.response.LoanApplicationResponse;
-import zw.co.creative.microplanbackend.domain.DocumentUpload;
-import zw.co.creative.microplanbackend.domain.LoanApplication;
-import zw.co.creative.microplanbackend.domain.SSBApplication;
+import zw.co.creative.microplanbackend.domain.*;
 import zw.co.creative.microplanbackend.domain.dto.SSBApplicationDto;
 import zw.co.creative.microplanbackend.enums.CreationStatus;
 import zw.co.creative.microplanbackend.persistance.DocumentsUploadRepository;
 import zw.co.creative.microplanbackend.persistance.LoanApplicationRepository;
 import zw.co.creative.microplanbackend.persistance.LoanRepository;
 import zw.co.creative.microplanbackend.persistance.SSBApplicationRepository;
+import zw.co.creative.microplanbackend.service.LoanCreditConfigsService;
+import zw.co.creative.microplanbackend.service.LoanInterestConfigsService;
 import zw.co.creative.microplanbackend.service.SSBApplicationService;
 
 import java.time.LocalDate;
@@ -30,6 +30,8 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
     private final SSBApplicationRepository ssbApplicationRepository;
     private final LoanApplicationRepository loanApplicationRepository;
     private final DocumentsUploadRepository documentsUploadRepository;
+    private final LoanInterestConfigsService loanInterestConfigsService;
+    private final LoanCreditConfigsService loanCreditConfigsService;
 
     @Override
     public CommonResponse createSSBApplication(SSBApplicationDto dto) {
@@ -131,7 +133,7 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
 
     @Override
     public CommonResponse findAllLoanApplications(String agent_id) {
-        List<LoanApplication> allByStatus = loanApplicationRepository.findByAgentIdAndStatus(Long.valueOf(agent_id),CreationStatus.ACTIVE);
+        List<LoanApplication> allByStatus = loanApplicationRepository.findByAgentIdAndStatus(Long.valueOf(agent_id), CreationStatus.ACTIVE);
         List<LoanApplicationResponse> loanAppResponseList = new ArrayList<>();
         if (allByStatus.size() > 0) {
             for (LoanApplication loanApplication : allByStatus
@@ -205,23 +207,42 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
     }
 
     private LoanApplication toLoanApplicationObject(Map<String, Object> map) {
-        String selectedBankName=map.getOrDefault("bankName", "").toString();
-        String selectedAccountType=map.getOrDefault("accountType", "").toString();
-        String selectedOtherNameOfEmployer=map.getOrDefault("nameOfEmployer","").toString();
+
+        LoanCreditConfigs firstLoanCreditConfigs = loanCreditConfigsService.getFirstLoanCreditConfigs();
+        log.info("firstLoanCreditConfigs fetched-------: {}",firstLoanCreditConfigs);
+        LoanInterestConfigs firstLoanInterestConfigs = loanInterestConfigsService.getFirstLoanInterestConfigs();
+        log.info("firstLoanInterestConfigs fetched-------: {}",firstLoanInterestConfigs);
+        String bankName,accountType,nameOfEmployer;
+
+        String selectedBankName = map.getOrDefault("bankName", "").toString();
+        String otherBankName=map.getOrDefault("otherBankName","").toString();
+        log.info("Selected Bank name-----: {}",selectedBankName);
+        String selectedAccountType = map.getOrDefault("accountType", "").toString();
+        String otherAccountType=map.getOrDefault("otherAccountType","").toString();
+        log.info("selected Account Type-----: {}",selectedAccountType);
+        String selectedOtherNameOfEmployer = map.getOrDefault("nameOfEmployer", "").toString();
+        String otherNameOfEmployer=map.getOrDefault("otherNameOfEmployer","").toString();
+        log.info("selected OtherNameOfEmployer------: {}",selectedOtherNameOfEmployer);
         if (map == null) {
             return null;
         }
 
-        if(map.get("otherBankName").toString()!=null||!map.get("otherBankName").toString().equals("")){
-            selectedBankName=map.get("otherBankName").toString();
+        if (!otherBankName.equals("")) {
+            bankName=otherBankName;
+        }else{
+            bankName=selectedBankName;
         }
 
-        if(map.get("otherAccountType").toString()!=null||!map.get("otherAccountType").toString().equals("")){
-            selectedAccountType=map.get("otherAccountType").toString();
+        if (!otherAccountType.equals("")) {
+            accountType=otherAccountType;
+        }else{
+            accountType=selectedAccountType;
         }
 
-        if(map.get("otherNameOfEmployer").toString()!=null||!map.get("otherNameOfEmployer").toString().equals("")){
-            selectedOtherNameOfEmployer=map.get("otherNameOfEmployer").toString();
+        if (!otherNameOfEmployer.equals("")) {
+            nameOfEmployer = otherNameOfEmployer;
+        }else {
+            nameOfEmployer=selectedOtherNameOfEmployer;
         }
 
 
@@ -232,6 +253,12 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
                 .isSubmitted("true")
                 .dateAndTime(map.getOrDefault("dateAndTime", "").toString())
 
+                //static details
+                .penaltyRate(firstLoanInterestConfigs.getPenaltyRate())
+                .defaultInterest(firstLoanInterestConfigs.getDefaultInterest())
+                .creditBankName(firstLoanCreditConfigs.getBankName())
+                .creditBranchName(firstLoanCreditConfigs.getBranchName())
+                .creditAccountNumber(firstLoanCreditConfigs.getAccountNumber())
                 //Loan Details
                 .loanPeriod(Integer.valueOf(map.getOrDefault("loanPeriod", 0).toString()))
                 .netSalary(Double.valueOf(map.getOrDefault("netSalary", 0.0).toString()))
@@ -269,7 +296,7 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
 
                 //Employment Details
                 .profession(map.getOrDefault("profession", "").toString())
-                .nameOfEmployer(selectedOtherNameOfEmployer)
+                .nameOfEmployer(nameOfEmployer)
                 .employerAddress(map.getOrDefault("employerPhysicalAddress", "").toString())
                 .positionHeld(map.getOrDefault("positionHeld", "").toString())
                 .employeeNumber(map.getOrDefault("employeeNumber", "").toString())
@@ -282,11 +309,11 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
                 //.districtAndPayrollCode(map.getOrDefault("districtAndPayrollCode","").toString())
 
                 //Bank details
-                .bankName(selectedBankName)
+                .bankName(bankName)
                 .branchName(map.getOrDefault("branchName", "").toString())
                 .accountName(map.getOrDefault("accountName", "").toString())
                 .accountNo(map.getOrDefault("accountNo", "").toString())
-                .accountType(selectedAccountType)
+                .accountType(accountType)
 
                 //Documents
                 //.nationalIdUpload(map.getOrDefault("nationalIdUpload","").toString())
@@ -323,38 +350,38 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
 
                 //Next of Kin 1 Details
                 //.nxtOfKin1TitleGroup(map.getOrDefault("nxtOfKin1TitleGroup","").toString())
-                .nxtOfKin1FirstName(map.getOrDefault("nxtOfKin1FirstName","").toString())
-                .nxtOfKin1Surname(map.getOrDefault("nxtOfKin1Surname","").toString())
-                .nxtOfKin1Address(map.getOrDefault("nxtOfKin1ResidentialAddress","").toString())
-                .nxtOfKin1Phone(map.getOrDefault("nxtOfKin1PhoneNumber","").toString())
-                .nxtOfKin1Relation(map.getOrDefault("nxtOfKin1Relation","").toString())
+                .nxtOfKin1FirstName(map.getOrDefault("nxtOfKin1FirstName", "").toString())
+                .nxtOfKin1Surname(map.getOrDefault("nxtOfKin1Surname", "").toString())
+                .nxtOfKin1Address(map.getOrDefault("nxtOfKin1ResidentialAddress", "").toString())
+                .nxtOfKin1Phone(map.getOrDefault("nxtOfKin1PhoneNumber", "").toString())
+                .nxtOfKin1Relation(map.getOrDefault("nxtOfKin1Relation", "").toString())
                 //.nxtOfKin1NameOfEmployer(map.getOrDefault("nxtOfKin1NameOfEmployer","").toString())
                 //.nxtOfKin1EmployerAddress(map.getOrDefault("nxtOfKin1EmployerAddress","").toString())
 
                 //Next of Kin 2 Details
                 //.nxtOfKin2TitleGroup(map.getOrDefault("nxtOfKin2TitleGroup","").toString())
-                .nxtOfKin2FirstName(map.getOrDefault("nxtOfKin2FirstName","").toString())
-                .nxtOfKin2Surname(map.getOrDefault("nxtOfKin2Surname","").toString())
-                .nxtOfKin2Address(map.getOrDefault("nxtOfKin2ResidentialAddress","").toString())
-                .nxtOfKin2Phone(map.getOrDefault("nxtOfKin2PhoneNumber","").toString())
-                .nxtOfKin2Relation(map.getOrDefault("nxtOfKin2Relation","").toString())
+                .nxtOfKin2FirstName(map.getOrDefault("nxtOfKin2FirstName", "").toString())
+                .nxtOfKin2Surname(map.getOrDefault("nxtOfKin2Surname", "").toString())
+                .nxtOfKin2Address(map.getOrDefault("nxtOfKin2ResidentialAddress", "").toString())
+                .nxtOfKin2Phone(map.getOrDefault("nxtOfKin2PhoneNumber", "").toString())
+                .nxtOfKin2Relation(map.getOrDefault("nxtOfKin2Relation", "").toString())
                 //.nxtOfKin2NameOfEmployer(map.getOrDefault("nxtOfKin2NameOfEmployer","").toString())
                 //.nxtOfKin2EmployerAddress(map.getOrDefault("nxtOfKin2EmployerAddress","").toString())
 
                 //Declaration
                 //.borrowerFullName(map.getOrDefault("borrowerFullName","").toString())
-                .placeOfSignature(map.getOrDefault("placeOfSignature","").toString())
+                .placeOfSignature(map.getOrDefault("placeOfSignature", "").toString())
                 //.borrowerSignature(map.getOrDefault("borrowerSignature","").toString())
                 //.borrowerSignatureBase64(map.getOrDefault("borrowerSignatureBase64","").toString())
                 //.dateSignBorrower(map.getOrDefault("dateSignBorrower","").toString())
 
-                .witnessFullName(map.getOrDefault("witnessFullName","").toString())
+                .witnessFullName(map.getOrDefault("witnessFullName", "").toString())
                 //.witnessSignature(map.getOrDefault("witnessSignature","").toString())
                 //.witnessSignatureBase64(map.getOrDefault("witnessSignatureBase64","").toString())
                 //.dateSignWitness(map.getOrDefault("dateSignWitness","").toString())
                 //.witnessPlaceOfSignature(map.getOrDefault("witnessPlaceOfSignature","").toString())
 
-                .witnessFullName2(map.getOrDefault("witnessFullName2","").toString())
+                .witnessFullName2(map.getOrDefault("witnessFullName2", "").toString())
                 //.witnessSignature2(map.getOrDefault("witnessSignature2","").toString())
                 //.witness2SignatureBase64(map.getOrDefault("witness2SignatureBase64","").toString())
                 //.dateSignWitness2(map.getOrDefault("dateSignWitness2","").toString())
@@ -381,9 +408,9 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
 
         DocumentUpload documentUpload = DocumentUpload.builder()
                 .loanUniqueRef(map.getOrDefault("uniqueRef", "").toString())
-                .borrowerSignature(map.getOrDefault("borrowerSignature","").toString())
-                .witnessSignature(map.getOrDefault("witnessSignature","").toString())
-                .witnessSignature2(map.getOrDefault("witnessSignature2","").toString())
+                .borrowerSignature(map.getOrDefault("borrowerSignature", "").toString())
+                .witnessSignature(map.getOrDefault("witnessSignature", "").toString())
+                .witnessSignature2(map.getOrDefault("witnessSignature2", "").toString())
 
                 .nationalIdUpload(map.getOrDefault("nationalIdUpload", "").toString())
                 .documentNationalId(map.getOrDefault("documentNationalId", "").toString())
