@@ -33,8 +33,26 @@ public class ApiWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapte
 
 
     public void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED).invalidSessionUrl("/login?InvalidSession");
-        ((HttpSecurity)((HttpSecurity)((FormLoginConfigurer)((FormLoginConfigurer)((HttpSecurity)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((HttpSecurity)http.csrf().disable()).authorizeRequests().antMatchers(new String[]{"/", "/js/**", "/css/**", "/img/**", "/images/**", "/build/**", "/doc/**", "/vendor/**", "/src/**", "/maps/**", "/https://code.jquery.com/**", "/https://cdn.datatables.net/**", "/https://cdnjs.cloudflare.com//**", "/webjars/**"})).permitAll().antMatchers(HttpMethod.POST, new String[]{"/*"})).permitAll().antMatchers(HttpMethod.POST, new String[]{"/login"})).permitAll().antMatchers(HttpMethod.GET, new String[]{"/login"})).permitAll().antMatchers(new String[]{"/loginerror"})).permitAll().antMatchers(new String[]{"/forgetpassword"})).permitAll().antMatchers(new String[]{"/resetpassword"})).permitAll().antMatchers(new String[]{"/employees/changepassword"})).permitAll().antMatchers(new String[]{"/employees/changepasswordSave"})).permitAll()
+        http
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+                .invalidSessionUrl("/login?InvalidSession");
+        ((HttpSecurity)((HttpSecurity)((FormLoginConfigurer)((FormLoginConfigurer)((HttpSecurity)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer
+                .AuthorizedUrl)((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)
+                ((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)
+                ((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)
+                ((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)
+                ((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)
+                        ((ExpressionUrlAuthorizationConfigurer.AuthorizedUrl)((HttpSecurity)http.csrf().disable()).authorizeRequests().antMatchers(new String[]{"/", "/js/**", "/css/**", "/img/**", "/images/**", "/build/**", "/doc/**", "/vendor/**", "/src/**", "/maps/**", "/https://code.jquery.com/**", "/https://cdn.datatables.net/**", "/https://cdnjs.cloudflare.com//**", "/webjars/**"})).permitAll().antMatchers(HttpMethod.POST, new String[]{"/*"})).permitAll().antMatchers(HttpMethod.POST, new String[]{"/login"})).permitAll().antMatchers(HttpMethod.GET, new String[]{"/login"})).permitAll().antMatchers(new String[]{"/loginerror"})).permitAll().antMatchers(new String[]{"/forgot_password"})).permitAll().antMatchers(new String[]{"/reset_password"})).permitAll().antMatchers(new String[]{"/employees/changepassword"})).permitAll().antMatchers(new String[]{"/employees/changepasswordSave"})).permitAll()
                 .antMatchers(new String[]{"/assetrecord/reception"})).permitAll().antMatchers(new String[]{"/assetrecord/reception/accept"})).permitAll().antMatchers(new String[]{"/assetrecord/reception/reject"})).permitAll().antMatchers(new String[]{"/computerDashboard/reception"})).permitAll().antMatchers(new String[]{"/computerDashboard/reception/accept"})).permitAll().antMatchers(new String[]{"/computerDashboard/reception/reject"})).permitAll().anyRequest()).authenticated().and()).formLogin().loginPage("/login").successHandler(this.myAuthenticationSuccessHandler())).failureUrl("/loginerror")).and()).logout().invalidateHttpSession(true).clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login?logout").permitAll().and()).exceptionHandling();
     }
 

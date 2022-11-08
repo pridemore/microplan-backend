@@ -125,6 +125,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
                     .houseAddress(user.get().getHouseAddress())
                     .ipAddress(user.get().getIpAddress())
                     .role(user.get().getRole())
+                    .status(user.get().getStatus().name())
                     .dateCreated(user.get().getDateCreated())
                     .lastUpdated(user.get().getLastUpdated())
                     .build();
@@ -175,5 +176,34 @@ public class CreativeUserServiceImpl implements CreativeUserService {
         CreativeUser deletedUser = creativeUserRepository.save(foundUser.get());
         return new CommonResponse().buildSuccessResponse("User deleted Successfully.",deletedUser);
 
+    }
+
+    @Override
+    public CommonResponse updateUserResetPasswordToken(String token, String email) {
+        CreativeUser creativeUser = creativeUserRepository.findCreativeUserByEmail(email);
+        if (creativeUser != null) {
+            creativeUser.setResetPasswordToken(token);
+            creativeUserRepository.save(creativeUser);
+        } else {
+            return new CommonResponse().buildErrorResponse("Could not find any customer with the email " + email);
+        }
+
+        return new CommonResponse().buildSuccessResponse("Token Saved");
+    }
+
+    public CreativeUser getByResetPasswordToken(String token) {
+        return creativeUserRepository.findCreativeUserByResetPasswordToken(token);
+    }
+
+
+    @Override
+    public CommonResponse resetPassword(CreativeUser creativeUser, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        creativeUser.setPassword(encodedPassword);
+
+        creativeUser.setResetPasswordToken(null);
+        creativeUserRepository.save(creativeUser);
+        return new CommonResponse().buildSuccessResponse("Password Reset Successfully");
     }
 }

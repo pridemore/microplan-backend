@@ -56,9 +56,17 @@ public class HomeController {
         LoanApplication ssbApplication=loanApplicationRepository.findById(id).get();
         model.addAttribute("SSBApplication", ssbApplication);
         String ref= ssbApplication.getUniqueRef();
+
+
+        String employeeCodeNumbers=ssbApplication.getEmployeeNumber().substring(0,7);
+        log.info("employeeCodeNumbers-----------: {}",employeeCodeNumbers);
+        String employeeCodeCheckDidgit=ssbApplication.getEmployeeNumber().substring(7);
+        log.info("employeeCodeCheckDidgit----------: {}",employeeCodeCheckDidgit);
         DocumentUpload documentUpload=documentsUploadRepository.findByLoanUniqueRef(ref);
         model.addAttribute("documentUpload",documentUpload);
         model.addAttribute("space"," ");
+        model.addAttribute("employeeCodeNumbers",employeeCodeNumbers);
+        model.addAttribute("employeeCodeCheckDidgit",employeeCodeCheckDidgit);
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/applications/applicationForm";
     }

@@ -1,0 +1,136 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="fragments/header :: header">
+</head>
+<body>
+<!--<div th:replace="fragments/preloader ::preloader">-->
+<!--</div>-->
+<div class="page-container">
+    <div th:replace="fragments/sidebar :: sidebar-menu"></div>
+    <div class="main-content">
+
+        <div th:replace="fragments/header_area ::header-area">
+        </div>
+        <div th:replace="fragments/title_area ::title-area">
+        </div>
+        <div class="main-content-inner">
+            <div class="row">
+
+                <!-- Primary table start -->
+                <div class="col-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="header-title">Data Table Primary</h4>
+                            <div class="data-tables datatable-primary">
+
+
+                                <table id="dataTable2" class="text-left" style="width: 100% !important;">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Bank Name</th>
+                                        <th>Branch</th>
+                                        <th>Account Number</th>
+                                        <th>Status</th>
+                                        <th>Created Date</th>
+                                        <th>Updated Date</th>
+                                        <th class="d-flex justify-content-center"> Action</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr th:each="creditConfig:${creditConfigs}">
+                                        <td th:text="${creditConfig.id}"></td>
+                                        <td th:text="${creditConfig.bankName}"></td>
+                                        <td th:text="${creditConfig.branchName}"></td>
+                                        <td th:text="${creditConfig.accountNumber}"></td>
+                                        <td th:text="${creditConfig.status}"></td>
+                                        <td th:text="${creditConfig.dateCreated}"></td>
+                                        <td th:text="${creditConfig.lastUpdated}"></td>
+                                        <td>
+                                            <ul class="d-flex justify-content-center">
+<!--                                                <li class="mr-3"><a href="" class="text-secondary"><i class="fa fa-eye"></i></a></li>-->
+                                                <li class="mr-3"><a  data-toggle="modal" data-target="#editCreditConfigModal"class="text-secondary"><i class="fa fa-edit"></i></a></li>
+<!--                                                <button id="send" type="button" data-toggle="modal" data-target="#editCreativeUserModal" class="btn btn-primary mt-4 pr-4 pl-4">Edit</button>-->
+<!--                                                <li><a href="#" class="text-danger"><i class="ti-trash"></i></a></li>-->
+                                            </ul>
+                                            <!--                                                <a th:href="@{/roles/edit(id=${role.name})}"class="btn btn-dark">Edit</a>-->
+                                        </td>
+
+
+
+                                        <!-- Edit modal toggle start-->
+                                        <div class="modal fade" id="editCreditConfigModal" tabindex="-1"
+                                             role="dialog" aria-labelledby="editCreditConfigModalLabel" aria-hidden="true">
+                                            <div class="row justify-content-center">
+                                                <div class="col-lg-6 col-ml-12">
+                                                    <div class="row">
+                                                        <!-- Textual inputs start -->
+                                                        <div class="col-6 mt-5">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <h4 class="header-title">Edit Credit Config</h4>
+                                                                    <form method="post"  th:action="@{/configs/edit/credit/{id} (id=${creditConfig.id})}">
+                                                                        <div class="form-group">
+                                                                            <label for="updateBankName" class="col-form-label">Bank Name:</label>
+                                                                            <input class="form-control" type="text" placeholder="Bank Name" id="updateBankName"
+                                                                                   name="bankName" th:value="${creditConfig.bankName}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="branchName" class="col-form-label">Branch Name</label>
+                                                                            <input class="form-control" type="text" placeholder="Branch Name" id="branchName"
+                                                                                   name="branchName" th:value="${creditConfig.branchName}">
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="accountNumber" class="col-form-label">Account Number</label>
+                                                                            <input class="form-control" type="text" placeholder="Account Number" id="accountNumber"
+                                                                                   name="accountNumber" th:value="${creditConfig.accountNumber}">
+                                                                        </div>
+
+                                                                        <button type="submit" class="btn btn-primary">Save</button>
+                                                                        <button type="button"  class="btn btn-secondary" data-mdb-dismiss="modal">Close
+                                                                        </button>
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!--                    </div>-->
+                                                        <!--                </div>-->
+                                                    </div>
+
+                                                    <!-- end here-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Toggle edit end -->
+
+
+
+
+
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Primary table end -->
+
+            </div>
+        </div>
+
+
+    </div>
+    <!-- main content area end -->
+    <div th:replace="fragments/footer ::footer">
+    </div>
+    <div th:replace="fragments/scripts ::scripts">
+    </div>
+</div>
+</body>
+</html>

@@ -45,12 +45,12 @@ public class MySimpleUrlAuthenticationSuccessHandler implements AuthenticationSu
 
         while(var10.hasNext()) {
             GrantedAuthority grantedAuthority = (GrantedAuthority)var10.next();
-            if (grantedAuthority.getAuthority().equals("USER")) {
+            if (grantedAuthority.getAuthority().equalsIgnoreCase("user")) {
                 isUser = true;
                 break;
             }
 
-            if (grantedAuthority.getAuthority().equals("admin")) {
+            if (grantedAuthority.getAuthority().equalsIgnoreCase("admin")) {
                 isAdmin = true;
                 break;
             }

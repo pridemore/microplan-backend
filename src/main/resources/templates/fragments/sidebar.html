@@ -67,7 +67,16 @@
                     </li>
 
                     <li>
-                        <a th:href="@{/dashboard}" aria-expanded="true"><i class="ti-alert"></i><span>Logout</span></a>
+                        <a href="javascript:void(0)" aria-expanded="true"><i class="ti-eye"></i><span>Configs</span></a>
+                        <ul class="collapse">
+                            <li><a th:href="@{/configs/view/credit}">Credit Config</a></li>
+                            <li><a th:href="@{/configs/view/interest}">Interest Config</a></li>
+<!--                            <li><a th:href="@{/roles/view}">View Roles</a></li>-->
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/login}" aria-expanded="true"><i class="ti-alert"></i><span>Logout</span></a>
                     </li>
 
                 </ul>

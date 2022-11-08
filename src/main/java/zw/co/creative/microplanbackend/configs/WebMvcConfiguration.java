@@ -11,6 +11,7 @@ class WebMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        //String myExternalFilePath = "file:///C:/Users/pridemore.vhiriri/Creative_uploads/";
         String myExternalFilePath = "file:///C:/Users/kafankalb/Creative_uploads/";
 
         registry.addResourceHandler("/Creative_uploads/**").addResourceLocations(myExternalFilePath);
