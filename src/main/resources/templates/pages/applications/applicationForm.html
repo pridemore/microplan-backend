@@ -23,7 +23,7 @@
 
 <!--<div th:replace="fragments/preloader ::preloader">-->
 <!--</div>-->
-<div style="margin-left: 0px !important;" class="page-container">
+<div style="margin-left: 0px !important; font-size: 14px !important;" class="page-container">
 
 <center><label><b><span th:text="${SSBApplication.getApplicationTitle()}"></span></b></label></center>
     <center><img style=" height: auto;" src="/images/icon/microplan.png"></center>
@@ -55,26 +55,48 @@
 
     </table>
 
+
+
+
     <table style="width: 100%;">
         <tr>
-            <td style="width: 20%;"><b>Loan Proceeds to be credited to nominated FCA account<br/> Account Number:</b>
+            <td style="width: 20%"><b>LOAN PURPOSE:</b></td>
+            <td style="width: 80%; color: blue;" th:text="${SSBApplication.getLoanPurpose()}"></td>
+
+
+        </tr>
+
+    </table>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 20%;"><b>Loan Proceeds to be credited to nominated FCA account<br/> Account Name: <span style=" color: blue">BIGTILL</span></b>
             </td>
-            <td style="width: 10%; color: blue;" th:text="${SSBApplication.getDateAndTime()}"></td>
 
             <td style="width: 10%;"><b>Bank  Name</b></td>
-            <td style="width: 15%; color: blue" th:text="${SSBApplication.getBankName()}"></td>
+            <td style="width: 20%; color: blue" th:text="${SSBApplication.getCreditBankName()}"></td>
             <td style="width: 10%;"><b>Bank Account Number</b></td>
-            <td style="width: 15%; color: blue" th:text="${SSBApplication.getAccountNo()}"></td>
+            <td style="width: 20%; color: blue" th:text="${SSBApplication.getCreditAccountNumber()}"></td>
             <td style="width: 10%" ;><b>Branch</b></td>
-            <td style="width: 10%;color: blue" ; th:text="${SSBApplication.getBranchName()}"></td>
+            <td style="width: 10%;color: blue" ; th:text="${SSBApplication.getCreditBranchName()}"></td>
 
         </tr>
     </table>
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 20%;"><b>Loan Proceeds to be credited to nominated FBC Bank<br/> Branch </b>
+            </td>
+            <td style="width: 10%" ;><b>Branch</b></td>
+            <td style="width: 80%;color: blue" ; ></td>
+
+        </tr>
+    </table>
+
     <table style="width: 100%;">
         <tr>
             <td style="width: 10%;"><b>FIRST NAME</b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getFirstName()}"></td>
-            <td style="width: 10%;"><b>MIDDLE NAME <BR/><i>(if any)</i></b></td>
+            <td style="width: 10%;"><b>MIDDLE NAME<i>(if any)</i></b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
             <td style="width: 10%;"><b>SURNAME</b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getLastName()}"></td>
@@ -83,9 +105,9 @@
     </table>
     <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;"><b>FULL MAIDEN NAME <br/> <i>(for married Woman)</i></b></td>
+            <td style="width: 25%;"><b>FULL MAIDEN NAME <i>(for married Woman)</i></b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
-            <td style="width: 25%;"><b>Full NAME OF SPOUSE <br/> <i>(for married Applicants)</i></b></td>
+            <td style="width: 25%;"><b>Full NAME OF SPOUSE <i>(for married Applicants)</i></b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
 
 
@@ -161,7 +183,7 @@
         <tr>
             <td style="width: 25%;"><b>PROFFESSION <i>eg (mining, health etc)</i></b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getProfession()}"></td>
-            <td style="width: 25%;"><b>POSITION HELD eg<br/> (doctor, engineer etc)</b></td>
+            <td style="width: 25%;"><b>POSITION HELD eg (doctor, engineer etc)</b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getPositionHeld()}"></td>
 
         </tr>
@@ -180,11 +202,11 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 10%;"><b>NAME OF SPOUSES <br/> <I>employer</i></b></td>
+            <td style="width: 10%;"><b>NAME OF SPOUSES <i>employer</i></b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
             <td style="width: 10%;"><b>ADDRESS OF SPOUSE </b></td>
             <td style="width: 20%; color: blue;"></td>
-            <td style="width: 20%;"><b>SPOUSE NET SALARY (br/) <i>(Attach Payslip)</i></b></td>
+            <td style="width: 20%;"><b>SPOUSE NET SALARY <i>(Attach Payslip)</i></b></td>
             <td style="width: 20%; color: blue;"></td>
 
         </tr>
@@ -194,7 +216,7 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;"><b>OTHER REGULAR SOURCE OF INCOME <br/><i>(specify the source of income)</i></b>
+            <td style="width: 25%;"><b>OTHER REGULAR SOURCE OF INCOME<i>(specify the source of income)</i></b>
             </td>
             <td style="width: 25%; color: blue;"></td>
             <td style="width: 10%;"><b>FREQUENCY OF INCOME</b></td>
@@ -210,7 +232,7 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;"><b>CREDIT FACILITY AMOUNT REQUIRED <br/><i>(in USD $)</i></b></td>
+            <td style="width: 25%;"><b>CREDIT FACILITY AMOUNT REQUIRED<i>(in USD $)</i></b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getPrice()}"></td>
             <td style="width: 25%;"><b>FACILITY TYPE</b></td>
             <td style="width: 25%; color: blue;">SHORT TERM USD LOANS</td>
@@ -225,6 +247,25 @@
         </tr>
 
     </table>
+
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 20%;"><b>Applicant Banking Details<br/> Account Name: <span style=" color: blue" th:text="${SSBApplication.getAccountName()}"></span></b>
+            </td>
+
+            <td style="width: 10%;"><b>Bank  Name</b></td>
+            <td style="width: 20%; color: blue" th:text="${SSBApplication.getBankName()}"></td>
+            <td style="width: 10%;"><b>Bank Account Number</b></td>
+            <td style="width: 20%; color: blue" th:text="${SSBApplication.getAccountNo()}"></td>
+            <td style="width: 10%" ;><b>Branch</b></td>
+            <td style="width: 10%;color: blue" ; th:text="${SSBApplication.getBranchName()}"></td>
+
+        </tr>
+    </table>
+
+
+
     <table style="width: 100%;">
         <tbody>
 
@@ -261,7 +302,6 @@
     </table>
 
 
-    <br/><br/>
 
     <center><h3><u><b>
         Provide details of the existing or most recent Loan from FBC Bank, other lenders or employer
@@ -312,24 +352,19 @@
     </table>
 
 
-    <p style="page-break-after: always;">&nbsp;</p>
-
-    <div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: 15px;">
+    <div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: 14px;">
         <center><h3><b><u></u> DECLARATION BY CUSTOMER</u> </b></h3></center>
-        <br/>
+        <center><br/>
         I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
-        <br/> <br/> <br/>
+        <br/></center> <br/> <br/>
         Yours faithfully
         <br/>
-        <img style="width: 100px; height:100px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
+        <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
         <br/>
         Customers Signature <span style="margin-left: 40%;"> Date  : <span th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
         <br/>
 
-
-
-
-        <img style="width: 100px; height:100px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+        <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
        <br/>
         Witness Signature <span style="margin-left: 40%;"> Date  : <span th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
 
@@ -482,7 +517,7 @@
             th:text="${SSBApplication.getDateCreated().getMonth()}"></span> <span
             th:text="${SSBApplication.getDateCreated().getYear()}"></span>
         <br/>
-        <img style="width: 100px; height:100px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
+        <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
 <!--       //<img th:src="@{/Creative_uploads/{id}(id=${documentUpload.borrowerSignature})}">-->
 <!--       --> <br/>
         Applicant’s/Borrower’s signature
@@ -492,26 +527,91 @@
         <br/>
         <div style="width: 100%">
             <div style="width: 50%; float: left;">
-                <img style="width: 100px; height:100px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+                <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
                 <br/>
                 <p th:text="${SSBApplication.getWitnessFullName()}"></p>
             </div>
             <div style="width: 50%; float: left;">
-                <img style="width: 100px; height:100px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature2 }}">
+                <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature2 }}">
                 <br/>
-                <p style="page-break-after: always;" th:text="${SSBApplication.getWitnessFullName2()}"></p>
+                <p  th:text="${SSBApplication.getWitnessFullName2()}"></p>
             </div>
         </div>
 
     </div>
 
 
+    <h3 style="clear: both">MICROPLAN FINANCIAL SERVICES USE ONLY</h3>
 
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 15%;">Signature verified</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 15%;">Loan purpose</td>
+            <td style="width: 15%;" ></td>
+            <td style="width: 20%;">Pay slip or proof of income</td>
+            <td style="width: 20%;"></td>
+        </tr>
+
+    </table>
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 15%;">Next of kin details confirmed</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 15%;">Sector</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 20%;">Bank statement</td>
+            <td style="width: 20%;"></td>
+        </tr>
+
+    </table>
+
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 15%;">Employment status confirmed</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 15%;">Region</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 20%;">Copy National ID</td>
+            <td style="width: 20%;"></td>
+        </tr>
+
+    </table>
+
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 15%;">Recommendation Loans Officer/ Manager</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 15%;">Loans Officer</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 20%;">40% of net salary</td>
+            <td style="width: 20%;"></td>
+        </tr>
+
+    </table>
+
+
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 15%;">Managing Director</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 15%;">Gender</td>
+            <td style="width: 15%;"></td>
+            <td style="width: 20%;">Approval and conditions</td>
+            <td style="width: 20%;"></td>
+        </tr>
+
+    </table>
+
+    <p style="page-break-after: always;"></p>
 
     <div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: 15px;">
 
         <ol type="1">
-        <h4>ACKNOWLEDGEMENT OF DEBIT</h4>
+       <center> <h4>ACKNOWLEDGEMENT OF DEBIT</h4></center>
 
         I/We, the undersigned <b><span th:text="${SSBApplication.getFirstName()} +${space}+ ${SSBApplication.getLastName()}"></span></b> (“the Debtor”) of <b><span th:text="${SSBApplication.getResidentialAddress()}"></span></b>
             which address I/we choose as my/our dominicilium citandi et executandi for purposes hereof, do hereby admit that I am /we are liable,
@@ -594,73 +694,6 @@
         </div>
 
     </div>
-
-
-    <h3 style="clear: both">MICROPLAN FINANCIAL SERVICES USE ONLY</h3>
-
-
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 15%;">Signature verified</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 15%;">Loan purpose</td>
-            <td style="width: 15%;" ></td>
-            <td style="width: 20%;">Pay slip or proof of income</td>
-            <td style="width: 20%;"></td>
-        </tr>
-
-    </table>
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 15%;">Next of kin details confirmed</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 15%;">Sector</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 20%;">Bank statement</td>
-            <td style="width: 20%;"></td>
-        </tr>
-
-    </table>
-
-
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 15%;">Employment status confirmed</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 15%;">Region</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 20%;">Copy National ID</td>
-            <td style="width: 20%;"></td>
-        </tr>
-
-    </table>
-
-
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 15%;">Recommendation Loans Officer/ Manager</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 15%;">Loans Officer</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 20%;">40% of net salary</td>
-            <td style="width: 20%;"></td>
-        </tr>
-
-    </table>
-
-
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 15%;">Managing Director</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 15%;">Gender</td>
-            <td style="width: 15%;"></td>
-            <td style="width: 20%;">Approval and conditions</td>
-            <td style="width: 20%;"></td>
-        </tr>
-
-    </table>
-
 
     <p style="page-break-after: always;">&nbsp;</p>
 
@@ -811,12 +844,28 @@
     </div>
 </div>
 </div>
+<div style="clear: both"></div>
+<br/>
+<br/>
+<center><h3 style="clear: both"><b><u></u> DECLARATION BY APPLICANT</u> </b></h3></center>
+<center><br/>
+    I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
+    <br/></center> <br/> <br/>
+
+<img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
+<br/>
+APPLICANT SIGNATURE <span style="margin-left: 40%;"> Date  : <span th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
+<br/>
+<br/>
+<br/>
+AUTHORISED/APPROVED BY:....................................SIGNATURE...........................................Date:..............................</b></span></span>
+
+
 
 <center style="clear: both">
-    <br/>
-    <br/>
-    <br/>
+
     <p style="page-break-after: always;">&nbsp;</p>
+
     <h2 >NATIONAL ID</h2>
     <br/>
     <br/>

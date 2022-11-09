@@ -206,4 +206,11 @@ public class CreativeUserServiceImpl implements CreativeUserService {
         creativeUserRepository.save(creativeUser);
         return new CommonResponse().buildSuccessResponse("Password Reset Successfully");
     }
+
+    @Override
+    public List<CreativeUser> getAllCreativeUsersByStatusAndRole(CreationStatus status, String role) {
+        List<CreativeUser> allByStatusAndRole = creativeUserRepository.findAllByStatusAndRole(status, role);
+        log.info("all Users by status and role---------: {}",allByStatusAndRole);
+        return allByStatusAndRole;
+    }
 }

@@ -4,6 +4,7 @@ import zw.co.creative.microplanbackend.common.response.CommonResponse;
 import zw.co.creative.microplanbackend.domain.CreativeUser;
 import zw.co.creative.microplanbackend.domain.dto.CreativeUserDto;
 import zw.co.creative.microplanbackend.domain.dto.LoginDto;
+import zw.co.creative.microplanbackend.enums.CreationStatus;
 
 import java.util.List;
 
@@ -24,4 +25,6 @@ public interface CreativeUserService {
     CreativeUser getByResetPasswordToken(String token);
 
     CommonResponse resetPassword(CreativeUser creativeUser, String newPassword);
+
+    List<CreativeUser>getAllCreativeUsersByStatusAndRole(CreationStatus status,String role);
 }

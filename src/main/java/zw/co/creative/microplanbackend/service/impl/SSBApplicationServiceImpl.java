@@ -117,8 +117,8 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
         return ssbApplicationRepository.findById(id);
     }
 
-    public List<SSBApplication> findAll() {
-        return ssbApplicationRepository.findAll();
+    public List<LoanApplication> findAll() {
+        return loanApplicationRepository.findAll();
     }
 
     @Override

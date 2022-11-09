@@ -6,11 +6,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import zw.co.creative.microplanbackend.common.response.ProductResponse;
 import zw.co.creative.microplanbackend.domain.DocumentUpload;
 import zw.co.creative.microplanbackend.domain.LoanApplication;
 import zw.co.creative.microplanbackend.domain.SSBApplication;
+import zw.co.creative.microplanbackend.enums.CreationStatus;
 import zw.co.creative.microplanbackend.persistance.DocumentsUploadRepository;
 import zw.co.creative.microplanbackend.persistance.LoanApplicationRepository;
+import zw.co.creative.microplanbackend.service.CreativeUserService;
+import zw.co.creative.microplanbackend.service.ProductService;
 import zw.co.creative.microplanbackend.service.impl.SSBApplicationServiceImpl;
 
 import java.util.List;
@@ -31,10 +35,22 @@ public class HomeController {
     @Autowired
     private AuthenticatedEmployee authenticatedEmployee;
 
+    @Autowired
+    private CreativeUserService creativeUserService;
+
+    @Autowired
+    private ProductService productService;
+
     private SSBApplication ssbApplication;
 
     @GetMapping(value = "/dashboard")
     public String home(Model model){
+
+
+        List<ProductResponse>  result = (List<ProductResponse>)productService.getAllProducts().getResult();
+        model.addAttribute("totalApplications",ssbApplicationService.findAll().size());
+        model.addAttribute("totalAgents",creativeUserService.getAllCreativeUsersByStatusAndRole(CreationStatus.ACTIVE,"agent").size());
+        model.addAttribute("totalProducts",result.size());
          model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/home/dashboard";
     }
