@@ -213,4 +213,11 @@ public class CreativeUserServiceImpl implements CreativeUserService {
         log.info("all Users by status and role---------: {}",allByStatusAndRole);
         return allByStatusAndRole;
     }
+
+    @Override
+    public CreativeUser getUserById(Long id) {
+        CreativeUser user=creativeUserRepository.findById(id).get();
+        log.info("Found User by id---------: {}",user);
+        return user;
+    }
 }

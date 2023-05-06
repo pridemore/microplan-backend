@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.allegro.finance.tradukisto.MoneyConverters;
+import zw.co.creative.microplanbackend.common.Utility;
 import zw.co.creative.microplanbackend.common.response.ProductResponse;
+import zw.co.creative.microplanbackend.domain.CreativeUser;
 import zw.co.creative.microplanbackend.domain.DocumentUpload;
 import zw.co.creative.microplanbackend.domain.LoanApplication;
 import zw.co.creative.microplanbackend.domain.SSBApplication;
@@ -17,6 +20,7 @@ import zw.co.creative.microplanbackend.service.CreativeUserService;
 import zw.co.creative.microplanbackend.service.ProductService;
 import zw.co.creative.microplanbackend.service.impl.SSBApplicationServiceImpl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -71,21 +75,29 @@ public class HomeController {
     public String viewAPPLICATION(@RequestParam(value = "id",required = false) long id, Model model){
         LoanApplication ssbApplication=loanApplicationRepository.findById(id).get();
         model.addAttribute("SSBApplication", ssbApplication);
+        String interestRate = ssbApplication.getInterestRate().substring(2);
+        log.info("interest-----------: {}",interestRate);
+        model.addAttribute("interestRate", interestRate);
         String ref= ssbApplication.getUniqueRef();
-
+        log.info("Money Value-----------: {}",ssbApplication.getApprovedLoanAmount());
+        log.info("Money in words-----------: {}", Utility.convertMoneyToNumberMain(ssbApplication.getApprovedLoanAmount()));
 
         String employeeCodeNumbers=ssbApplication.getEmployeeNumber().substring(0,7);
         log.info("employeeCodeNumbers-----------: {}",employeeCodeNumbers);
         String employeeCodeCheckDidgit=ssbApplication.getEmployeeNumber().substring(7);
         log.info("employeeCodeCheckDidgit----------: {}",employeeCodeCheckDidgit);
+        CreativeUser agent=creativeUserService.getUserById(ssbApplication.getAgentId());
         DocumentUpload documentUpload=documentsUploadRepository.findByLoanUniqueRef(ref);
         model.addAttribute("documentUpload",documentUpload);
         model.addAttribute("space"," ");
         model.addAttribute("employeeCodeNumbers",employeeCodeNumbers);
         model.addAttribute("employeeCodeCheckDidgit",employeeCodeCheckDidgit);
+        model.addAttribute("agentName",agent.getFirstName()+" "+agent.getLastName());
+        model.addAttribute("loanPriceInWords",Utility.convertMoneyToNumberMain(ssbApplication.getApprovedLoanAmount()));
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/applications/applicationForm";
     }
+
 }
 
 

@@ -25,12 +25,11 @@
 <!--</div>-->
 <div style="margin-left: 0px !important; font-size: 14px !important;" class="page-container">
 
-<center><label><b><span th:text="${SSBApplication.getApplicationTitle()}"></span></b></label></center>
+    <center><label><b><span  th:text="${'Applicant Name: '+SSBApplication.getApplicationTitle()}"></span></b></label></center>
     <center><img style=" height: auto;" src="/images/icon/microplan.png"></center>
-
-    <a  onClick="window.print()"><img style=" float: right !important; width: 30px; height: auto; margin-right: 30px; "
+   <label><b><span th:text="${'Agent Name: '+agentName}"></span></b></label>
+    <a onClick="window.print()"><img style=" float: right !important; width: 30px; height: auto; margin-right: 30px; "
                                      src="/images/icon/print.png"></a>
-
 
 
     <table style="width: 100%;">
@@ -56,8 +55,6 @@
     </table>
 
 
-
-
     <table style="width: 100%;">
         <tr>
             <td style="width: 20%"><b>LOAN PURPOSE:</b></td>
@@ -69,13 +66,14 @@
     </table>
     <table style="width: 100%;">
         <tr>
-            <td style="width: 20%;"><b>Loan Proceeds to be credited to nominated FCA account<br/> Account Name: <span style=" color: blue">BIGTILL</span></b>
+            <td style="width: 30%;"><b>Loan Proceeds to be credited to nominated FCA account<br/> Account Name: <span
+                    style=" color: blue">BIGTILL</span></b>
             </td>
 
-            <td style="width: 10%;"><b>Bank  Name</b></td>
+            <td style="width: 10%;"><b>Bank Name</b></td>
             <td style="width: 20%; color: blue" th:text="${SSBApplication.getCreditBankName()}"></td>
             <td style="width: 10%;"><b>Bank Account Number</b></td>
-            <td style="width: 20%; color: blue" th:text="${SSBApplication.getCreditAccountNumber()}"></td>
+            <td style="width: 10%; color: blue" th:text="${SSBApplication.getCreditAccountNumber()}"></td>
             <td style="width: 10%" ;><b>Branch</b></td>
             <td style="width: 10%;color: blue" ; th:text="${SSBApplication.getCreditBranchName()}"></td>
 
@@ -84,10 +82,10 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 20%;"><b>Loan Proceeds to be credited to nominated FBC Bank<br/> Branch </b>
+            <td style="width: 30%;"><b>Loan Proceeds to be credited to nominated FBC Bank<br/> Branch </b>
             </td>
             <td style="width: 10%" ;><b>Branch</b></td>
-            <td style="width: 80%;color: blue" ; ></td>
+            <td style="width: 70%;color: blue" ;></td>
 
         </tr>
     </table>
@@ -96,11 +94,11 @@
         <tr>
             <td style="width: 10%;"><b>FIRST NAME</b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getFirstName()}"></td>
-            <td style="width: 10%;"><b>MIDDLE NAME<i>(if any)</i></b></td>
+            <td style="width: 15%;"><b>MIDDLE NAME<i>(if any)</i></b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
             <td style="width: 10%;"><b>SURNAME</b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getLastName()}"></td>
-            <td style="width: 10%;" th:text="${SSBApplication.getTitle()}"></td>
+            <td style="width: 5%;" th:text="${SSBApplication.getTitle()}"></td>
         </tr>
     </table>
     <table style="width: 100%;">
@@ -202,12 +200,12 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 10%;"><b>NAME OF SPOUSES <i>employer</i></b></td>
+            <td style="width: 15%;"><b>NAME OF SPOUSES <i>employer</i></b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
-            <td style="width: 10%;"><b>ADDRESS OF SPOUSE </b></td>
+            <td style="width: 15%;"><b>ADDRESS OF SPOUSE </b></td>
             <td style="width: 20%; color: blue;"></td>
             <td style="width: 20%;"><b>SPOUSE NET SALARY <i>(Attach Payslip)</i></b></td>
-            <td style="width: 20%; color: blue;"></td>
+            <td style="width: 10%; color: blue;"></td>
 
         </tr>
 
@@ -216,11 +214,11 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;"><b>OTHER REGULAR SOURCE OF INCOME<i>(specify the source of income)</i></b>
+            <td style="width: 30%;"><b>OTHER REGULAR SOURCE OF INCOME<i>(specify the source of income)</i></b>
             </td>
-            <td style="width: 25%; color: blue;"></td>
-            <td style="width: 10%;"><b>FREQUENCY OF INCOME</b></td>
-            <td style="width: 15%; color: blue;"></td>
+            <td style="width: 20%; color: blue;"></td>
+            <td style="width: 15%;"><b>FREQUENCY OF INCOME</b></td>
+            <td style="width: 10%; color: blue;"></td>
             <td style="width: 10%;"><b>AMOUNT</b></td>
             <td style="width: 15%; color: blue;"></td>
 
@@ -242,7 +240,7 @@
     <table style="width: 100%;">
         <tr>
             <td style="width: 40%;"><b>REPAYMENT PERIOD REQUIRED</i></b></td>
-            <td style="width: 60%; color: blue;" th:text="${SSBApplication.getLoanPeriod()}"></td>
+            <td style="width: 60%; color: blue;" th:text="${SSBApplication.getLoanPeriod()+ ' '+'months'}"></td>
 
         </tr>
 
@@ -251,10 +249,11 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 20%;"><b>Applicant Banking Details<br/> Account Name: <span style=" color: blue" th:text="${SSBApplication.getAccountName()}"></span></b>
+            <td style="width: 20%;"><b>Applicant Banking Details<br/> Account Name: <span style=" color: blue"
+                                                                                          th:text="${SSBApplication.getAccountName()}"></span></b>
             </td>
 
-            <td style="width: 10%;"><b>Bank  Name</b></td>
+            <td style="width: 10%;"><b>Bank Name</b></td>
             <td style="width: 20%; color: blue" th:text="${SSBApplication.getBankName()}"></td>
             <td style="width: 10%;"><b>Bank Account Number</b></td>
             <td style="width: 20%; color: blue" th:text="${SSBApplication.getAccountNo()}"></td>
@@ -263,7 +262,6 @@
 
         </tr>
     </table>
-
 
 
     <table style="width: 100%;">
@@ -279,16 +277,18 @@
 
         <tr>
             <td>1</td>
-            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin1FirstName()}+${space}+${SSBApplication.getNxtOfKin1Surname()}+${space}+${SSBApplication.getNxtOfKin1Relation()}"></td>
+            <td style="color: blue;"
+                th:text="${SSBApplication.getNxtOfKin1FirstName()}+${space}+${SSBApplication.getNxtOfKin1Surname()}+${space}+${SSBApplication.getNxtOfKin1Relation()}"></td>
             <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
             <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
-            <td  style="color: blue;"th:text="${SSBApplication.getNxtOfKin1Phone()}"></td>
+            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin1Phone()}"></td>
 
 
         </tr>
         <tr>
             <td style="color: blue;">2</td>
-            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2FirstName()}+${space}+${SSBApplication.getNxtOfKin2Surname()}+${space}+${SSBApplication.getNxtOfKin2Relation()}"></td>
+            <td style="color: blue;"
+                th:text="${SSBApplication.getNxtOfKin2FirstName()}+${space}+${SSBApplication.getNxtOfKin2Surname()}+${space}+${SSBApplication.getNxtOfKin2Relation()}"></td>
             <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Address()}"></td>
             <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Address()}"></td>
             <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Phone()}"></td>
@@ -300,7 +300,6 @@
 
 
     </table>
-
 
 
     <center><h3><u><b>
@@ -316,14 +315,14 @@
             <th> Expiry/Last repayment date</th>
         </tr>
 
-        <tr style="height: 30px">
+        <tr style="height: 20px">
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
         </tr>
-        <tr style="height: 30px">
+        <tr style="height: 20px">
             <td></td>
             <td></td>
             <td></td>
@@ -338,13 +337,13 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 20%;"><b>DETAILS OF ACCOUNTS WITH OTHER BANKS</i></b></td>
+            <td style="width: 30%;"><b>DETAILS OF ACCOUNTS WITH OTHER BANKS</i></b></td>
             <td style="width: 10%;"><b>BANK</b></td>
             <td style="width: 15%;"></td>
             <td style="width: 10%;"><b>BRANCH</b></td>
             <td style="width: 15%;"></td>
             <td style="width: 10%;"><b>ACCOUNT NUMBER</b></td>
-            <td style="width: 20%;"></td>
+            <td style="width: 10%;"></td>
 
 
         </tr>
@@ -354,24 +353,28 @@
 
     <div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: 14px;">
         <center><h3><b><u></u> DECLARATION BY CUSTOMER</u> </b></h3></center>
-        <center><br/>
-        I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
-        <br/></center> <br/> <br/>
+        <center>
+            I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
+            <br/></center>
+        <br/>
         Yours faithfully
         <br/>
-        <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
+        <img style="width: 60px; height:60px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
         <br/>
-        Customers Signature <span style="margin-left: 40%;"> Date  : <span th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
+        Customers Signature <span style="margin-left: 40%;"> Date  : <span
+            th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
         <br/>
 
-        <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
-       <br/>
-        Witness Signature <span style="margin-left: 40%;"> Date  : <span th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
+        <img style="width: 60px; height:60px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+        <br/>
+        Witness Signature <span style="margin-left: 40%;"> Date  : <span
+            th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
 
 
         <br/> <br/>
-        <p style="page-break-after: always;"> N.B. Microplan Financial Services P/L reserves the right to repudiate any application without giving reasons.
-        &nbsp;</p>
+        <p style="page-break-after: always;"> N.B. Microplan Financial Services P/L reserves the right to repudiate any
+            application without giving reasons.
+            &nbsp;</p>
         <ol type="1">
 
 
@@ -379,25 +382,28 @@
             <li> Upon approval, Microplan Financial Services (the lender) shall create a loan in the borrower’s name and
                 credit the loan proceeds to the applicant’s (the borrower’s) nominated FCA account.
             </li>
-            <li> An interest rate of 12% per month will be levied on the outstanding loan balance/ loan amount.
+            <li> An interest rate of <b><span th:text="${interestRate +'%'}"></span></b> per month will be
+                levied on the outstanding loan balance/ loan amount.
 
             </li>
-            <ul>
-                <li type="2.1">The capital portion of the loan plus interest shall be paid in <b><span
+<!--            <ul>-->
+                2.1 The capital portion of the loan plus interest shall be paid in <b><span
                         th:text="${SSBApplication.getLoanPeriod()}"></span></b> equal installments of usd $<b> <span
                         th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></span></b> commencing <b> <span
                         th:text="${SSBApplication.getLoanFromDate()}"></span></b>
-                </li>
-                <li type="2.2">Monthly loan repayments will be effected by way of automatic debits to the operating account into
+                </br>
+                2.2 Monthly loan repayments will be effected by way of automatic debits to the operating
+                    account into
                     which loan proceeds are initially credited and the borrower shall ensure that the account is
                     adequately funded to meet loan repayments. In the event that the account is not funded the account
                     will overdraw and the overdraft will immediately attract interest at Microplan Financial Service’s
                     prevailing penalty rate of interest. The penalty rate is currently 25% per month.
-                </li>
-                <li type="2.3">At all material times, this loan shall be paid back in United States Dollars through the Lender’s
+                </br>
+                2.3 At all material times, this loan shall be paid back in United States Dollars through the
+                    Lender’s
                     Nostro Account.
-                </li>
-            </ul>
+                </br>
+<!--            </ul>-->
 
             <li>In accordance with normal banking practice the amount advanced shall become immediately due and
                 repayable on demand being made by Microplan Financial Services and Microplan Financial Services shall
@@ -420,49 +426,63 @@
                 these methods of giving notice are valid and reasonable.
             </li>
             <li>UNDERTAKINGS</li>
+            Until the facilities are terminated or whilst any amount or commitment remains outstanding, the
+            Borrower undertakes to Microplan Financial Services to :-
             <ul>
-                <li>Until the facilities are terminated or whilst any amount or commitment remains outstanding, the
-                    Borrower undertakes to Microplan Financial Services to :-
-                </li>
-                <ol type="7.1">
-                <li >Provide Microplan Financial Services with such information concerning any change in employment
-                    status, residential address and any other affairs of the Borrower as Microplan Financial Services
-                    may reasonably require;
-                </li>
-                <li >Comply at all times with all laws as may be amended from time to time and agrees that the facilities
-                    shall be governed and construed in accordance with Zimbabwean Law, in the jurisdiction of which the
-                    Borrower resides or carries on business and in the event of any legal proceedings in connection with
-                    this matter, the Borrower agrees to be liable for all legal costs on the legal practitioner and
-                    client scale and other charges, including collection commission in terms of the Law Society By-laws,
-                    which may be incurred by Microplan Financial Services in connection therewith; and.
-                </li>
-                <li >Provide any documents requested by Microplan Financial Services according to the type of account (s)
-                    requested.
-                </li>
-                <li >Be liable for any overdraft or debt which Microplan Financial Services may permit on this account
-                    for unprovided loan installments or other service fees and understand that a penalty charge or the
-                    penalty rate of interest as determined by the lender from time to time shall apply on any
-                    unauthorized overdrafts or overdue amounts.
-                </li>
-                <li >Ensure that their salary is paid directly or sales proceeds are deposited into the account held with
-                    FBC Bank.
-                </li>
-                <li >Consents to MicroPlan Financial Services P/L undertaking credit registry searches as part of their
-                    credit assessment process.
-                </li>
-                <li >Ensure the above statements in support of this application are true and correct and in the event of
-                    any information proving to be inaccurate/ false, the loan application will be declined or, in the
-                    event Microplan Financial Services had approved and disbursed the loan, any amounts outstanding
-                    shall immediately become due and payable on demand by Microplan Financial Services.
-                </li>
-                <li >To utilise the loan proceeds for this loan as per loan purpose applied and approved by the lender.
-                    Any variation on the loan purpose should be approved by the Lender prior to utilisation of the
-                    funds. In the event that the loan proceeds are utilised on unauthorised purpose, any amounts
-                    outstanding shall immediately become due and payable on demand by Microplan Financial Services P/L
-                </li>
-                <li >Chooses as a domicillium citandi et executandi on the following address: <b><span  th:text="${SSBApplication.getResidentialAddress()}"></span></b>
-                </li>
-                </ol>
+<!--                <ol type="7.1">-->
+                    7.1 Provide Microplan Financial Services with such information concerning any change in employment
+                        status, residential address and any other affairs of the Borrower as Microplan Financial
+                        Services
+                        may reasonably require;
+                    </br>
+                    7.2 Comply at all times with all laws as may be amended from time to time and agrees that the
+                        facilities
+                        shall be governed and construed in accordance with Zimbabwean Law, in the jurisdiction of which
+                        the
+                        Borrower resides or carries on business and in the event of any legal proceedings in connection
+                        with
+                        this matter, the Borrower agrees to be liable for all legal costs on the legal practitioner and
+                        client scale and other charges, including collection commission in terms of the Law Society
+                        By-laws,
+                        which may be incurred by Microplan Financial Services in connection therewith; and.
+                </br>
+                    7.3 Provide any documents requested by Microplan Financial Services according to the type of account
+                        (s)
+                        requested.
+                </br>
+                    7.4 Be liable for any overdraft or debt which Microplan Financial Services may permit on this
+                        account
+                        for unprovided loan installments or other service fees and understand that a penalty charge or
+                        the
+                        penalty rate of interest as determined by the lender from time to time shall apply on any
+                        unauthorized overdrafts or overdue amounts.
+                </br>
+                    7.5 Ensure that their salary is paid directly or sales proceeds are deposited into the account held
+                        with
+                        FBC Bank.
+                </br>
+                    7.6 Consents to MicroPlan Financial Services P/L undertaking credit registry searches as part of
+                        their
+                        credit assessment process.
+                </br>
+                    7.7 Ensure the above statements in support of this application are true and correct and in the event
+                        of
+                        any information proving to be inaccurate/ false, the loan application will be declined or, in
+                        the
+                        event Microplan Financial Services had approved and disbursed the loan, any amounts outstanding
+                        shall immediately become due and payable on demand by Microplan Financial Services.
+                </br>
+                    7.8 To utilise the loan proceeds for this loan as per loan purpose applied and approved by the
+                        lender.
+                        Any variation on the loan purpose should be approved by the Lender prior to utilisation of the
+                        funds. In the event that the loan proceeds are utilised on unauthorised purpose, any amounts
+                        outstanding shall immediately become due and payable on demand by Microplan Financial Services
+                        P/L
+                </br>
+                    7.9 Chooses as a domicillium citandi et executandi on the following address: <b><span
+                            th:text="${SSBApplication.getResidentialAddress()}"></span></b>
+
+<!--                </ol>-->
 
             </ul>
             <li>The Borrower agrees that the Lender may, without notice and at its sole discretion, consolidate any
@@ -495,18 +515,18 @@
                 interest as defined in Clause 10.1 below shall immediately become due and payable.
 
                 <ul>
-                    <li>Default interest shall mean 25% per month and shall be paid by the Borrower from the date of
+                    12.1 Default interest shall mean 25% per month and shall be paid by the Borrower from the date of
                         failure up to the date of actual repayment of the facility. However, Microplan Financial
                         Services reserves the right to give notice at any time and thereafter to charge such other
                         default interest rate as it may require, and if thereafter the Borrower continues to use the
                         facility, by not repaying it in full immediately, the Borrower shall be deemed to have agreed to
                         such other rate.
-                    </li>
-                    <li>All interest payable in terms of the loan facility will be calculated on the balance outstanding
+                    </br>
+                    12.2 All interest payable in terms of the loan facility will be calculated on the balance outstanding
                         each day, at close of business, and the interest outstanding at the end of each month shall be
                         added to the capital and interest thereafter charged on that increased capital. Capital and
                         Interest shall be collected from your FBC Bank FCA account or by stop order as and when due.
-                    </li>
+
                 </ul>
         </ol>
         <br/>
@@ -518,23 +538,25 @@
             th:text="${SSBApplication.getDateCreated().getYear()}"></span>
         <br/>
         <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
-<!--       //<img th:src="@{/Creative_uploads/{id}(id=${documentUpload.borrowerSignature})}">-->
-<!--       --> <br/>
+        <!--       //<img th:src="@{/Creative_uploads/{id}(id=${documentUpload.borrowerSignature})}">-->
+        <!--       --> <br/>
         Applicant’s/Borrower’s signature
         <br/>
 
-       <b> As witnesses</b>
+        <b> As witnesses</b>
         <br/>
         <div style="width: 100%">
             <div style="width: 50%; float: left;">
-                <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+                <img style="width: 70px; height:70px;"
+                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
                 <br/>
                 <p th:text="${SSBApplication.getWitnessFullName()}"></p>
             </div>
             <div style="width: 50%; float: left;">
-                <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature2 }}">
+                <img style="width: 70px; height:70px;"
+                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature2 }}">
                 <br/>
-                <p  th:text="${SSBApplication.getWitnessFullName2()}"></p>
+                <p th:text="${SSBApplication.getWitnessFullName2()}"></p>
             </div>
         </div>
 
@@ -549,7 +571,7 @@
             <td style="width: 15%;">Signature verified</td>
             <td style="width: 15%;"></td>
             <td style="width: 15%;">Loan purpose</td>
-            <td style="width: 15%;" ></td>
+            <td style="width: 15%;"></td>
             <td style="width: 20%;">Pay slip or proof of income</td>
             <td style="width: 20%;"></td>
         </tr>
@@ -611,75 +633,131 @@
     <div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: 15px;">
 
         <ol type="1">
-       <center> <h4>ACKNOWLEDGEMENT OF DEBIT</h4></center>
+            <center><h4>ACKNOWLEDGEMENT OF DEBIT</h4></center>
 
-        I/We, the undersigned <b><span th:text="${SSBApplication.getFirstName()} +${space}+ ${SSBApplication.getLastName()}"></span></b> (“the Debtor”) of <b><span th:text="${SSBApplication.getResidentialAddress()}"></span></b>
-            which address I/we choose as my/our dominicilium citandi et executandi for purposes hereof, do hereby admit that I am /we are liable,
+            I/We, the undersigned <b><span
+                th:text="${SSBApplication.getFirstName()} +${space}+ ${SSBApplication.getLastName()}"></span></b> (“the
+            Debtor”) of <b><span th:text="${SSBApplication.getResidentialAddress()}"></span></b>
+            which address I/we choose as my/our dominicilium citandi et executandi for purposes hereof, do hereby admit
+            that I am /we are liable,
             and hold myself/ourselves bound to Microplan Financial Services(Private) Limited hereinafter referred to as
             (“the Creditor” or “the institution” or “Microplan”) for the due and proper payment of the amount of
-            US$<b><span th:text="${SSBApplication.getPrice()}"></span> </b>United States Dollars)(“the  Principal Debit”)
+            USD$<b><span th:text="${SSBApplication.getPrice()} +' ('+ ${loanPriceInWords}"></span> </b>)(“the Principal Debit”)
             and furthermore I declare that the Debtor is bound by the terms and conditions set out herein, namely:
-        <li> The Principal Debt is the sum US Nostrol <b>$<span th:text="${SSBApplication.getPrice()}"></span></b>
-        United States dollars
-        </li>
-            <li>The Principal Debit shall bear interest at the rate of (<b><span th:text="${SSBApplication.getInterestRate()}"></span>%</b>) per month, the amount of which shall be calculated daily in advance on the outstanding balance due and capitalized monthly until the total amount due in terms hereof shall have been paid.
-        <br/>
-                2.1	A default interest rate of <b><span th:text="${SSBApplication.getDefaultInterest()}"></span> </b>per month shall be applied on any arrears and/or outstanding balance from the date of failure until the full outstanding debit is paid.
-            </li>
-            <li>	The Principal Debit, together with interest calculated as set out in clause 2 above, shall be paid in United States Dollars as follows
-        <br/>
-            3.1. equal bullet installment of $<span th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></span> each in respect of the capital only, the first of which shall be made on the <b><span th:text="${SSBApplication.getLoanFromDate()}"></span></b>, and thereafter on the last day of every succeeding month until the Principal debit together with interest shall have been fully paid.
-          <br/>
-        3.2. The monthly interest calculated in accordance with Clause 2 hereof shall be paid on the or before the last day of every calendar month beginning on <b><span th:text="${SSBApplication.getLoanFromDate()}"></span></b> until the Principal debit together with interest shall have been paid in full.
 
-            <li>	The Creditor shall be entitled to allocate any payment to interest, legal cost and then to capital or in any other as he deems fit despite any allocation made or deemed to be made by the Debtor.
-        </li>
-            <li> 	Should any payment due in terms hereof not made on due date the Creditor may regard the balance of the Principal Debt and interest owing in terms hereof as due and payable immediately, and may issue summons therefore in any competent court without further notice or demand to the debtor.
+            <li> The Principal Debt is the sum USD Nostrol <b>$<span th:text="${SSBApplication.getPrice()}+' ('+ ${loanPriceInWords}"></span></b>
             </li>
-            <li>The Debtor hereby expressly renounces the benefits of the non causa debiti, the errore calculi, the revision of accounts, no value received and, if there is more than one debtor, the de doubus vel pluribus reis debendi or ordinis seu excussionis et deviosions.
+            <li>The Principal Debit shall bear interest at the rate of <b><span
+                    th:text="${interestRate +'%'}"></span></b> per month, the amount of which shall be
+                calculated daily in advance on the outstanding balance due and capitalized monthly until the total
+                amount due in terms hereof shall have been paid.
+                <br/>
+                2.1 A default interest rate of <b><span th:text="${SSBApplication.getDefaultInterest() +'%'}"></span> </b>per
+                month shall be applied on any arrears and/or outstanding balance from the date of failure until the full
+                outstanding debit is paid.
             </li>
-            <li>The debtor consents to the jurisdiction of the Magistrate’s Court, Harare/Bulawayo in terms of the Magistrate’s Court Act for the recovery of any amount due in terms hereof.
+            <li> The Principal Debit, together with interest calculated as set out in clause 2 above, shall be paid in
+                United States Dollars as follows
+                <br/>
+                3.1. equal bullet installment of $<span th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></span>
+                each in respect of the capital only, the first of which shall be made on the <b><span
+                        th:text="${SSBApplication.getLoanFromDate()}"></span></b>, and thereafter on the last day of
+                every succeeding month until the Principal debit together with interest shall have been fully paid.
+                <br/>
+                3.2. The monthly interest calculated in accordance with Clause 2 hereof shall be paid on the or before
+                the last day of every calendar month beginning on <b><span
+                        th:text="${SSBApplication.getLoanFromDate()}"></span></b> until the Principal debit together
+                with interest shall have been paid in full.
+
+            <li> The Creditor shall be entitled to allocate any payment to interest, legal cost and then to capital or
+                in any other as he deems fit despite any allocation made or deemed to be made by the Debtor.
+            </li>
+            <li> Should any payment due in terms hereof not made on due date the Creditor may regard the balance of the
+                Principal Debt and interest owing in terms hereof as due and payable immediately, and may issue summons
+                therefore in any competent court without further notice or demand to the debtor.
+            </li>
+            <li>The Debtor hereby expressly renounces the benefits of the non causa debiti, the errore calculi, the
+                revision of accounts, no value received and, if there is more than one debtor, the de doubus vel
+                pluribus reis debendi or ordinis seu excussionis et deviosions.
+            </li>
+            <li>The debtor consents to the jurisdiction of the Magistrate’s Court, Harare/Bulawayo in terms of the
+                Magistrate’s Court Act for the recovery of any amount due in terms hereof.
             </li>
             <li> The Principal Debt shall become due and payable immediately if the Debtor commits an act of insolvency.
-            <li>
-            <li>The Debtor shall pay the costs hereof as well as the stamp duty (unless such stamp duty forms part of the Principal Debt) on demand. Cost shall include the costs of drawing and registering any security required by the Creditor as well as the stamp duty payable on any document required as security for the due and proper payment of the Principal Debt and interest payable to the Creditor.
-            <li>
-            <li>Should the Creditor incur costs in the collection of the Principal Debt, the Debtor shall pay such costs on the attorney –and –client scale as well as collection commission calculated in accordance with the Law Society of Zimbabwe By-Laws of each and every payment made in reduction of the Principal Debt, interest and costs.
-        </li>
-            <li> The Creditor shall be entitled to cede or pledge his herein or to trade therewith at his discretion without the consent of the Debtor. He may also in rem suam discharge or release any security partly or in full without the consent of the Debtor or consent to any alteration, release, relaxation or postponement of the terms hereof and such action shall not be binding on the Creditor in any way whatsoever unless he has indicated in writing that such action shall be binding.
             </li>
-            <li>Any certificate issued under the signature of the Creditor or his duly authorised agent that purposes to certify the amount due hereunder shall be accepted as prima facie proof of such indebtedness and shall be sufficient probative value to enable the Creditor to obtain summary judgment or provision sentence against the Debtor in any competent court for the amount stated in such certificate, and the Debtor accepts the onus of disproving the amount so stated as not being the amount owing.
+            <li>The Debtor shall pay the costs hereof as well as the stamp duty (unless such stamp duty forms part of
+                the Principal Debt) on demand. Cost shall include the costs of drawing and registering any security
+                required by the Creditor as well as the stamp duty payable on any document required as security for the
+                due and proper payment of the Principal Debt and interest payable to the Creditor.
             </li>
-            <li> In the event that the creditor is granted judgment against the Debtor arising from this Acknowledgment, the Debtor irrevocably consents to the execution of the judgment in the currency thereof without conversion into any other currency provided that the Creditor may agree to such conversion in its absolute discretion.
+            <li>Should the Creditor incur costs in the collection of the Principal Debt, the Debtor shall pay such costs
+                on the attorney –and –client scale as well as collection commission calculated in accordance with the
+                Law Society of Zimbabwe By-Laws of each and every payment made in reduction of the Principal Debt,
+                interest and costs.
             </li>
-            <li>The Debtor shall not be entitled for any reason whatsoever to withhold or defer payment stipulated for in this acknowledgement of debt.
+            <li> The Creditor shall be entitled to cede or pledge his herein or to trade therewith at his discretion
+                without the consent of the Debtor. He may also in rem suam discharge or release any security partly or
+                in full without the consent of the Debtor or consent to any alteration, release, relaxation or
+                postponement of the terms hereof and such action shall not be binding on the Creditor in any way
+                whatsoever unless he has indicated in writing that such action shall be binding.
             </li>
-            <li>If there is more than one debtor, each and every debtor accepts that his liability shall be in solidum and that the Creditor shall at all times be at liberty to proceed with collection and excussion proceedings against a debtor of his choice.
+            <li>Any certificate issued under the signature of the Creditor or his duly authorised agent that purposes to
+                certify the amount due hereunder shall be accepted as prima facie proof of such indebtedness and shall
+                be sufficient probative value to enable the Creditor to obtain summary judgment or provision sentence
+                against the Debtor in any competent court for the amount stated in such certificate, and the Debtor
+                accepts the onus of disproving the amount so stated as not being the amount owing.
             </li>
-            <li>No waiver by Microplan of any breach, failure or default in performance by the Debtor and no failure, refusal or neglect by the Institution to exercise any right hereunder or to insist upon strict compliance with of performance of the Debtor’s obligations under this Acknowledgement, shall constitute a waiver of the provision of this agreement and the Institution may at any time require strict compliance with provisions of this agreement.
-            <li>
-            <li>This Acknowledgment together with any annexure or written amendments constitutes the entire agreement between the parties who acknowledges that there are no other oral or written undertakings or agreements between them relating to the subject matter of this Acknowledgment.
-        </li>
-            <li> amendment, consensual cancellation or other modification of this agreement shall be valid or binding on a party hereto unless reduced to writing and executed by both parties hereto. Any additions, modifications or amendments to the Agreement shall not be binding unless made in writing and signed by the parties.
+            <li> In the event that the creditor is granted judgment against the Debtor arising from this Acknowledgment,
+                the Debtor irrevocably consents to the execution of the judgment in the currency thereof without
+                conversion into any other currency provided that the Creditor may agree to such conversion in its
+                absolute discretion.
+            </li>
+            <li>The Debtor shall not be entitled for any reason whatsoever to withhold or defer payment stipulated for
+                in this acknowledgement of debt.
+            </li>
+            <li>If there is more than one debtor, each and every debtor accepts that his liability shall be in solidum
+                and that the Creditor shall at all times be at liberty to proceed with collection and excussion
+                proceedings against a debtor of his choice.
+            </li>
+            <li>No waiver by Microplan of any breach, failure or default in performance by the Debtor and no failure,
+                refusal or neglect by the Institution to exercise any right hereunder or to insist upon strict
+                compliance with of performance of the Debtor’s obligations under this Acknowledgement, shall constitute
+                a waiver of the provision of this agreement and the Institution may at any time require strict
+                compliance with provisions of this agreement.
+            </li>
+            <li>This Acknowledgment together with any annexure or written amendments constitutes the entire agreement
+                between the parties who acknowledges that there are no other oral or written undertakings or agreements
+                between them relating to the subject matter of this Acknowledgment.
+            </li>
+            <li> No amendment, consensual cancellation or other modification of this agreement shall be valid or binding
+                on
+                a party hereto unless reduced to writing and executed by both parties hereto. Any additions,
+                modifications or amendments to the Agreement shall not be binding unless made in writing and signed by
+                the parties.
 
             </li>
-            <li> This Acknowledgement supersedes all previous agreements, written or oral, which have existed or now exist between Microplan and the Debtor.
+            <li> This Acknowledgement supersedes all previous agreements, written or oral, which have existed or now
+                exist between Microplan and the Debtor.
 
             </li>
 
         </ol>
-        THUS DONE AND SIGNED at <b><span  th:text="${SSBApplication.getPlaceOfSignature()}"></span></b> On this day of <b> <span style="font: bold" th:text="${SSBApplication.getDateAndTime()}"></span></b> in the presence of the undersigned witnesses.
-<br/>
+        THUS DONE AND SIGNED at <b><span th:text="${SSBApplication.getPlaceOfSignature()}"></span></b> On this day of
+        <b> <span style="font: bold" th:text="${SSBApplication.getDateAndTime()}"></span></b> in the presence of the
+        undersigned witnesses.
+        <br/>
         <b> As witnesses</b>
 
         <div style="width: 100%">
             <div style="width: 50%; float: left;">
-                <img style="width: 100px; height:100px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+                <img style="width: 100px; height:100px;"
+                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
                 <br/>
                 <p th:text="${SSBApplication.getWitnessFullName()}"></p>
             </div>
             <div style="width: 50%; float: left;">
-                <img style="width: 100px; height:100px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature2 }}">
+                <img style="width: 100px; height:100px;"
+                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature2 }}">
                 <br/>
                 <p th:text="${SSBApplication.getWitnessFullName2()}"></p>
             </div>
@@ -687,7 +765,8 @@
             <div style="width: 50%; clear: both; float: left;">
 
                 <h4>Debtor</h4>
-                <img style="width: 100px; height:100px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+                <img style="width: 100px; height:100px;"
+                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
                 <br/>
                 <p th:text="${SSBApplication.getFirstName()}+${space}+${SSBApplication.getLastName()}"></p>
             </div>
@@ -695,7 +774,7 @@
 
     </div>
 
-    <p style="page-break-after: always;">&nbsp;</p>
+    <p style="page-break-after: always; clear: both">&nbsp;</p>
 
     <center><img style=" height: auto;" src="/images/icon/micro.png"></center>
     <br/>
@@ -714,7 +793,7 @@
     <div style="width: 100%">
         <table style="width: 20%; float: left">
             <tr>
-              <td style="width: 10%; height: 50px;"><span style="font-size: 50px;">&#10004;</span></td>
+                <td style="width: 10%; height: 50px;"><span style="font-size: 50px;">&#10004;</span></td>
             </tr>
             <tr>
                 <td style="width: 10%;">NEW</td>
@@ -757,7 +836,7 @@
         </tr>
         <tr>
             <td style="height: 50px;" th:text="${employeeCodeNumbers}"></td>
-            <td style="height: 50px;" th:text="${employeeCodeCheckDidgit}"> </td>
+            <td style="height: 50px;" th:text="${employeeCodeCheckDidgit}"></td>
 
         </tr>
 
@@ -850,51 +929,55 @@
 <center><h3 style="clear: both"><b><u></u> DECLARATION BY APPLICANT</u> </b></h3></center>
 <center><br/>
     I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
-    <br/></center> <br/> <br/>
+    <br/></center>
+<br/> <br/>
 
 <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
 <br/>
-APPLICANT SIGNATURE <span style="margin-left: 40%;"> Date  : <span th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
+APPLICANT SIGNATURE <span style="margin-left: 40%;"> Date  : <span
+        th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
 <br/>
 <br/>
 <br/>
-AUTHORISED/APPROVED BY:....................................SIGNATURE...........................................Date:..............................</b></span></span>
-
+AUTHORISED/APPROVED
+BY:....................................SIGNATURE...........................................Date:..............................</b></span></span>
 
 
 <center style="clear: both">
 
     <p style="page-break-after: always;">&nbsp;</p>
 
-    <h2 >NATIONAL ID</h2>
+    <h2>NATIONAL ID</h2>
     <br/>
     <br/>
-<img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.nationalIdUpload }}">
+    <img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.nationalIdUpload }}">
 
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>CURRENT PAYSLIP</h2>
     <br/>
     <br/>
-<img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.payslipUpload }}">
+    <img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.payslipUpload }}">
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>PROOF OF EMPLOYMENT</h2>
     <br/>
     <br/>
-<img style="width: 1200px; height:1200px;" th:src="@{${'/Creative_uploads/' + documentUpload.proofOfEmployemntUpload }}">
+    <img style="width: 1200px; height:1200px;"
+         th:src="@{${'/Creative_uploads/' + documentUpload.proofOfEmployemntUpload }}">
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>CLIENT PHOTO</h2>
     <br/>
     <br/>
-<img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.clientPictureUpload }}">
+    <img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.clientPictureUpload }}">
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>MARRIAGE CERTIFICATE</h2>
     <br/>
     <br/>
-<img style="width: 400px; height:400px;" alt="Marriage Certificate" th:src="@{${'/Creative_uploads/' + documentUpload.marriageCertificateUpload }}">
+    <img style="width: 400px; height:400px;" alt="Marriage Certificate"
+         th:src="@{${'/Creative_uploads/' + documentUpload.marriageCertificateUpload }}">
 
 </center>
 </body>

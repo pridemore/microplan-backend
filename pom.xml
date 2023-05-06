@@ -71,6 +71,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+        <dependency>
+            <groupId>pl.allegro.finance</groupId>
+            <artifactId>tradukisto</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

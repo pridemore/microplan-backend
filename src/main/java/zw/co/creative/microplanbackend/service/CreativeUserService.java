@@ -27,4 +27,6 @@ public interface CreativeUserService {
     CommonResponse resetPassword(CreativeUser creativeUser, String newPassword);
 
     List<CreativeUser>getAllCreativeUsersByStatusAndRole(CreationStatus status,String role);
+
+    CreativeUser getUserById(Long id);
 }
