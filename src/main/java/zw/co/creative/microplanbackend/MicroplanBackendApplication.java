@@ -7,6 +7,8 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.web.client.RestTemplate;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import java.time.Duration;
 
@@ -26,6 +28,18 @@ public class MicroplanBackendApplication {
         return restTemplateBuilder.setConnectTimeout(connectTimeout)
            .setReadTimeout(readTimeout)
            .build();
+    }
+
+    @Bean
+    public ClassLoaderTemplateResolver thymeleafTemplateResolver() {
+
+        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
+        resolver.setPrefix("/templates/");
+        resolver.setSuffix(".html");
+        resolver.setCacheable(false);
+        resolver.setCharacterEncoding("UTF-8");
+        resolver.setTemplateMode(TemplateMode.HTML);
+        return resolver;
     }
 
 }
