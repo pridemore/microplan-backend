@@ -65,7 +65,7 @@ public class RoleController {
 
     @RequestMapping({"/add"})
     public String addEmployee(Model model) {
-        model.addAttribute("role", new Role());
+        //model.addAttribute("role", new Role());
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "/pages/roles/create";
     }
@@ -89,8 +89,8 @@ public class RoleController {
 
     @RequestMapping({"/edit"})
     public String editEmployee(Model model, @RequestParam(value = "id",required = false) String name) {
-        Optional<Role> role = this.roleService.findRoleByName(name);
-        model.addAttribute("role", this.roleService.findRoleById(((Role)role.get()).getId()));
+        Optional<Role> role = roleService.findRoleByName(name);
+        model.addAttribute("role", roleService.findRoleById(((Role)role.get()).getId()));
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         model.addAttribute("statuses", CreationStatus.values());
         return "/pages/roles/edit";
@@ -99,13 +99,13 @@ public class RoleController {
     @RequestMapping({"/update"})
     public String updateEmployee(@ModelAttribute("role") @Validated Role role, @RequestParam(value = "id",required = false) long id) {
 
-        this.roleService.updateRole(id, role);
+        roleService.updateRole(id, role);
         return "redirect:/roles/view";
     }
 
     @RequestMapping({"/view"})
     public String findAll(Model model) {
-        model.addAttribute("roleList", this.roleService.getAllRole());
+        model.addAttribute("roleList",roleService.getAllRole());
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
 
         return "/pages/roles/view";
