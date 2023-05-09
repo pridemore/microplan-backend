@@ -61,7 +61,7 @@ public class RoleController {
     private AuthenticatedEmployee authenticatedEmployee;
 
 
-    @RequestMapping("/add")
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addEmployee(Model model) {
         model.addAttribute("role", new Role());
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
