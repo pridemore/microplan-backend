@@ -8,7 +8,7 @@ version: "3.8"
 services:
   # The next service to be run is our vaya-eats-service
   microplan-backend:
-    network_mode: "host"
+    #network_mode: "host"
     # Uncomment the build option and comment the image to let docker-compose build the image from the Dockerfile
     # Otherwise it will just use the shuttle-service image if it was built
     image: microplan-backend:latest
