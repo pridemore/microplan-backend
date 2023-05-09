@@ -63,14 +63,14 @@ public class RoleController {
     private AuthenticatedEmployee authenticatedEmployee;
 
 
-    @RequestMapping({"/add"})
+    @RequestMapping("/add")
     public String addEmployee(Model model) {
         model.addAttribute("role", new Role());
         model.addAttribute("name",authenticatedEmployee.getAuthenticatedUser().getFirstName()+" "+authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "/pages/roles/create";
     }
 
-    @RequestMapping({"/create"})
+    @RequestMapping("/create")
     public String create(@ModelAttribute("employees") @Validated Role role, Model model) {
         Optional<Role> role1 = this.roleService.findRoleByName(role.getName());
 
@@ -87,7 +87,7 @@ public class RoleController {
         }
     }
 
-    @RequestMapping({"/edit"})
+    @RequestMapping("/edit")
     public String editEmployee(Model model, @RequestParam(value = "id",required = false) String name) {
         Optional<Role> role = this.roleService.findRoleByName(name);
         model.addAttribute("role", this.roleService.findRoleById(((Role)role.get()).getId()));
