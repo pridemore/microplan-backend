@@ -25,9 +25,7 @@ import java.util.Optional;
 
 @Slf4j
 @Controller
-@RequestMapping(
-        value = {"/roles"},
-        produces = {"application/json"})
+@RequestMapping({"/roles"})
 
 //@RequiredArgsConstructor
 

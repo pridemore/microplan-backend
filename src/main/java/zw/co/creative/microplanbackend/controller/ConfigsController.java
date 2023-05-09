@@ -21,7 +21,7 @@ import java.util.Objects;
 
 @Controller
 @Slf4j
-@RequestMapping("/configs/")
+@RequestMapping("/configs")
 public class ConfigsController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class ConfigsController {
     private AuthenticatedEmployee authenticatedEmployee;
 
 
-    @RequestMapping({"/add/credit"})
+    @RequestMapping("/add/credit")
     public String addCreditConfig(Model model) {
         model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() +
                 " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
@@ -89,7 +89,7 @@ public class ConfigsController {
 
 
 
-    @RequestMapping({"/add/interest"})
+    @RequestMapping("/add/interest")
     public String addInterestConfig(Model model) {
         model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() +
                 " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
