@@ -19,15 +19,15 @@ class WebMvcConfiguration implements WebMvcConfigurer {
         //String myExternalFilePath = "file:///C:/Users/pridemore.vhiriri/Creative_uploads/";
         //String myExternalFilePath = "file:///C:/Users/kafankalb/Creative_uploads/";
 
-        registry.addResourceHandler("/Creative_uploads/**").addResourceLocations(myExternalFilePath);
-
+        registry.addResourceHandler("/Creative_uploads/**")
+                .addResourceLocations(myExternalFilePath);
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
-        registry
-                .addResourceHandler("Creative_uploads")
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/static/");
+        registry.addResourceHandler("Creative_uploads")
                 .addResourceLocations("/Users/pridemore.vhiriri/Creative_uploads")
                 .setCachePeriod(3600)
                 .resourceChain(true)

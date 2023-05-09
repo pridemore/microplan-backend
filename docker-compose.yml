@@ -36,7 +36,7 @@ services:
         target: /opt/creative/media
     # Map port 8021 of the container to port 8021 of the host
     ports:
-      - "8021:8021"
+      - 8021:8021
     # The configs below store log files until they reach a max-size of 2MB, and then rotate them.
     # The amount of individual log files stored is specified by the max-file value. As logs grow beyond the max limits,
     #  older log files are removed to allow storage of new logs.
