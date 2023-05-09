@@ -18,9 +18,8 @@ import java.time.OffsetDateTime;
         name = "role"
 )
 @Data
-//@Builder
-//@NoArgsConstructor
-//@AllArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Role {
    /* @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

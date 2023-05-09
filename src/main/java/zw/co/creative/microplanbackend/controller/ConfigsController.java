@@ -6,10 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import zw.co.creative.microplanbackend.common.response.CommonResponse;
 import zw.co.creative.microplanbackend.domain.LoanCreditConfigs;
 import zw.co.creative.microplanbackend.domain.dto.LoanCreditConfigsDto;
@@ -34,7 +31,7 @@ public class ConfigsController {
     private AuthenticatedEmployee authenticatedEmployee;
 
 
-    @RequestMapping("/add/credit")
+    @RequestMapping(value = "/add/credit",method = RequestMethod.GET)
     public String addCreditConfig(Model model) {
         model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() +
                 " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
