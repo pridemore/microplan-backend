@@ -1,28 +1,14 @@
-# docker-compose.yml file format version, selectable from 1 to 3
-# Check docker-compose documentation
-# Note: When specifying the Compose file version to use, make sure to
-#  specify both the major and minor numbers. If no minor version is given,
-# 0 is used by default and not the latest minor version.
 version: "3.8"
-# docker-compose will automatically start these containers based on their configuration
 services:
-  # The next service to be run is our vaya-eats-service
   microplan-backend:
-    network_mode: "host"
-    # Uncomment the build option and comment the image to let docker-compose build the image from the Dockerfile
-    # Otherwise it will just use the shuttle-service image if it was built
     image: microplan-backend:latest
     build:
       context: .
       dockerfile: Dockerfile
-    #image: microplan-service
-    #Change the spring profile to either local, dev or production depending on the environment
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     command: --spring.profiles.active=prod
     container_name: microplan-backend
-    # Since we are starting with running on a single host, we will set the restart policy to always
-    # This will enable the container to restart if it starts of fails
     restart: always
     volumes:
       - type: bind
@@ -34,12 +20,8 @@ services:
       - type: bind
         source: /data/media/microplan-service
         target: /opt/creative/media
-    # Map port 8021 of the container to port 8021 of the host
     ports:
       - "8021:8021"
-    # The configs below store log files until they reach a max-size of 2MB, and then rotate them.
-    # The amount of individual log files stored is specified by the max-file value. As logs grow beyond the max limits,
-    #  older log files are removed to allow storage of new logs.
     logging:
       driver: "json-file"
       options:
