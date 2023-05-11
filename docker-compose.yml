@@ -8,9 +8,6 @@ services:
       dockerfile: Dockerfile
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/creative_microplan_db
-      - SPRING_DATASOURCE_USERNAME=creative_user
-      - SPRING_DATASOURCE_PASSWORD=Malembe123!
     command: --spring.profiles.active=prod
     container_name: microplan-backend
     restart: always
@@ -31,17 +28,17 @@ services:
       options:
         max-size: "2MB"
         max-file: "10"
-    depends_on:
-      - mysqldb
-  mysqldb:
-    platform: linux/x86_64
-    image: "mysql:5.7"
-    restart: always
-    ports:
-      - 3307:3306
-    environment:
-      MYSQL_DATABASE: creative_microplan_db
-      MYSQL_USER: creative_user
-      MYSQL_PASSWORD: Malembe123!
-      MYSQL_ROOT_PASSWORD: Malembe123!
-
+#    depends_on:
+#      - mysqldb
+#  mysqldb:
+#    platform: linux/x86_64
+#    image: "mysql:5.7"
+#    restart: always
+#    ports:
+#      - 3307:3306
+#    environment:
+#      MYSQL_DATABASE: creative_microplan_db
+#      MYSQL_USER: creative_user
+#      MYSQL_PASSWORD: Malembe123!
+#      MYSQL_ROOT_PASSWORD: Malembe123!
+#
