@@ -20,7 +20,7 @@ import java.util.List;
 public class DocumentsRestController {
     DocumentsUploadsService documentsUploadsService;
     @PostMapping(value ="/uploadFiles", consumes={"multipart/form-data"})
-    public CommonResponse uploadFile(@RequestParam("files") MultipartFile[] files){
+    public CommonResponse uploadFile(@RequestParam("files") MultipartFile files){
         log.info("Received Documents size-----: {}",files.length);
         return documentsUploadsService.storeFiles(files);
     }
