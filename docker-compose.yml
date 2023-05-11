@@ -44,7 +44,4 @@ services:
       MYSQL_USER: creative_user
       MYSQL_PASSWORD: Malembe123!
       MYSQL_ROOT_PASSWORD: Malembe123!
-    volumes:
-      - /data/mysql:/var/opt/mysql
-      - /etc/localtime:/etc/localtime:ro
 
