@@ -7,6 +7,9 @@ services:
       dockerfile: Dockerfile
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/creative_microplan_db
+      - SPRING_DATASOURCE_USERNAME=creative_user
+      - SPRING_DATASOURCE_PASSWORD=Malembe123!
     command: --spring.profiles.active=prod
     container_name: microplan-backend
     restart: always
