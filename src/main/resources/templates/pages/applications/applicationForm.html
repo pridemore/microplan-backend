@@ -359,7 +359,7 @@
         <br/>
         Yours faithfully
         <br/>
-        <img style="width: 60px; height:60px;" th:src="@{${'./' + documentUpload.borrowerSignature }}">
+        <img style="width: 60px; height:60px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
         <br/>
         Customers Signature <span style="margin-left: 40%;"> Date  : <span
             th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
@@ -950,21 +950,21 @@ BY:....................................SIGNATURE................................
     <h2>NATIONAL ID</h2>
     <br/>
     <br/>
-    <img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.nationalIdUpload }}">
+    <img style="width: 800px; height:800px;" th:src="@{${'/' + documentUpload.nationalIdUpload }}">
 
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>CURRENT PAYSLIP</h2>
     <br/>
     <br/>
-    <img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.payslipUpload }}">
+    <img style="width: 800px; height:800px;" th:src="@{${'/' + documentUpload.payslipUpload }}">
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>PROOF OF EMPLOYMENT</h2>
     <br/>
     <br/>
     <img style="width: 1200px; height:1200px;"
-         th:src="@{${'/Creative_uploads/' + documentUpload.proofOfEmployemntUpload }}">
+         th:src="@{${'/' + documentUpload.proofOfEmployemntUpload }}">
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>CLIENT PHOTO</h2>
