@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   microplan-backend:
+    network_mode: "host"
     image: microplan-backend:latest
     build:
       context: .
