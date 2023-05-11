@@ -359,7 +359,7 @@
         <br/>
         Yours faithfully
         <br/>
-        <img style="width: 60px; height:60px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
+        <img style="width: 60px; height:60px;" th:src="@{${'./' + documentUpload.borrowerSignature }}">
         <br/>
         Customers Signature <span style="margin-left: 40%;"> Date  : <span
             th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
