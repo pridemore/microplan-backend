@@ -72,10 +72,10 @@ public class CreativeUserServiceImpl implements CreativeUserService {
     @Override
     public CommonResponse getAllUsers() {
         List<CreativeUser> allUsers = creativeUserRepository.findAll();
-        List<CreativeUserResponse> listResponse=new ArrayList<>();
+        List<CreativeUserResponse> listResponse = new ArrayList<>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        for (CreativeUser user:allUsers
-             ) {
+        for (CreativeUser user : allUsers
+        ) {
             CreativeUserResponse response = CreativeUserResponse.builder()
                     .id(user.getId())
                     .firstName(user.getFirstName())
@@ -94,7 +94,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
                     .build();
             listResponse.add(response);
         }
-        return new CommonResponse().buildSuccessResponse("Success",listResponse);
+        return new CommonResponse().buildSuccessResponse("Success", listResponse);
     }
 
     @Override
@@ -102,7 +102,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
 
         Optional<CreativeUser> user;
         user = Optional.ofNullable(creativeUserRepository.findCreativeUserByEmail(loginDto.getEmail()));
-
+        log.info("Found user : {}", user);
         if (user.isPresent()) {
             //check if login attempts greater or equal to 3
             if (user.get().isAccountLocked()) {
@@ -162,7 +162,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
         foundUser.get().setHouseAddress(creativeUserDto.getHouseAddress());
         foundUser.get().setRole(role.get().getName());
         CreativeUser updatedUser = creativeUserRepository.save(foundUser.get());
-        return new CommonResponse().buildSuccessResponse("Success",updatedUser);
+        return new CommonResponse().buildSuccessResponse("Success", updatedUser);
     }
 
     @Override
@@ -174,7 +174,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
 
         foundUser.get().setStatus(CreationStatus.DELETED);
         CreativeUser deletedUser = creativeUserRepository.save(foundUser.get());
-        return new CommonResponse().buildSuccessResponse("User deleted Successfully.",deletedUser);
+        return new CommonResponse().buildSuccessResponse("User deleted Successfully.", deletedUser);
 
     }
 
@@ -210,14 +210,14 @@ public class CreativeUserServiceImpl implements CreativeUserService {
     @Override
     public List<CreativeUser> getAllCreativeUsersByStatusAndRole(CreationStatus status, String role) {
         List<CreativeUser> allByStatusAndRole = creativeUserRepository.findAllByStatusAndRole(status, role);
-        log.info("all Users by status and role---------: {}",allByStatusAndRole);
+        log.info("all Users by status and role---------: {}", allByStatusAndRole);
         return allByStatusAndRole;
     }
 
     @Override
     public CreativeUser getUserById(Long id) {
-        CreativeUser user=creativeUserRepository.findById(id).get();
-        log.info("Found User by id---------: {}",user);
+        CreativeUser user = creativeUserRepository.findById(id).get();
+        log.info("Found User by id---------: {}", user);
         return user;
     }
 }
