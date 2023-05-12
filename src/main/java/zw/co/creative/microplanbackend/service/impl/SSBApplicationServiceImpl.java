@@ -22,6 +22,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -125,9 +126,19 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
     public CommonResponse createLoanApplication(Map<String, Object> params) {
         LoanApplication receivedLoanApplicationRequest = toLoanApplicationObject(params);
         log.info("ReceivedLoanApplicationRequest Object----------: {}", receivedLoanApplicationRequest);
+        Optional<LoanApplication> foundLoanApplication=loanApplicationRepository.findByUniqueRefAndAgentId(
+                receivedLoanApplicationRequest.getUniqueRef(),
+                receivedLoanApplicationRequest.getAgentId()
+        );
+        if(foundLoanApplication.isPresent()){
+            log.info("Application already uploaded");
+            return new CommonResponse().buildSuccessResponse("Success",foundLoanApplication);
+        }
         LoanApplication saveLoanApplication = loanApplicationRepository.save(receivedLoanApplicationRequest);
-        DocumentUpload documentUpload = toDocumentUploadsObject(params);
-        documentsUploadRepository.save(documentUpload);
+        DocumentUpload foundUpload=documentsUploadRepository.findByLoanUniqueRef(receivedLoanApplicationRequest.getUniqueRef());
+        if(foundUpload==null){
+            documentsUploadRepository.save(toDocumentUploadsObject(params));
+        }
         return new CommonResponse().buildSuccessResponse("Success", saveLoanApplication);
     }
 
