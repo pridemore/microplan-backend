@@ -19,7 +19,7 @@ class WebMvcConfiguration implements WebMvcConfigurer {
         //String myExternalFilePath = "file:///C:/Users/pridemore.vhiriri/Creative_uploads/";
         //String myExternalFilePath = "file:///C:/Users/kafankalb/Creative_uploads/";
 
-        registry.addResourceHandler("/opt/**")
+        registry.addResourceHandler("/microplan-service/**")
                 .addResourceLocations(myExternalFilePath);
         registry.addResourceHandler("swagger-ui.html")
                 .addResourceLocations("classpath:/META-INF/resources/");
