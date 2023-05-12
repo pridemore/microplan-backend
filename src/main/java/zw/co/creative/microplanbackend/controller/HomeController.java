@@ -87,7 +87,13 @@ public class HomeController {
         String employeeCodeCheckDidgit=ssbApplication.getEmployeeNumber().substring(7);
         log.info("employeeCodeCheckDidgit----------: {}",employeeCodeCheckDidgit);
         CreativeUser agent=creativeUserService.getUserById(ssbApplication.getAgentId());
-        DocumentUpload documentUpload=documentsUploadRepository.findByLoanUniqueRef(ref);
+        DocumentUpload documentUpload=null;
+        try{
+            documentUpload=documentsUploadRepository.findByLoanUniqueRef(ref);
+        }catch (Exception ex){
+            documentUpload=documentsUploadRepository.findAllByLoanUniqueRef(ref)
+                    .stream().findFirst().get();
+        }
         model.addAttribute("documentUpload",documentUpload);
         model.addAttribute("space"," ");
         model.addAttribute("employeeCodeNumbers",employeeCodeNumbers);

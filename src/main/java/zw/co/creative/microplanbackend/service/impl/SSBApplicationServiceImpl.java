@@ -114,7 +114,6 @@ public class SSBApplicationServiceImpl implements SSBApplicationService {
     }
 
     public SSBApplication findAllSSBApplicatiById(long id) {
-
         return ssbApplicationRepository.findById(id);
     }
 
