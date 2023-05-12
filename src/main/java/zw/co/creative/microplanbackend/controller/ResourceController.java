@@ -26,7 +26,7 @@ Created by alfred on 22 Apr 2020
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/resource")
+@RequestMapping("/resources")
 public class ResourceController {
     //private final RtAcademyProperties props;
     //private final ResourceRepository resourceRepository;
