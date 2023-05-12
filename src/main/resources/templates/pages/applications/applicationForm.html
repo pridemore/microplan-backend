@@ -359,13 +359,13 @@
         <br/>
         Yours faithfully
         <br/>
-        <img style="width: 60px; height:60px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
+        <img style="width: 60px; height:60px;" th:src="@{${'/resources/' + documentUpload.borrowerSignature }}">
         <br/>
         Customers Signature <span style="margin-left: 40%;"> Date  : <span
             th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
         <br/>
 
-        <img style="width: 60px; height:60px;" th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+        <img style="width: 60px; height:60px;" th:src="@{${'/resources/' + documentUpload.witnessSignature }}">
         <br/>
         Witness Signature <span style="margin-left: 40%;"> Date  : <span
             th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
@@ -537,7 +537,7 @@
             th:text="${SSBApplication.getDateCreated().getMonth()}"></span> <span
             th:text="${SSBApplication.getDateCreated().getYear()}"></span>
         <br/>
-        <img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
+        <img style="width: 70px; height:70px;" th:src="@{${'/resources/' + documentUpload.borrowerSignature }}">
         <!--       //<img th:src="@{/Creative_uploads/{id}(id=${documentUpload.borrowerSignature})}">-->
         <!--       --> <br/>
         Applicant’s/Borrower’s signature
@@ -548,13 +548,13 @@
         <div style="width: 100%">
             <div style="width: 50%; float: left;">
                 <img style="width: 70px; height:70px;"
-                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+                     th:src="@{${'/resources/' + documentUpload.witnessSignature }}">
                 <br/>
                 <p th:text="${SSBApplication.getWitnessFullName()}"></p>
             </div>
             <div style="width: 50%; float: left;">
                 <img style="width: 70px; height:70px;"
-                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature2 }}">
+                     th:src="@{${'/resources/' + documentUpload.witnessSignature2 }}">
                 <br/>
                 <p th:text="${SSBApplication.getWitnessFullName2()}"></p>
             </div>
@@ -751,7 +751,7 @@
         <div style="width: 100%">
             <div style="width: 50%; float: left;">
                 <img style="width: 100px; height:100px;"
-                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+                     th:src="@{${'/resources/' + documentUpload.witnessSignature }}">
                 <br/>
                 <p th:text="${SSBApplication.getWitnessFullName()}"></p>
             </div>
@@ -766,7 +766,7 @@
 
                 <h4>Debtor</h4>
                 <img style="width: 100px; height:100px;"
-                     th:src="@{${'/Creative_uploads/' + documentUpload.witnessSignature }}">
+                     th:src="@{${'/resources/' + documentUpload.witnessSignature }}">
                 <br/>
                 <p th:text="${SSBApplication.getFirstName()}+${space}+${SSBApplication.getLastName()}"></p>
             </div>
@@ -932,7 +932,7 @@
     <br/></center>
 <br/> <br/>
 
-<img style="width: 70px; height:70px;" th:src="@{${'/Creative_uploads/' + documentUpload.borrowerSignature }}">
+<img style="width: 70px; height:70px;" th:src="@{${'/resources/' + documentUpload.borrowerSignature }}">
 <br/>
 APPLICANT SIGNATURE <span style="margin-left: 40%;"> Date  : <span
         th:text="${SSBApplication.getDateAndTime()}"></span> </b></span></span>
@@ -970,14 +970,14 @@ BY:....................................SIGNATURE................................
     <h2>CLIENT PHOTO</h2>
     <br/>
     <br/>
-    <img style="width: 800px; height:800px;" th:src="@{${'/Creative_uploads/' + documentUpload.clientPictureUpload }}">
+    <img style="width: 800px; height:800px;" th:src="@{${'/resources/' + documentUpload.clientPictureUpload }}">
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>MARRIAGE CERTIFICATE</h2>
     <br/>
     <br/>
     <img style="width: 400px; height:400px;" alt="Marriage Certificate"
-         th:src="@{${'/Creative_uploads/' + documentUpload.marriageCertificateUpload }}">
+         th:src="@{${'/resources/' + documentUpload.marriageCertificateUpload }}">
 
 </center>
 </body>
