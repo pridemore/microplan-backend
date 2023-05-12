@@ -109,7 +109,7 @@ public class ApiWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapte
     @Override
     public void configure(WebSecurity web){
         web.ignoring()
-                .antMatchers("resources/**","/static/**","/api/**","/pages/**","/microplan-service/**","/opt/**");
+                .antMatchers("resources/**","/static/**","/api/**","/pages/**");
     }
 
     public AuthenticationSuccessHandler myAuthenticationSuccessHandler() {
