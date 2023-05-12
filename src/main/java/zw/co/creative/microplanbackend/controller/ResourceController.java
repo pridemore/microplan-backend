@@ -36,6 +36,7 @@ public class ResourceController {
     @GetMapping("/{fileName}")
     @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable("fileName") String fileName, Model model) {
+        log.info("fileName : {}",fileName);
         return getResourceFromFileSystem(fileName);
     }
 
