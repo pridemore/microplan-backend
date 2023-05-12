@@ -33,7 +33,7 @@ public class ResourceController {
     private final ResourceLoader resourceLoader;
     //private final StorageService storageService;
 
-    @GetMapping("/{fileName}")
+    @GetMapping("/{fileName:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable("fileName") String fileName, Model model) {
         log.info("fileName : {}",fileName);
