@@ -9,6 +9,6 @@ import java.util.List;
 public interface DocumentsUploadRepository extends JpaRepository<DocumentUpload,Long> {
 DocumentUpload findByLoanUniqueRef(String uniqRef);
 
-@Query(value = "SELECT * FROM creative_microplan_db.documentupload where loanUniqueRef=:uniqRef",nativeQuery = true)
+@Query(value = "SELECT * FROM creative_microplan_db.DocumentUpload where loanUniqueRef=:uniqRef",nativeQuery = true)
 List<DocumentUpload>findAllByLoanUniqueRef(String uniqRef);
 }
