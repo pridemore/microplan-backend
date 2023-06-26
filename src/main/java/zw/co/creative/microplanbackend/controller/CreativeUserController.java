@@ -66,7 +66,7 @@ public class CreativeUserController {
     public String createUser(@Validated CreativeUserDto creativeUserDto, Model model) {
         log.info("Dto : {}", creativeUserDto);
         if (Objects.nonNull(creativeUserDto)) {
-            String url = "http://localhost:8020/api/creativeUser/create";
+            String url = "http://localhost:8021/api/creativeUser/create";
             HttpHeaders headers = extractHeaders();
             UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
             final URI resultURL = builder.build().toUri();
