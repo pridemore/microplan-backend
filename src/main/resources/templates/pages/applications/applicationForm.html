@@ -28,7 +28,7 @@
     <center><label><b><span  th:text="${'Applicant Name: '+SSBApplication.getApplicationTitle()}"></span></b></label></center>
     <center><img style=" height: auto;" src="/images/icon/microplan.png"></center>
    <label><b><span th:text="${'Agent Name: '+agentName}"></span></b></label>
-    <a onClick="window.print()"><img style=" float: right !important; width: 30px; height: auto; margin-right: 30px; "
+    <a th:data-longDescription="${SSBApplication.getApplicationTitle()}" onClick="document.title =this.getAttribute('data-longDescription');window.print();"><img style=" float: right !important; width: 30px; height: auto; margin-right: 30px; "
                                      src="/images/icon/print.png"></a>
 
 
@@ -957,7 +957,7 @@ BY:....................................SIGNATURE................................
     <h2>CURRENT PAYSLIP</h2>
     <br/>
     <br/>
-    <img style="width: 800px; height:800px;" th:src="@{${'/resources/' + documentUpload.payslipUpload }}">
+    <img style="width: 800px; height:800px;" th:src="@{${'/resources/' + documentUpload.documentPayslip }}">
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>PROOF OF EMPLOYMENT</h2>
@@ -970,14 +970,21 @@ BY:....................................SIGNATURE................................
     <h2>CLIENT PHOTO</h2>
     <br/>
     <br/>
-    <img style="width: 800px; height:800px;" th:src="@{${'/resources/' + documentUpload.clientPictureUpload }}">
+    <img style="width: 800px; height:800px;" th:src="@{${'/resources/' + documentUpload.documentPhoto }}">
+
+    <p style="page-break-after: always;">&nbsp;</p>
+    <h2>INVOICE</h2>
+    <br/>
+    <br/>
+    <img style="width: 800px; height:800px;" th:src="@{${'/resources/' + documentUpload.documentInvoice }}">
+
 
     <p style="page-break-after: always;">&nbsp;</p>
     <h2>MARRIAGE CERTIFICATE</h2>
     <br/>
     <br/>
     <img style="width: 800px; height:800px;" alt="Marriage Certificate"
-         th:src="@{${'/resources/' + documentUpload.marriageCertificateUpload }}">
+         th:src="@{${'/resources/' + documentUpload.documentMarriageCertificate }}">
 
 </center>
 </body>

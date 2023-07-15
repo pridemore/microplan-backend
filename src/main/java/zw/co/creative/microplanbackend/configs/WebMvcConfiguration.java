@@ -28,7 +28,7 @@ class WebMvcConfiguration implements WebMvcConfigurer {
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/static/");
         registry.addResourceHandler("Creative_uploads")
-                .addResourceLocations("/Users/pridemore.vhiriri/Creative_uploads")
+                .addResourceLocations("/Users/Pridemore/Creative_uploads/")
                 .setCachePeriod(3600)
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver());

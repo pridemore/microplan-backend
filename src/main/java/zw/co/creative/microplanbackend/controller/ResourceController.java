@@ -2,6 +2,7 @@ package zw.co.creative.microplanbackend.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.io.UrlResource;
@@ -28,11 +29,9 @@ Created by alfred on 22 Apr 2020
 @RequiredArgsConstructor
 @RequestMapping("/resources")
 public class ResourceController {
-    //private final RtAcademyProperties props;
-    //private final ResourceRepository resourceRepository;
-    private final ResourceLoader resourceLoader;
-    //private final StorageService storageService;
 
+    @Value("${images.path.resources}")
+    private String resources = "/opt/creative/media/";
     @GetMapping("/{fileName:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable("fileName") String fileName, Model model) {
@@ -43,7 +42,8 @@ public class ResourceController {
     private ResponseEntity<Resource> getResourceFromFileSystem(String fileName) {
         final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Content-type", "image/*");
-        String resources = "/opt/creative/media/";
+        //String resources = "/opt/creative/media/";
+
         final String fullPath = String.format("%s/%s", resources, fileName);
         Resource resourceFile = loadAsResource(Paths.get(fullPath));
         return new ResponseEntity<>(resourceFile, httpHeaders, HttpStatus.OK);

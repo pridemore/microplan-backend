@@ -35,11 +35,10 @@
                                     <table id="dataTable2" class="text-left" style="width: 100% !important;">
                                         <thead class="text-capitalize">
                                             <tr>
-                                                <th>Id#>
                                                 <th>Applicant Name</th>
                                                 <th>EC Number</th>
                                                 <th>Loan Purpose</th>
-<!--                                                <th>Agent</th>-->
+                                               <th>Agent</th>
                                                 <th>Date Applied</th>
                                                 <th class="d-flex justify-content-center">Action</th>
 
@@ -47,11 +46,10 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="appli:${applications}">
-                                                <td th:text="${appli.id}"></td>
                                                 <td th:text="${appli.firstName}+${space}+${appli.lastName}"></td>
                                                 <td th:text="${appli.employeeNumber}"></td>
                                                 <td th:text="${appli.loanPurpose}"></td>
-<!--                                                <td th:text="${appli.authorisedBy}"></td>-->
+                                                <td th:text="${appli.agentFirstName}+${space}+${appli.agentLastName}"></td>
                                                 <td th:text="${appli.dateCreated}"></td>
                                                <td>
                                                    <ul class="d-flex justify-content-center">

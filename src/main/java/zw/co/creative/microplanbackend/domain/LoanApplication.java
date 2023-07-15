@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.UpdateTimestamp;
+import zw.co.creative.microplanbackend.domain.dto.LoanApplicationDTO;
 import zw.co.creative.microplanbackend.enums.CreationStatus;
 
 import javax.persistence.*;
@@ -185,4 +186,5 @@ public class LoanApplication {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @UpdateTimestamp
     protected OffsetDateTime lastUpdated;
+
 }
