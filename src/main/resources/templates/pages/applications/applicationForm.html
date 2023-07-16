@@ -7,9 +7,21 @@
 
 <style>
 
-    table, th, td {
-        border: 1px solid black;
+    table {
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
 
+
+
+    }
+    td {
+        border-right: 1px solid black;
+    }
+
+    th {
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
     }
 
     @page {
@@ -23,7 +35,7 @@
 
 <!--<div th:replace="fragments/preloader ::preloader">-->
 <!--</div>-->
-<div style="margin-left: 0px !important; font-size: 14px !important;" class="page-container">
+<div style="margin-left: 0px !important;font-family: 'Times New Roman'; font-size: 16px !important;" class="page-container">
 
     <center><label><b><span  th:text="${'Applicant Name: '+SSBApplication.getApplicationTitle()}"></span></b></label></center>
     <center><img style=" height: auto;" src="/images/icon/microplan.png"></center>
@@ -35,9 +47,9 @@
     <table style="width: 100%;">
         <b>
             <tr>
-                <td style="width: 33%"><b>TO: MANAGER</b></td>
+                <td style="width: 33%"><b>TO: THE MANAGER</b></td>
                 <td style="width: 33%"><b>MICROFINANCE</b></td>
-                <td style="width: 33%"><b>BRANCH</b></td>
+                <td style="width: 33%; border-right: 1px black !important; "><b>BRANCH</b></td>
             </tr>
         </b>
 
@@ -49,7 +61,7 @@
             <td style="width: 25%"><b>EMPLOYEE CODE NUMBER:</b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getEmployeeNumber()}"></td>
             <td style="width: 25%"><b>DATE:</b></td>
-            <td style="width: 25% ;color: blue; " th:text="${SSBApplication.getDateAndTime()}"></td>
+            <td style="width: 25% ;color: blue; border-right: 1px black !important; " th:text="${SSBApplication.getDateAndTime()}"></td>
         </tr>
 
     </table>
@@ -57,8 +69,8 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 20%"><b>LOAN PURPOSE:</b></td>
-            <td style="width: 80%; color: blue;" th:text="${SSBApplication.getLoanPurpose()}"></td>
+            <td style="width: 20%"><b>Loan Purpose:</b></td>
+            <td style="width: 80%; color: blue; border-right: 1px black !important;" th:text="${SSBApplication.getLoanPurpose()}"></td>
 
 
         </tr>
@@ -75,7 +87,7 @@
             <td style="width: 10%;"><b>Bank Account Number</b></td>
             <td style="width: 10%; color: blue" th:text="${SSBApplication.getCreditAccountNumber()}"></td>
             <td style="width: 10%" ;><b>Branch</b></td>
-            <td style="width: 10%;color: blue" ; th:text="${SSBApplication.getCreditBranchName()}"></td>
+            <td style="border-right: 1px black !important;width: 10%;color: blue" ; th:text="${SSBApplication.getCreditBranchName()}"></td>
 
         </tr>
     </table>
@@ -85,7 +97,7 @@
             <td style="width: 30%;"><b>Loan Proceeds to be credited to nominated FBC Bank<br/> Branch </b>
             </td>
             <td style="width: 10%" ;><b>Branch</b></td>
-            <td style="width: 70%;color: blue" ;></td>
+            <td style="width: 70%;color: blue;border-right: 1px black !important;"></td>
 
         </tr>
     </table>
@@ -98,15 +110,15 @@
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
             <td style="width: 10%;"><b>SURNAME</b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getLastName()}"></td>
-            <td style="width: 5%;" th:text="${SSBApplication.getTitle()}"></td>
+            <td style="border-right: 1px black !important;width: 5%;" th:text="${SSBApplication.getTitle()}"></td>
         </tr>
     </table>
     <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;"><b>FULL MAIDEN NAME <i>(for married Woman)</i></b></td>
+            <td style="width: 25%;">FULL MAIDEN NAME <i>(for married Woman)</i></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
-            <td style="width: 25%;"><b>Full NAME OF SPOUSE <i>(for married Applicants)</i></b></td>
-            <td style="width: 25%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
+            <td style="width: 25%;">Full NAME OF SPOUSE <i>(for married Applicants)</i></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
 
 
         </tr>
@@ -114,12 +126,12 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 15%;"><b>DATE OF BIRTH</b></td>
+            <td style="width: 15%;"><b>Date of Birth</b></td>
             <td style="width: 15%; color: blue;" th:text="${SSBApplication.getDateOfBirth()}"></td>
-            <td style="width: 15%;"><b>NATIONAL ID</b></td>
+            <td style="width: 15%;"><b>National ID No.</b></td>
             <td style="width: 15%; color: blue;" th:text="${SSBApplication.getNationalId()}"></td>
-            <td style="width: 15%;"><b>PASSPORT NUMBER</b></td>
-            <td style="width: 25%; color: blue;" th:text="${SSBApplication.getPassportNumber()}"></td>
+            <td style="width: 15%;"><b>Passport No.</b></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getPassportNumber()}"></td>
 
         </tr>
 
@@ -129,7 +141,7 @@
     <table style="width: 100%;">
         <tr>
             <td style="width: 40%;"><b>RESIDENTIAL ADDRESS</b></td>
-            <td style="width: 60%; color: blue;" th:text="${SSBApplication.getResidentialAddress()}"></td>
+            <td style="border-right: 1px black !important;width: 60%; color: blue;" th:text="${SSBApplication.getResidentialAddress()}"></td>
 
 
         </tr>
@@ -137,40 +149,33 @@
     </table>
     <table style="width: 100%;">
         <tr>
-            <td style="width: 30%;"><b>NAME OF EMPLOYER</b></td>
-            <td style="width: 70%; color: blue;" th:text="${SSBApplication.getNameOfEmployer()}"></td>
+            <td style="width: 30%;"><b>Name and Physical Address of Employer</b></td>
+            <td style="border-right: 1px black !important;width: 70%; color: blue;" th:text="${SSBApplication.getNameOfEmployer()}+', '+${SSBApplication.getEmployerAddress()}"></td>
 
         </tr>
 
     </table>
     <table style="width: 100%;">
         <tr>
-            <td style="width: 20%;"><b>TELEPHONE NUMBERS</b></td>
-            <td style="width: 10%; "><b>CELL</b></td>
+            <td style="width: 20%;"><i>Telephone Numbers</i></td>
+            <td style="width: 10%; "><i>Cell</i></td>
             <td style="width: 10%; color: blue;" th:text="${SSBApplication.getMobileNumber()}"></td>
-            <td style="width: 10%;"><b>HOME</b></td>
+            <td style="width: 10%;"><i>Home</i></td>
             <td style="width: 10%;"></td>
-            <td style="width: 10%;"><b>BUSINESS</b></td>
+            <td style="width: 10%;"><i>Business</i></td>
             <td style="width: 10%;"></td>
-            <td style="width: 10%;"><b>FAX</b></td>
-            <td style="width: 10%;"></td>
+            <td style="width: 10%;"><i>Fax</i></td>
+            <td style="border-right: 1px black !important;width: 10%;"></td>
         </tr>
 
     </table>
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 30%;"><b>PHYSICAL ADDRESS OF EMPLOYER </b></td>
-            <td style="width: 70%; color: blue;" th:text="${SSBApplication.getResidentialAddress()}"></td>
-
-        </tr>
-    </table>
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 25%;"><b>SINCE WHEN EMPLOYED</b></td>
+            <td style="width: 25%;"><b>Since When Employed</b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getDateJoined()}"></td>
-            <td style="width: 25%;"><b>EMAIL ADDRESS</b></td>
-            <td style="width: 25%; color: blue;" th:text="${SSBApplication.getEmployersEmail()}"></td>
+            <td style="width: 25%;"><b>E-mail Address</b></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getEmployersEmail()}"></td>
 
         </tr>
 
@@ -179,10 +184,10 @@
     </table>
     <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;"><b>PROFFESSION <i>eg (mining, health etc)</i></b></td>
+            <td style="width: 25%;"><b>Profession <i>eg (mining, health etc)</i></b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getProfession()}"></td>
-            <td style="width: 25%;"><b>POSITION HELD eg (doctor, engineer etc)</b></td>
-            <td style="width: 25%; color: blue;" th:text="${SSBApplication.getPositionHeld()}"></td>
+            <td style="width: 25%;"><b>Position Held eg (doctor, engineer etc)</b></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getPositionHeld()}"></td>
 
         </tr>
 
@@ -190,22 +195,22 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;"><b>GROSS MONTHLY SALARY/ INCOME</b></td>
+            <td style="width: 25%;"><b>Gross Monthly Salary/ income</b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getGrossSalary()}"></td>
-            <td style="width: 25%;"><b>NET MONTLY SALARY/ INCOME</b></td>
-            <td style="width: 25%; color: blue;" th:text="${SSBApplication.getNetSalary()}"></td>
+            <td style="width: 25%;"><b>Net Monthly Salary/ income</b></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getNetSalary()}"></td>
 
         </tr>
     </table>
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 15%;"><b>NAME OF SPOUSES <i>employer</i></b></td>
+            <td style="width: 15%;"><b>Name of Spouses <i>employer</i></b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
-            <td style="width: 15%;"><b>ADDRESS OF SPOUSE </b></td>
+            <td style="width: 15%;"><b>Address of Spouse Employer </b></td>
             <td style="width: 20%; color: blue;"></td>
-            <td style="width: 20%;"><b>SPOUSE NET SALARY <i>(Attach Payslip)</i></b></td>
-            <td style="width: 10%; color: blue;"></td>
+            <td style="width: 20%;"><b>Spouse Net Salary <i>(Attach Payslip)</i></b></td>
+            <td style="border-right: 1px black !important;width: 10%; color: blue;"></td>
 
         </tr>
 
@@ -214,13 +219,13 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 30%;"><b>OTHER REGULAR SOURCE OF INCOME<i>(specify the source of income)</i></b>
+            <td style="width: 30%;"><b>Other Regular Source of income<i>(specify the source of income)</i></b>
             </td>
             <td style="width: 20%; color: blue;"></td>
-            <td style="width: 15%;"><b>FREQUENCY OF INCOME</b></td>
+            <td style="width: 15%;"><b>Frequency of income</b></td>
             <td style="width: 10%; color: blue;"></td>
-            <td style="width: 10%;"><b>AMOUNT</b></td>
-            <td style="width: 15%; color: blue;"></td>
+            <td style="width: 10%;"><b>Amount</b></td>
+            <td style="border-right: 1px black !important;width: 15%; color: blue;"></td>
 
         </tr>
 
@@ -230,24 +235,24 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;"><b>CREDIT FACILITY AMOUNT REQUIRED<i>(in USD $)</i></b></td>
+            <td style="width: 25%;"><b>Credit Facility Amount Required<i>(in USD $)</i></b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getPrice()}"></td>
-            <td style="width: 25%;"><b>FACILITY TYPE</b></td>
-            <td style="width: 25%; color: blue;">SHORT TERM USD LOANS</td>
+            <td style="width: 25%;"><b>Facility Type</b></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;">Short Term USD Loan</td>
         </tr>
 
     </table>
     <table style="width: 100%;">
         <tr>
-            <td style="width: 40%;"><b>REPAYMENT PERIOD REQUIRED</i></b></td>
-            <td style="width: 60%; color: blue;" th:text="${SSBApplication.getLoanPeriod()+ ' '+'months'}"></td>
+            <td style="width: 40%;"><b>Repayment period required</i></b></td>
+            <td style="border-right: 1px black !important;width: 60%; color: blue;" th:text="${SSBApplication.getLoanPeriod()+ ' '+'months'}"></td>
 
         </tr>
 
     </table>
 
 
-    <table style="width: 100%;">
+    <table style="border-bottom: 1px solid black !important; width: 100%;">
         <tr>
             <td style="width: 20%;"><b>Applicant Banking Details<br/> Account Name: <span style=" color: blue"
                                                                                           th:text="${SSBApplication.getAccountName()}"></span></b>
@@ -258,53 +263,17 @@
             <td style="width: 10%;"><b>Bank Account Number</b></td>
             <td style="width: 20%; color: blue" th:text="${SSBApplication.getAccountNo()}"></td>
             <td style="width: 10%" ;><b>Branch</b></td>
-            <td style="width: 10%;color: blue" ; th:text="${SSBApplication.getBranchName()}"></td>
+            <td style="border-right: 1px black !important;width: 10%;color: blue" ; th:text="${SSBApplication.getBranchName()}"></td>
 
         </tr>
     </table>
 
 
-    <table style="width: 100%;">
-        <tbody>
-
-        <tr>
-            <th>NEXT OF KIN DETAILS</th>
-            <th> Full names and Relationship</th>
-            <th>Employer and Address</th>
-            <th>Residential Address</th>
-            <th> Phone Numbers(land line preferred)</th>
-        </tr>
-
-        <tr>
-            <td>1</td>
-            <td style="color: blue;"
-                th:text="${SSBApplication.getNxtOfKin1FirstName()}+${space}+${SSBApplication.getNxtOfKin1Surname()}+${space}+${SSBApplication.getNxtOfKin1Relation()}"></td>
-            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
-            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
-            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin1Phone()}"></td>
 
 
-        </tr>
-        <tr>
-            <td style="color: blue;">2</td>
-            <td style="color: blue;"
-                th:text="${SSBApplication.getNxtOfKin2FirstName()}+${space}+${SSBApplication.getNxtOfKin2Surname()}+${space}+${SSBApplication.getNxtOfKin2Relation()}"></td>
-            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Address()}"></td>
-            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Address()}"></td>
-            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Phone()}"></td>
-
-
-        </tr>
-
-        </tbody>
-
-
-    </table>
-
-
-    <center><h3><u><b>
+    <center><h3 style="margin-bottom: 0px !important;"><b>
         Provide details of the existing or most recent Loan from FBC Bank, other lenders or employer
-    </b></u></h3></center>
+    </b></h3></center>
     <table style="width: 100%;">
         <tbody>
         <tr>
@@ -312,22 +281,22 @@
             <th> Amount</th>
             <th>Monthly Repayment</th>
             <th>Balance</th>
-            <th> Expiry/Last repayment date</th>
+            <th style="border-right: 1px black !important;"> Expiry/Last repayment date</th>
         </tr>
 
-        <tr style="height: 20px">
+        <tr style="border-bottom: 1px solid black!important;height: 20px">
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td style="border-right: 1px  black !important;"></td>
         </tr>
         <tr style="height: 20px">
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
+            <td style="border-right: 1px  black !important;"></td>
         </tr>
 
         </tbody>
@@ -335,24 +304,61 @@
 
     </table>
 
-    <table style="width: 100%;">
+    <table style="border-bottom: 1px solid black!important; width: 100%;">
         <tr>
-            <td style="width: 30%;"><b>DETAILS OF ACCOUNTS WITH OTHER BANKS</i></b></td>
-            <td style="width: 10%;"><b>BANK</b></td>
+            <td style="width: 30%;"><b>Details of accounts with Other banks</i></b></td>
+            <td style="width: 10%;"><b>Bank</b></td>
             <td style="width: 15%;"></td>
-            <td style="width: 10%;"><b>BRANCH</b></td>
+            <td style="width: 10%;"><b>Branch</b></td>
             <td style="width: 15%;"></td>
-            <td style="width: 10%;"><b>ACCOUNT NUMBER</b></td>
-            <td style="width: 10%;"></td>
+            <td style="width: 10%;"><b>Account Number</b></td>
+            <td style="border-right: 1px  black!important;width: 10%;"></td>
 
 
         </tr>
 
     </table>
+    <table style="border-bottom: 1px solid black !important;width: 100%;" >
+        <tbody>
+
+        <tr>
+            <th>Next of Kin Details</th>
+            <th> Full names and Relationship</th>
+            <th>Employer and Address</th>
+            <th>Residential Address</th>
+            <th style="border-right: 1px black !important;"> Phone Numbers(land line preferred)</th>
+        </tr>
+
+        <tr>
+            <td style="border-bottom: 1px solid black !important;">1</td>
+            <td style="border-bottom: 1px solid black !important;color: blue;"
+                th:text="${SSBApplication.getNxtOfKin1FirstName()}+${space}+${SSBApplication.getNxtOfKin1Surname()}+${space}+${SSBApplication.getNxtOfKin1Relation()}"></td>
+            <td style="border-bottom: 1px solid black !important;color: blue;" th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
+            <td style="border-bottom: 1px solid black !important;color: blue;" th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
+            <td style="border-bottom: 1px solid black !important;border-right: 1px black !important;color: blue;" th:text="${SSBApplication.getNxtOfKin1Phone()}"></td>
+
+
+        </tr>
+        <tr style="border-top: 1px solid black;">
+            <td style="color: blue;">2</td>
+            <td style="color: blue;"
+                th:text="${SSBApplication.getNxtOfKin2FirstName()}+${space}+${SSBApplication.getNxtOfKin2Surname()}+${space}+${SSBApplication.getNxtOfKin2Relation()}"></td>
+            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Address()}"></td>
+            <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Address()}"></td>
+            <td style="border-right: 1px black !important;color: blue;" th:text="${SSBApplication.getNxtOfKin2Phone()}"></td>
+
+
+        </tr>
+
+        </tbody>
+
+
+    </table>
+
 
 
     <div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: 14px;">
-        <center><h3><b><u></u> DECLARATION BY CUSTOMER</u> </b></h3></center>
+        <center><h3><b><u></u> Declaration By Customer</u> </b></h3></center>
         <center>
             I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
             <br/></center>
@@ -573,7 +579,7 @@
             <td style="width: 15%;">Loan purpose</td>
             <td style="width: 15%;"></td>
             <td style="width: 20%;">Pay slip or proof of income</td>
-            <td style="width: 20%;"></td>
+            <td style="border-right: 1px  black!important; width: 20%;"></td>
         </tr>
 
     </table>
@@ -584,7 +590,7 @@
             <td style="width: 15%;">Sector</td>
             <td style="width: 15%;"></td>
             <td style="width: 20%;">Bank statement</td>
-            <td style="width: 20%;"></td>
+            <td style="border-right: 1px  black!important;width: 20%;"></td>
         </tr>
 
     </table>
@@ -597,7 +603,7 @@
             <td style="width: 15%;">Region</td>
             <td style="width: 15%;"></td>
             <td style="width: 20%;">Copy National ID</td>
-            <td style="width: 20%;"></td>
+            <td style="border-right: 1px  black!important;width: 20%;"></td>
         </tr>
 
     </table>
@@ -610,20 +616,20 @@
             <td style="width: 15%;">Loans Officer</td>
             <td style="width: 15%;"></td>
             <td style="width: 20%;">40% of net salary</td>
-            <td style="width: 20%;"></td>
+            <td style="border-right: 1px  black!important;width: 20%;"></td>
         </tr>
 
     </table>
 
 
-    <table style="width: 100%;">
+    <table style="border-bottom: 1px solid black!important;width: 100%;">
         <tr>
             <td style="width: 15%;">Managing Director</td>
             <td style="width: 15%;"></td>
             <td style="width: 15%;">Gender</td>
             <td style="width: 15%;"></td>
             <td style="width: 20%;">Approval and conditions</td>
-            <td style="width: 20%;"></td>
+            <td style="border-right: 1px  black!important; width: 20%;"></td>
         </tr>
 
     </table>
@@ -780,43 +786,43 @@
     <br/>
     <h3>ALLOWANCE AND DEDUCTION FORM - SSB</h3>
 
-    <table style="width: 100%;">
+    <table style="border-bottom: 1px solid  black!important;width: 100%;">
         <tr>
             <td style="width: 25%;">NAME</td>
             <td style="width: 25%;" th:text="${SSBApplication.getFirstName()}"></td>
             <td style="width: 25%;">SURNAME</td>
-            <td style="width: 25%;" th:text="${SSBApplication.getLastName()}"></td>
+            <td style="border-right: 1px  black!important;width: 25%;" th:text="${SSBApplication.getLastName()}"></td>
 
         </tr>
     </table>
     <br/><br/>
     <div style="width: 100%">
-        <table style="width: 20%; float: left">
+        <table style="border-bottom: 1px solid black!important;width: 20%; float: left">
             <tr>
-                <td style="width: 10%; height: 50px;"><span style="font-size: 50px;">&#10004;</span></td>
+                <td style="border-right: 1px  black!important;width: 10%; height: 50px;"><span style="font-size: 50px;">&#10004;</span></td>
             </tr>
             <tr>
-                <td style="width: 10%;">NEW</td>
+                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">NEW</td>
 
             </tr>
 
         </table>
-        <table style="width: 20%; float: left; margin-left: 10%">
+        <table style="border-bottom: 1px solid black!important;width: 20%; float: left; margin-left: 10%">
             <tr>
-                <td style="width: 10%;  height: 50px;"></td>
+                <td style="border-right: 1px  black!important;width: 10%;  height: 50px;"></td>
             </tr>
             <tr>
-                <td style="width: 10%;">CHANGE</td>
+                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">CHANGE</td>
 
             </tr>
 
         </table>
-        <table style="width: 20%; float: left; margin-left: 10%">
+        <table style="border-bottom: 1px solid black!important;width: 20%; float: left; margin-left: 10%">
             <tr>
-                <td style="width: 10%;  height: 50px;"></td>
+                <td style="border-right: 1px  black!important;width: 10%;  height: 50px;"></td>
             </tr>
             <tr>
-                <td style="width: 10%;">CEASE</td>
+                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">CEASE</td>
 
             </tr>
 
@@ -829,14 +835,14 @@
     <br/> <br/>
     <h4 style="clear: both;"><b>TICK WHICH EVER IS APPLICABLE</b></h4>
     <br/>
-    <table style="width: 60%;">
+    <table style="border-bottom: 1px solid black !important;width: 60%;">
         <tr>
             <th style="width: 50%;">Employee Code Number</th>
-            <th style="width:10%;">Check digit/letter</th>
+            <th style="border-right: 1px  black !important;width:10%;">Check digit/letter</th>
         </tr>
         <tr>
             <td style="height: 50px;" th:text="${employeeCodeNumbers}"></td>
-            <td style="height: 50px;" th:text="${employeeCodeCheckDidgit}"></td>
+            <td style="border-right: 1px  black !important;height: 50px;" th:text="${employeeCodeCheckDidgit}"></td>
 
         </tr>
 
@@ -850,19 +856,19 @@
     <div style="width:100%">
         <div style="float: left; width:40%;">
             <h4><b><u>PAYEE CODE</u></b></h4>
-            <table style="width:40%;">
+            <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td>84008</td>
+                    <td style="border-right: 1px  black !important;" >84008</td>
 
                 </tr>
             </table>
 
         </div>
         <div style="float: left; width: 40%;">
-            <h4><b><u>MONTHLY RATE (USD)</u></b></h4>
-            <table style="width:40%;">
+            <h4><b><u>Monthly rate (USD)</u></b></h4>
+            <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="HEIGHT: 30px;" th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;" th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></td>
 
                 </tr>
             </table>
@@ -873,10 +879,10 @@
         <br/>
         <BR/>
         <div style="width: 40%; float: left">
-            <h4><b><u>FROM DATE</u></b></h4>
-            <table style="width:40%;">
+            <h4><b><u>From date</u></b></h4>
+            <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="HEIGHT: 30px;" th:text="${SSBApplication.getLoanFromDate()}"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;" th:text="${SSBApplication.getLoanFromDate()}"></td>
 
                 </tr>
             </table>
@@ -884,10 +890,10 @@
 
         </div>
         <div style="width: 40%; float: left;">
-            <h4><b><u>TO DATE </u></b></h4>
-            <table style="width:40%;">
+            <h4><b><u>To date </u></b></h4>
+            <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="HEIGHT: 30px;" th:text="${SSBApplication.getLoanToDate()}"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;" th:text="${SSBApplication.getLoanToDate()}"></td>
 
                 </tr>
             </table>
@@ -903,19 +909,19 @@
 
         <div style="width: 40%; float: left;">
             <h4><b><u>Ref no : Loan account number</u></b></h4>
-            <table style="width:40%;">
+            <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="HEIGHT: 30px;"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;"></td>
 
                 </tr>
             </table>
 
         </div>
         <div style="width: 40%; float: left;">
-            <h4><b><u>ID Number</u></b></h4>
-            <table style="width:40%;">
+            <h4><b><u>National ID Number</u></b></h4>
+            <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="HEIGHT: 30px;" th:text="${SSBApplication.getNationalId()}"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;" th:text="${SSBApplication.getNationalId()}"></td>
 
                 </tr>
             </table>
@@ -926,7 +932,7 @@
 <div style="clear: both"></div>
 <br/>
 <br/>
-<center><h3 style="clear: both"><b><u></u> DECLARATION BY APPLICANT</u> </b></h3></center>
+<center><h3 style="clear: both"><b><u></u> Declaration by Applicant</u> </b></h3></center>
 <center><br/>
     I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
     <br/></center>
