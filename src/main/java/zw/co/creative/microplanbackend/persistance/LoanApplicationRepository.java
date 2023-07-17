@@ -15,7 +15,7 @@ public interface LoanApplicationRepository extends JpaRepository<LoanApplication
 
     Optional<LoanApplication> findByUniqueRefAndAgentId(String uniqref, Long agentId);
 
-    @Query(value = "select * from loanapplication l order by l.dateCreated desc", nativeQuery = true)
+    @Query(value = "select * from LoanApplication l order by l.dateCreated desc", nativeQuery = true)
     List<LoanApplication> getAllLoans();
 
 
