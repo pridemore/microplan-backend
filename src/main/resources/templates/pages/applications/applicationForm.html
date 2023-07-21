@@ -13,8 +13,8 @@
         border-left: 1px solid black;
 
 
-
     }
+
     td {
         border-right: 1px solid black;
     }
@@ -35,13 +35,17 @@
 
 <!--<div th:replace="fragments/preloader ::preloader">-->
 <!--</div>-->
-<div style="margin-left: 0px !important;font-family: 'Times New Roman'; font-size: 16px !important;" class="page-container">
+<div style="margin-left: 0px !important;font-family: 'Times New Roman'; font-size: 16px !important;"
+     class="page-container">
 
-    <center><label><b><span  th:text="${'Applicant Name: '+SSBApplication.getApplicationTitle()}"></span></b></label></center>
+    <center><label><b><span th:text="${'Applicant Name: '+SSBApplication.getApplicationTitle()}"></span></b></label>
+    </center>
     <center><img style=" height: auto;" src="/images/icon/microplan.png"></center>
-   <label><b><span th:text="${'Agent Name: '+agentName}"></span></b></label>
-    <a th:data-longDescription="${SSBApplication.getApplicationTitle()}" onClick="document.title =this.getAttribute('data-longDescription');window.print();"><img style=" float: right !important; width: 30px; height: auto; margin-right: 30px; "
-                                     src="/images/icon/print.png"></a>
+    <label><b><span th:text="${'Agent Name: '+agentName}"></span></b></label>
+    <a th:data-longDescription="${SSBApplication.getApplicationTitle()}"
+       onClick="document.title =this.getAttribute('data-longDescription');window.print();"><img
+            style=" float: right !important; width: 30px; height: auto; margin-right: 30px; "
+            src="/images/icon/print.png"></a>
 
 
     <table style="width: 100%;">
@@ -61,7 +65,8 @@
             <td style="width: 25%"><b>EMPLOYEE CODE NUMBER:</b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getEmployeeNumber()}"></td>
             <td style="width: 25%"><b>DATE:</b></td>
-            <td style="width: 25% ;color: blue; border-right: 1px black !important; " th:text="${SSBApplication.getDateAndTime()}"></td>
+            <td style="width: 25% ;color: blue; border-right: 1px black !important; "
+                th:text="${SSBApplication.getDateAndTime()}"></td>
         </tr>
 
     </table>
@@ -70,7 +75,8 @@
     <table style="width: 100%;">
         <tr>
             <td style="width: 20%"><b>Loan Purpose:</b></td>
-            <td style="width: 80%; color: blue; border-right: 1px black !important;" th:text="${SSBApplication.getLoanPurpose()}"></td>
+            <td style="width: 80%; color: blue; border-right: 1px black !important;"
+                th:text="${SSBApplication.getLoanPurpose()}"></td>
 
 
         </tr>
@@ -87,7 +93,8 @@
             <td style="width: 10%;"><b>Bank Account Number</b></td>
             <td style="width: 10%; color: blue" th:text="${SSBApplication.getCreditAccountNumber()}"></td>
             <td style="width: 10%" ;><b>Branch</b></td>
-            <td style="border-right: 1px black !important;width: 10%;color: blue" ; th:text="${SSBApplication.getCreditBranchName()}"></td>
+            <td style="border-right: 1px black !important;width: 10%;color: blue" ;
+                th:text="${SSBApplication.getCreditBranchName()}"></td>
 
         </tr>
     </table>
@@ -110,7 +117,8 @@
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
             <td style="width: 10%;"><b>SURNAME</b></td>
             <td style="width: 20%; color: blue;" th:text="${SSBApplication.getLastName()}"></td>
-            <td style="border-right: 1px black !important;width: 5%;" th:text="${SSBApplication.getTitle()}"></td>
+            <td style="color: blue; border-right: 1px black !important;width: 5%;"
+                th:text="${SSBApplication.getTitle()}"></td>
         </tr>
     </table>
     <table style="width: 100%;">
@@ -118,7 +126,8 @@
             <td style="width: 25%;">FULL MAIDEN NAME <i>(for married Woman)</i></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
             <td style="width: 25%;">Full NAME OF SPOUSE <i>(for married Applicants)</i></td>
-            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getMaidenName()}"></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;"
+                th:text="${SSBApplication.getMaidenName()}"></td>
 
 
         </tr>
@@ -131,7 +140,8 @@
             <td style="width: 15%;"><b>National ID No.</b></td>
             <td style="width: 15%; color: blue;" th:text="${SSBApplication.getNationalId()}"></td>
             <td style="width: 15%;"><b>Passport No.</b></td>
-            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getPassportNumber()}"></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;"
+                th:text="${SSBApplication.getPassportNumber()}"></td>
 
         </tr>
 
@@ -140,9 +150,10 @@
 
     <table style="width: 100%;">
         <tr>
-            <td style="width: 40%;"><b>RESIDENTIAL ADDRESS</b></td>
-            <td style="border-right: 1px black !important;width: 60%; color: blue;" th:text="${SSBApplication.getResidentialAddress()}"></td>
-
+            <td style="width: 20%;">RESIDENTIAL ADDRESS</td>
+            <td style="width: 60%; color: blue;" th:text="${SSBApplication.getResidentialAddress()}"></td>
+            <td style="border-right: 1px black !important; width: 20%;color: blue;"
+                th:text="${SSBApplication.getAddressType()}"></td>
 
         </tr>
 
@@ -150,7 +161,8 @@
     <table style="width: 100%;">
         <tr>
             <td style="width: 30%;"><b>Name and Physical Address of Employer</b></td>
-            <td style="border-right: 1px black !important;width: 70%; color: blue;" th:text="${SSBApplication.getNameOfEmployer()}+', '+${SSBApplication.getEmployerAddress()}"></td>
+            <td style="border-right: 1px black !important;width: 70%; color: blue;"
+                th:text="${SSBApplication.getNameOfEmployer()}+', '+${SSBApplication.getEmployerAddress()}"></td>
 
         </tr>
 
@@ -175,7 +187,8 @@
             <td style="width: 25%;"><b>Since When Employed</b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getDateJoined()}"></td>
             <td style="width: 25%;"><b>E-mail Address</b></td>
-            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getEmployersEmail()}"></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;"
+                th:text="${SSBApplication.getEmployersEmail()}"></td>
 
         </tr>
 
@@ -187,7 +200,8 @@
             <td style="width: 25%;"><b>Profession <i>eg (mining, health etc)</i></b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getProfession()}"></td>
             <td style="width: 25%;"><b>Position Held eg (doctor, engineer etc)</b></td>
-            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getPositionHeld()}"></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;"
+                th:text="${SSBApplication.getPositionHeld()}"></td>
 
         </tr>
 
@@ -198,7 +212,8 @@
             <td style="width: 25%;"><b>Gross Monthly Salary/ income</b></td>
             <td style="width: 25%; color: blue;" th:text="${SSBApplication.getGrossSalary()}"></td>
             <td style="width: 25%;"><b>Net Monthly Salary/ income</b></td>
-            <td style="border-right: 1px black !important;width: 25%; color: blue;" th:text="${SSBApplication.getNetSalary()}"></td>
+            <td style="border-right: 1px black !important;width: 25%; color: blue;"
+                th:text="${SSBApplication.getNetSalary()}"></td>
 
         </tr>
     </table>
@@ -245,7 +260,8 @@
     <table style="width: 100%;">
         <tr>
             <td style="width: 40%;"><b>Repayment period required</i></b></td>
-            <td style="border-right: 1px black !important;width: 60%; color: blue;" th:text="${SSBApplication.getLoanPeriod()+ ' '+'months'}"></td>
+            <td style="border-right: 1px black !important;width: 60%; color: blue;"
+                th:text="${SSBApplication.getLoanPeriod()+ ' '+'months'}"></td>
 
         </tr>
 
@@ -263,12 +279,11 @@
             <td style="width: 10%;"><b>Bank Account Number</b></td>
             <td style="width: 20%; color: blue" th:text="${SSBApplication.getAccountNo()}"></td>
             <td style="width: 10%" ;><b>Branch</b></td>
-            <td style="border-right: 1px black !important;width: 10%;color: blue" ; th:text="${SSBApplication.getBranchName()}"></td>
+            <td style="border-right: 1px black !important;width: 10%;color: blue" ;
+                th:text="${SSBApplication.getBranchName()}"></td>
 
         </tr>
     </table>
-
-
 
 
     <center><h3 style="margin-bottom: 0px !important;"><b>
@@ -284,12 +299,12 @@
             <th style="border-right: 1px black !important;"> Expiry/Last repayment date</th>
         </tr>
 
-        <tr style="border-bottom: 1px solid black!important;height: 20px">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td style="border-right: 1px  black !important;"></td>
+        <tr style="height: 20px">
+            <td style="border-bottom: 1px solid black !important;"></td>
+            <td style="border-bottom: 1px solid black !important;"></td>
+            <td style="border-bottom: 1px solid black !important;"></td>
+            <td style="border-bottom: 1px solid black !important;"></td>
+            <td style="border-bottom: 1px solid black !important;border-right: 1px black !important;"></td>
         </tr>
         <tr style="height: 20px">
             <td></td>
@@ -318,7 +333,7 @@
         </tr>
 
     </table>
-    <table style="border-bottom: 1px solid black !important;width: 100%;" >
+    <table style="border-bottom: 1px solid black !important;width: 100%;">
         <tbody>
 
         <tr>
@@ -333,9 +348,12 @@
             <td style="border-bottom: 1px solid black !important;">1</td>
             <td style="border-bottom: 1px solid black !important;color: blue;"
                 th:text="${SSBApplication.getNxtOfKin1FirstName()}+${space}+${SSBApplication.getNxtOfKin1Surname()}+${space}+${SSBApplication.getNxtOfKin1Relation()}"></td>
-            <td style="border-bottom: 1px solid black !important;color: blue;" th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
-            <td style="border-bottom: 1px solid black !important;color: blue;" th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
-            <td style="border-bottom: 1px solid black !important;border-right: 1px black !important;color: blue;" th:text="${SSBApplication.getNxtOfKin1Phone()}"></td>
+            <td style="border-bottom: 1px solid black !important;color: blue;"
+                th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
+            <td style="border-bottom: 1px solid black !important;color: blue;"
+                th:text="${SSBApplication.getNxtOfKin1Address()}"></td>
+            <td style="border-bottom: 1px solid black !important;border-right: 1px black !important;color: blue;"
+                th:text="${SSBApplication.getNxtOfKin1Phone()}"></td>
 
 
         </tr>
@@ -345,7 +363,8 @@
                 th:text="${SSBApplication.getNxtOfKin2FirstName()}+${space}+${SSBApplication.getNxtOfKin2Surname()}+${space}+${SSBApplication.getNxtOfKin2Relation()}"></td>
             <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Address()}"></td>
             <td style="color: blue;" th:text="${SSBApplication.getNxtOfKin2Address()}"></td>
-            <td style="border-right: 1px black !important;color: blue;" th:text="${SSBApplication.getNxtOfKin2Phone()}"></td>
+            <td style="border-right: 1px black !important;color: blue;"
+                th:text="${SSBApplication.getNxtOfKin2Phone()}"></td>
 
 
         </tr>
@@ -356,11 +375,10 @@
     </table>
 
 
-
     <div style="margin-left: 20px; font-family: 'Times New Roman'; font-size: 14px;">
         <center><h3><b><u></u> Declaration By Customer</u> </b></h3></center>
         <center>
-            I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT
+            <b>I DECLARE THAT ALL THE ABOVE STATEMENTS IN SUPPORT OF THIS APPLICATION ARE TRUE AND CORRECT</b>
             <br/></center>
         <br/>
         Yours faithfully
@@ -378,9 +396,10 @@
 
 
         <br/> <br/>
-        <p style="page-break-after: always;"> N.B. Microplan Financial Services P/L reserves the right to repudiate any
-            application without giving reasons.
-            &nbsp;</p>
+        <p style="page-break-after: always;">
+        <center><b> N.B. Microplan Financial Services P/L reserves the right to repudiate any
+            application without giving reasons.</b></center>
+        &nbsp;</p>
         <ol type="1">
 
 
@@ -392,24 +411,24 @@
                 levied on the outstanding loan balance/ loan amount.
 
             </li>
-<!--            <ul>-->
-                2.1 The capital portion of the loan plus interest shall be paid in <b><span
-                        th:text="${SSBApplication.getLoanPeriod()}"></span></b> equal installments of usd $<b> <span
-                        th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></span></b> commencing <b> <span
-                        th:text="${SSBApplication.getLoanFromDate()}"></span></b>
-                </br>
-                2.2 Monthly loan repayments will be effected by way of automatic debits to the operating
-                    account into
-                    which loan proceeds are initially credited and the borrower shall ensure that the account is
-                    adequately funded to meet loan repayments. In the event that the account is not funded the account
-                    will overdraw and the overdraft will immediately attract interest at Microplan Financial Service’s
-                    prevailing penalty rate of interest. The penalty rate is currently 25% per month.
-                </br>
-                2.3 At all material times, this loan shall be paid back in United States Dollars through the
-                    Lender’s
-                    Nostro Account.
-                </br>
-<!--            </ul>-->
+            <!--            <ul>-->
+            2.1 The capital portion of the loan plus interest shall be paid in <b><span
+                th:text="${SSBApplication.getLoanPeriod()}"></span></b> equal installments of usd $<b> <span
+                th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></span></b> commencing <b> <span
+                th:text="${SSBApplication.getLoanFromDate()}"></span></b>
+            </br>
+            2.2 Monthly loan repayments will be effected by way of automatic debits to the operating
+            account into
+            which loan proceeds are initially credited and the borrower shall ensure that the account is
+            adequately funded to meet loan repayments. In the event that the account is not funded the account
+            will overdraw and the overdraft will immediately attract interest at Microplan Financial Service’s
+            prevailing penalty rate of interest. The penalty rate is currently 25% per month.
+            </br>
+            2.3 At all material times, this loan shall be paid back in United States Dollars through the
+            Lender’s
+            Nostro Account.
+            </br>
+            <!--            </ul>-->
 
             <li>In accordance with normal banking practice the amount advanced shall become immediately due and
                 repayable on demand being made by Microplan Financial Services and Microplan Financial Services shall
@@ -435,60 +454,60 @@
             Until the facilities are terminated or whilst any amount or commitment remains outstanding, the
             Borrower undertakes to Microplan Financial Services to :-
             <ul>
-<!--                <ol type="7.1">-->
-                    7.1 Provide Microplan Financial Services with such information concerning any change in employment
-                        status, residential address and any other affairs of the Borrower as Microplan Financial
-                        Services
-                        may reasonably require;
-                    </br>
-                    7.2 Comply at all times with all laws as may be amended from time to time and agrees that the
-                        facilities
-                        shall be governed and construed in accordance with Zimbabwean Law, in the jurisdiction of which
-                        the
-                        Borrower resides or carries on business and in the event of any legal proceedings in connection
-                        with
-                        this matter, the Borrower agrees to be liable for all legal costs on the legal practitioner and
-                        client scale and other charges, including collection commission in terms of the Law Society
-                        By-laws,
-                        which may be incurred by Microplan Financial Services in connection therewith; and.
+                <!--                <ol type="7.1">-->
+                7.1 Provide Microplan Financial Services with such information concerning any change in employment
+                status, residential address and any other affairs of the Borrower as Microplan Financial
+                Services
+                may reasonably require;
                 </br>
-                    7.3 Provide any documents requested by Microplan Financial Services according to the type of account
-                        (s)
-                        requested.
+                7.2 Comply at all times with all laws as may be amended from time to time and agrees that the
+                facilities
+                shall be governed and construed in accordance with Zimbabwean Law, in the jurisdiction of which
+                the
+                Borrower resides or carries on business and in the event of any legal proceedings in connection
+                with
+                this matter, the Borrower agrees to be liable for all legal costs on the legal practitioner and
+                client scale and other charges, including collection commission in terms of the Law Society
+                By-laws,
+                which may be incurred by Microplan Financial Services in connection therewith; and.
                 </br>
-                    7.4 Be liable for any overdraft or debt which Microplan Financial Services may permit on this
-                        account
-                        for unprovided loan installments or other service fees and understand that a penalty charge or
-                        the
-                        penalty rate of interest as determined by the lender from time to time shall apply on any
-                        unauthorized overdrafts or overdue amounts.
+                7.3 Provide any documents requested by Microplan Financial Services according to the type of account
+                (s)
+                requested.
                 </br>
-                    7.5 Ensure that their salary is paid directly or sales proceeds are deposited into the account held
-                        with
-                        FBC Bank.
+                7.4 Be liable for any overdraft or debt which Microplan Financial Services may permit on this
+                account
+                for unprovided loan installments or other service fees and understand that a penalty charge or
+                the
+                penalty rate of interest as determined by the lender from time to time shall apply on any
+                unauthorized overdrafts or overdue amounts.
                 </br>
-                    7.6 Consents to MicroPlan Financial Services P/L undertaking credit registry searches as part of
-                        their
-                        credit assessment process.
+                7.5 Ensure that their salary is paid directly or sales proceeds are deposited into the account held
+                with
+                FBC Bank.
                 </br>
-                    7.7 Ensure the above statements in support of this application are true and correct and in the event
-                        of
-                        any information proving to be inaccurate/ false, the loan application will be declined or, in
-                        the
-                        event Microplan Financial Services had approved and disbursed the loan, any amounts outstanding
-                        shall immediately become due and payable on demand by Microplan Financial Services.
+                7.6 Consents to MicroPlan Financial Services P/L undertaking credit registry searches as part of
+                their
+                credit assessment process.
                 </br>
-                    7.8 To utilise the loan proceeds for this loan as per loan purpose applied and approved by the
-                        lender.
-                        Any variation on the loan purpose should be approved by the Lender prior to utilisation of the
-                        funds. In the event that the loan proceeds are utilised on unauthorised purpose, any amounts
-                        outstanding shall immediately become due and payable on demand by Microplan Financial Services
-                        P/L
+                7.7 Ensure the above statements in support of this application are true and correct and in the event
+                of
+                any information proving to be inaccurate/ false, the loan application will be declined or, in
+                the
+                event Microplan Financial Services had approved and disbursed the loan, any amounts outstanding
+                shall immediately become due and payable on demand by Microplan Financial Services.
                 </br>
-                    7.9 Chooses as a domicillium citandi et executandi on the following address: <b><span
-                            th:text="${SSBApplication.getResidentialAddress()}"></span></b>
+                7.8 To utilise the loan proceeds for this loan as per loan purpose applied and approved by the
+                lender.
+                Any variation on the loan purpose should be approved by the Lender prior to utilisation of the
+                funds. In the event that the loan proceeds are utilised on unauthorised purpose, any amounts
+                outstanding shall immediately become due and payable on demand by Microplan Financial Services
+                P/L
+                </br>
+                7.9 Chooses as a domicillium citandi et executandi on the following address: <b><span
+                    th:text="${SSBApplication.getResidentialAddress()}"></span></b>
 
-<!--                </ol>-->
+                <!--                </ol>-->
 
             </ul>
             <li>The Borrower agrees that the Lender may, without notice and at its sole discretion, consolidate any
@@ -522,16 +541,17 @@
 
                 <ul>
                     12.1 Default interest shall mean 25% per month and shall be paid by the Borrower from the date of
-                        failure up to the date of actual repayment of the facility. However, Microplan Financial
-                        Services reserves the right to give notice at any time and thereafter to charge such other
-                        default interest rate as it may require, and if thereafter the Borrower continues to use the
-                        facility, by not repaying it in full immediately, the Borrower shall be deemed to have agreed to
-                        such other rate.
+                    failure up to the date of actual repayment of the facility. However, Microplan Financial
+                    Services reserves the right to give notice at any time and thereafter to charge such other
+                    default interest rate as it may require, and if thereafter the Borrower continues to use the
+                    facility, by not repaying it in full immediately, the Borrower shall be deemed to have agreed to
+                    such other rate.
                     </br>
-                    12.2 All interest payable in terms of the loan facility will be calculated on the balance outstanding
-                        each day, at close of business, and the interest outstanding at the end of each month shall be
-                        added to the capital and interest thereafter charged on that increased capital. Capital and
-                        Interest shall be collected from your FBC Bank FCA account or by stop order as and when due.
+                    12.2 All interest payable in terms of the loan facility will be calculated on the balance
+                    outstanding
+                    each day, at close of business, and the interest outstanding at the end of each month shall be
+                    added to the capital and interest thereafter charged on that increased capital. Capital and
+                    Interest shall be collected from your FBC Bank FCA account or by stop order as and when due.
 
                 </ul>
         </ol>
@@ -648,17 +668,22 @@
             that I am /we are liable,
             and hold myself/ourselves bound to Microplan Financial Services(Private) Limited hereinafter referred to as
             (“the Creditor” or “the institution” or “Microplan”) for the due and proper payment of the amount of
-            USD$<b><span th:text="${SSBApplication.getPrice()} +' ('+ ${loanPriceInWords}"></span> </b>)(“the Principal Debit”)
+            USD$<b><span th:text="${SSBApplication.getPrice()} +' ('+ ${loanPriceInWords}"></span> </b>)(“the Principal
+            Debit”)
             and furthermore I declare that the Debtor is bound by the terms and conditions set out herein, namely:
-
-            <li> The Principal Debt is the sum USD Nostrol <b>$<span th:text="${SSBApplication.getPrice()}+' ('+ ${loanPriceInWords}"></span></b>
+            <br/>
+            <br/>
+            <br/>
+            <li> The Principal Debt is the sum USD Nostrol <b>$<span
+                    th:text="${SSBApplication.getPrice()}+' ('+ ${loanPriceInWords}"></span></b>
             </li>
             <li>The Principal Debit shall bear interest at the rate of <b><span
                     th:text="${interestRate +'%'}"></span></b> per month, the amount of which shall be
                 calculated daily in advance on the outstanding balance due and capitalized monthly until the total
                 amount due in terms hereof shall have been paid.
                 <br/>
-                2.1 A default interest rate of <b><span th:text="${SSBApplication.getDefaultInterest() +'%'}"></span> </b>per
+                2.1 A default interest rate of <b><span th:text="${SSBApplication.getDefaultInterest() +'%'}"></span>
+                </b>per
                 month shall be applied on any arrears and/or outstanding balance from the date of failure until the full
                 outstanding debit is paid.
             </li>
@@ -799,10 +824,12 @@
     <div style="width: 100%">
         <table style="border-bottom: 1px solid black!important;width: 20%; float: left">
             <tr>
-                <td style="border-right: 1px  black!important;width: 10%; height: 50px;"><span style="font-size: 50px;">&#10004;</span></td>
+                <td style="border-right: 1px  black!important;width: 10%; height: 50px;"><span style="font-size: 50px;">&#10004;</span>
+                </td>
             </tr>
             <tr>
-                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">NEW</td>
+                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">NEW
+                </td>
 
             </tr>
 
@@ -812,7 +839,9 @@
                 <td style="border-right: 1px  black!important;width: 10%;  height: 50px;"></td>
             </tr>
             <tr>
-                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">CHANGE</td>
+                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">
+                    CHANGE
+                </td>
 
             </tr>
 
@@ -822,7 +851,9 @@
                 <td style="border-right: 1px  black!important;width: 10%;  height: 50px;"></td>
             </tr>
             <tr>
-                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">CEASE</td>
+                <td style="border-top: 1px solid black !important;border-right: 1px  black!important;width: 10%;">
+                    CEASE
+                </td>
 
             </tr>
 
@@ -858,7 +889,7 @@
             <h4><b><u>PAYEE CODE</u></b></h4>
             <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td style="border-right: 1px  black !important;" >84008</td>
+                    <td style="border-right: 1px  black !important;">84008</td>
 
                 </tr>
             </table>
@@ -868,7 +899,8 @@
             <h4><b><u>Monthly rate (USD)</u></b></h4>
             <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;" th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;"
+                        th:text="${SSBApplication.getLoanRepaymentPerMonth()}"></td>
 
                 </tr>
             </table>
@@ -882,7 +914,8 @@
             <h4><b><u>From date</u></b></h4>
             <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;" th:text="${SSBApplication.getLoanFromDate()}"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;"
+                        th:text="${SSBApplication.getLoanFromDate()}"></td>
 
                 </tr>
             </table>
@@ -893,7 +926,8 @@
             <h4><b><u>To date </u></b></h4>
             <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;" th:text="${SSBApplication.getLoanToDate()}"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;"
+                        th:text="${SSBApplication.getLoanToDate()}"></td>
 
                 </tr>
             </table>
@@ -921,7 +955,8 @@
             <h4><b><u>National ID Number</u></b></h4>
             <table style="border-bottom: 1px solid black !important;width:40%;">
                 <tr>
-                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;" th:text="${SSBApplication.getNationalId()}"></td>
+                    <td STYLE="border-right: 1px  black !important;HEIGHT: 30px;"
+                        th:text="${SSBApplication.getNationalId()}"></td>
 
                 </tr>
             </table>
