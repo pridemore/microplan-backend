@@ -29,6 +29,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static zw.co.creative.microplanbackend.common.SystemConstants.BASE_URL;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/creativeUser")
@@ -66,7 +68,7 @@ public class CreativeUserController {
     public String createUser(@Validated CreativeUserDto creativeUserDto, Model model) {
         log.info("Dto : {}", creativeUserDto);
         if (Objects.nonNull(creativeUserDto)) {
-            String url = "http://localhost:8021/api/creativeUser/create";
+            String url = BASE_URL+"/api/creativeUser/create";
             HttpHeaders headers = extractHeaders();
             UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
             final URI resultURL = builder.build().toUri();

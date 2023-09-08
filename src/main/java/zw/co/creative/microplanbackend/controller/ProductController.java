@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static zw.co.creative.microplanbackend.common.SystemConstants.BASE_URL;
+
 
 @Controller
 @AllArgsConstructor
@@ -47,7 +49,7 @@ public class ProductController {
     public String addProduct(@Validated ProductDto productDto, Model model) {
 
         if (Objects.nonNull(productDto)) {
-            String url = "http://localhost:8020/api/product/create";
+            String url = BASE_URL+"/api/product/create";
             UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
             final URI resultUrl = builder.build().toUri();
             ResponseEntity<Object> exchange = restTemplate.postForEntity(resultUrl, productDto, Object.class);
@@ -61,7 +63,7 @@ public class ProductController {
 
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public String viewAllProducts(Model model) {
-        String url = "http://localhost:8020/api/product/getAll";
+        String url = BASE_URL+"/api/product/getAll";
         UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
         final URI resultUrl = builder.build().toUri();
         ResponseEntity<CommonResponse> exchange = restTemplate.exchange(resultUrl, HttpMethod.GET, null, CommonResponse.class);

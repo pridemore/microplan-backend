@@ -17,6 +17,8 @@ import zw.co.creative.microplanbackend.domain.dto.SSBApplicationDto;
 import java.net.URI;
 import java.util.Objects;
 
+import static zw.co.creative.microplanbackend.common.SystemConstants.BASE_URL;
+
 @Controller
 @AllArgsConstructor
 @RequestMapping("/application")
@@ -46,7 +48,7 @@ public class SSBApplicationController {
     public String addSSBApplication(SSBApplicationDto ssbApplicationDto, Model model) {
         log.info("SSBApplicationDto--------------: {}", ssbApplicationDto);
         if (Objects.nonNull(ssbApplicationDto)) {
-            String url = "http://localhost:8020/api/application/create";
+            String url = BASE_URL+"/api/application/create";
             UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(url);
             final URI resultUrl = builder.build().toUri();
             ResponseEntity<Object> exchange = restTemplate.postForEntity(resultUrl, ssbApplicationDto, Object.class);
