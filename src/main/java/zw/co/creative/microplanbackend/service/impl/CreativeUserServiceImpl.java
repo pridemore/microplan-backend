@@ -216,8 +216,13 @@ public class CreativeUserServiceImpl implements CreativeUserService {
 
     @Override
     public CreativeUser getUserById(Long id) {
-        CreativeUser user = creativeUserRepository.findById(id).get();
-        log.info("Found User by id---------: {}", user);
-        return user;
+        Optional<CreativeUser> user = creativeUserRepository.findById(id);
+
+        if (user.isPresent()) {
+            log.info("Found User by id---------: {}", user);
+            return user.get();
+        } else {
+            return null;
+        }
     }
 }

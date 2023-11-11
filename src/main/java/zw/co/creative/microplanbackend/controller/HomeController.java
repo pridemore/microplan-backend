@@ -71,7 +71,7 @@ public class HomeController {
         log.info("Application------: fetched");
         //applications.stream().forEachOrdered(a -> processDTOs(a, applicationsDTOsList));
 
-        for(LoanApplication application:applications){
+        for (LoanApplication application : applications) {
             processDTOs(application, applicationsDTOsList);
         }
         model.addAttribute("applications", applicationsDTOsList);
@@ -82,6 +82,13 @@ public class HomeController {
 
     private void processDTOs(LoanApplication application, List<LoanApplicationDTO> applicationsDTOsList) {
         CreativeUser applicationAgent = creativeUserService.getUserById(application.getAgentId());
+        if (Objects.isNull(applicationAgent)) {
+            applicationAgent = CreativeUser.builder()
+                    .firstName("Agent Deleted")
+                    .lastName("Agent Deleted")
+                    .build();
+        }
+
         if (Objects.nonNull(applicationAgent)) {
             LoanApplicationDTO loanApplicationDTO = LoanApplicationDTO.builder()
                     .id(application.getId())
@@ -118,6 +125,13 @@ public class HomeController {
         String employeeCodeCheckDidgit = ssbApplication.getEmployeeNumber().substring(7);
         log.info("employeeCodeCheckDidgit----------: {}", employeeCodeCheckDidgit);
         CreativeUser agent = creativeUserService.getUserById(ssbApplication.getAgentId());
+
+        if (Objects.isNull(agent)) {
+            agent = CreativeUser.builder()
+                    .firstName("Agent Deleted")
+                    .lastName("Agent Deleted")
+                    .build();
+        }
         DocumentUpload documentUpload = null;
         try {
             documentUpload = documentsUploadRepository.findByLoanUniqueRef(ref);
