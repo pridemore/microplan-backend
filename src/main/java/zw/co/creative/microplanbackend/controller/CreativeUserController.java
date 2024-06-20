@@ -66,7 +66,7 @@ public class CreativeUserController {
 
     @RequestMapping("/create")
     public String createUser(@Validated CreativeUserDto creativeUserDto, Model model) {
-        log.info("Dto : {}", creativeUserDto);
+        log.info(" creativeUser Dto -------");
         if (Objects.nonNull(creativeUserDto)) {
             String url = BASE_URL+"/api/creativeUser/create";
             HttpHeaders headers = extractHeaders();
@@ -74,7 +74,7 @@ public class CreativeUserController {
             final URI resultURL = builder.build().toUri();
             HttpEntity entity = new HttpEntity(headers);
             ResponseEntity<Object> exchange = restTemplate.postForEntity(resultURL, creativeUserDto, Object.class);
-            log.info("Response from creating User------ : {}", exchange);
+            log.info("Response from creating User------");
 
             List<CreativeUser> creativeUser = creativeUserRepository.findAll();
 
@@ -131,7 +131,7 @@ public class CreativeUserController {
             return "redirect:creativeUser/view/"+id;
         }
         CommonResponse updateUser = creativeUserService.updateUser(id, creativeUserDto);
-        log.info("Update user response-----: {}",updateUser);
+        log.info("Update user response-----");
         return "redirect:/creativeUser/view/"+id;
     }
 

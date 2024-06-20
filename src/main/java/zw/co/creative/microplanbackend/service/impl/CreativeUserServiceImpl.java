@@ -102,7 +102,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
 
         Optional<CreativeUser> user;
         user = Optional.ofNullable(creativeUserRepository.findCreativeUserByEmail(loginDto.getEmail()));
-        log.info("Found user : {}", user);
+        log.info("Found user");
         if (user.isPresent()) {
             //check if login attempts greater or equal to 3
             if (user.get().isAccountLocked()) {
@@ -210,7 +210,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
     @Override
     public List<CreativeUser> getAllCreativeUsersByStatusAndRole(CreationStatus status, String role) {
         List<CreativeUser> allByStatusAndRole = creativeUserRepository.findAllByStatusAndRole(status, role);
-        log.info("all Users by status and role---------: {}", allByStatusAndRole);
+        log.info("all Users by status and role---------");
         return allByStatusAndRole;
     }
 
@@ -219,7 +219,7 @@ public class CreativeUserServiceImpl implements CreativeUserService {
         Optional<CreativeUser> user = creativeUserRepository.findById(id);
 
         if (user.isPresent()) {
-            log.info("Found User by id---------: {}", user);
+            log.info("Found User by id---------");
             return user.get();
         } else {
             return null;
