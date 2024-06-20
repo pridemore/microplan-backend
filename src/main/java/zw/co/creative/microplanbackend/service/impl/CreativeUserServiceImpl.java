@@ -219,7 +219,6 @@ public class CreativeUserServiceImpl implements CreativeUserService {
         Optional<CreativeUser> user = creativeUserRepository.findById(id);
 
         if (user.isPresent()) {
-            log.info("Found User by id---------");
             return user.get();
         } else {
             return null;
