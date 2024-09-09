@@ -27,7 +27,7 @@ public class CreativeUserServiceDetail implements UserDetailsService {
 
         UserDetails userDetails;
 
-        if(!optionalUser.isPresent()){
+        if(optionalUser.isPresent()){
             CreativeUser userAccount = optionalUser.get();
             log.info("Loaded user account => {}", userAccount);
 
