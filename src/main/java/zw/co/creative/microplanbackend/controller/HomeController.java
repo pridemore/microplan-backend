@@ -66,6 +66,7 @@ public class HomeController {
         //List<LoanApplicationDTO> applicationsDTOsList = new ArrayList<>();
         List<LoanApplication> applications = loanApplicationRepository.getAllLoans();
         log.info("Application------: fetched");
+        log.info("Application------: fetched");
         //applications.stream().forEachOrdered(a -> processDTOs(a, applicationsDTOsList));
 
 //        for (LoanApplication application : applications) {
