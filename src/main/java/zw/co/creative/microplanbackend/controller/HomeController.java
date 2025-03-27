@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import pl.allegro.finance.tradukisto.MoneyConverters;
 import zw.co.creative.microplanbackend.common.Utility;
 import zw.co.creative.microplanbackend.common.response.ProductResponse;
 import zw.co.creative.microplanbackend.domain.CreativeUser;
@@ -21,11 +20,9 @@ import zw.co.creative.microplanbackend.service.CreativeUserService;
 import zw.co.creative.microplanbackend.service.ProductService;
 import zw.co.creative.microplanbackend.service.impl.SSBApplicationServiceImpl;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @Slf4j
@@ -66,31 +63,47 @@ public class HomeController {
 
     @GetMapping(value = "/viewApplication")
     public String APPLICATION(Model model) {
-        List<LoanApplicationDTO> applicationsDTOsList = new ArrayList<>();
+        //List<LoanApplicationDTO> applicationsDTOsList = new ArrayList<>();
         List<LoanApplication> applications = loanApplicationRepository.getAllLoans();
+        log.info("Application------: fetched");
         log.info("Application------: fetched");
         //applications.stream().forEachOrdered(a -> processDTOs(a, applicationsDTOsList));
 
-        for (LoanApplication application : applications) {
-            processDTOs(application, applicationsDTOsList);
-        }
+//        for (LoanApplication application : applications) {
+//            processDTOs(application, applicationsDTOsList);
+//        }
+
+        List<LoanApplicationDTO> applicationsDTOsList = applications.parallelStream()
+                .map(this::convertToDTO)  // Convert each LoanApplication to LoanApplicationDTO
+                .collect(Collectors.toList());  // Collect into list
+
+
         model.addAttribute("applications", applicationsDTOsList);
         model.addAttribute("space", " ");
         model.addAttribute("name", authenticatedEmployee.getAuthenticatedUser().getFirstName() + " " + authenticatedEmployee.getAuthenticatedUser().getLastName());
         return "pages/applications/view";
     }
 
-    private void processDTOs(LoanApplication application, List<LoanApplicationDTO> applicationsDTOsList) {
+    private LoanApplicationDTO convertToDTO(LoanApplication application) {
         CreativeUser applicationAgent = creativeUserService.getUserById(application.getAgentId());
-        if (Objects.isNull(applicationAgent)) {
-            applicationAgent = CreativeUser.builder()
-                    .firstName("Agent Deleted")
-                    .lastName("Agent Deleted")
-                    .build();
-        }
 
-        if (Objects.nonNull(applicationAgent)) {
-            LoanApplicationDTO loanApplicationDTO = LoanApplicationDTO.builder()
+        if (Objects.isNull(applicationAgent)) {
+            return LoanApplicationDTO.builder()
+                    .id(application.getId())
+                    .uniqueRef(application.getUniqueRef())
+                    .applicationTitle(application.getApplicationTitle())
+                    .agentFirstName("Agent Deleted")
+                    .agentLastName("Agent Deleted")
+                    .loanPurpose(application.getLoanPurpose())
+                    .firstName(application.getFirstName())
+                    .lastName(application.getLastName())
+                    .employeeNumber(application.getEmployeeNumber())
+                    .status(application.getStatus())
+                    .dateCreated(application.getDateCreated())
+                    .lastUpdated(application.getLastUpdated())
+                    .build();
+        } else {
+            return LoanApplicationDTO.builder()
                     .id(application.getId())
                     .uniqueRef(application.getUniqueRef())
                     .applicationTitle(application.getApplicationTitle())
@@ -105,7 +118,6 @@ public class HomeController {
                     .dateCreated(application.getDateCreated())
                     .lastUpdated(application.getLastUpdated())
                     .build();
-            applicationsDTOsList.add(loanApplicationDTO);
         }
     }
 
