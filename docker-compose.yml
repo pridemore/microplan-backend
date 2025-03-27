@@ -28,6 +28,12 @@ services:
       options:
         max-size: "2MB"
         max-file: "10"
+    mem_limit: 2G
+    memswap_limit: 4G
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
 #    depends_on:
 #      - mysqldb
 #  mysqldb:
