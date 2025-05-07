@@ -28,8 +28,8 @@ services:
       options:
         max-size: "2MB"
         max-file: "10"
-    mem_limit: 2G
-    memswap_limit: 4G
+#    mem_limit: 2G
+#    memswap_limit: 4G
     ulimits:
       nofile:
         soft: 65535
